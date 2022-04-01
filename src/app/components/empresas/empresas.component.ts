@@ -10,6 +10,7 @@ import { Empleados } from '../../models/empleados.model';
 })
 export class EmpresasComponent implements OnInit {
 
+
   public empleadosModelGet: Empleados;
   public empleadosModelPost: Empleados;
 
@@ -29,6 +30,7 @@ export class EmpresasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmpleados();
+
   }
 
   postEmpleados(){
@@ -36,6 +38,7 @@ export class EmpresasComponent implements OnInit {
       (response) => {
         console.log(response);
         this.getEmpleados();
+
         this.empleadosModelPost.nombre = '';
         this.empleadosModelPost.apellido = '';
         this.empleadosModelPost.puesto = '';

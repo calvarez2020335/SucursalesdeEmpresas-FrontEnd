@@ -1,13 +1,10 @@
 <!-- Button trigger modal -->
-
-
-
 <button type="button" class="up" data-bs-toggle="modal" data-bs-target="#ModalAgregarEmpleados">
     Agregar Empleados
   </button>
-
+  
   <!-- Modal -->
-
+  
   <div class="modal fade " id="ModalAgregarEmpleados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -16,8 +13,7 @@
           <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
         </div>
         <div class="modal-body">
-
-
+        
                 <form>
                     <div class="mg-3">
                         <label for="inputNombre" class="form-label">Nombre</label>
@@ -35,9 +31,8 @@
                         <label for="inputDepartamento" class="form-label">Departamento</label>
                             <input type="text" id="inputDepartamento" class="form-control" name="departamento" #departamento="ngModel" [(ngModel)]="empleadosModelPost.departamento">
                     </div>
-
+              
               </form>
-
 
         </div>
         <div class="modal-footer">
@@ -154,5 +149,4 @@
 
     </div>
   </div>
-
-
+  </div>
