@@ -35,6 +35,7 @@ export class EmpresasComponent implements OnInit {
     this._empleadosService.registrarEmpleado(this.empleadosModelPost).subscribe(
       (response) => {
         console.log(response);
+        this.getEmpleados();
         this.empleadosModelPost.nombre = '';
         this.empleadosModelPost.apellido = '';
         this.empleadosModelPost.puesto = '';
