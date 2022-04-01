@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="up" data-bs-toggle="modal" data-bs-target="#ModalAgregarEmpleados">
-    Launch static backdrop modal
+    Agregar Empleados
   </button>
   
   <!-- Modal -->
@@ -10,21 +10,36 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Agregar Empleados</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
         </div>
         <div class="modal-body">
           
 
-            <form>
-                
+                <form>
+                    <div class="mg-3">
+                        <label for="inputNombre" class="form-label">Nombre</label>
+                            <input type="text" id="inputNombre" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="empleadosModelPost.nombre">
+                    </div>
+                    <div class="mg-3">
+                        <label for="inputApellido" class="form-label">Apellido</label>
+                            <input type="text" id="inputApellido" class="form-control" name="apellido" #apellido="ngModel" [(ngModel)]="empleadosModelPost.apellido">
+                    </div>
+                    <div class="mg-3">
+                        <label for="inputPuesto" class="form-label">Puesto</label>
+                            <input type="text" id="inputPuesto" class="form-control" name="puesto" #puesto="ngModel" [(ngModel)]="empleadosModelPost.puesto">
+                    </div>
+                    <div class="mg-3">
+                        <label for="inputDepartamento" class="form-label">Departamento</label>
+                            <input type="text" id="inputDepartamento" class="form-control" name="departamento" #departamento="ngModel" [(ngModel)]="empleadosModelPost.departamento">
+                    </div>
                 
               </form>
 
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="postEmpleados()" >Agregar Empleado</button>
         </div>
       </div>
     </div>

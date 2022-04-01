@@ -60,15 +60,20 @@
 
 
 $colors: (
-
-  up: #485E7A, 
+  fill: #a972cb,
+  pulse: #ef6eae, 
+  close: #e0251b, 
+  raise: #ffa260, 
+  up: #485E7A,
+  slide: #8fc866, 
+  offset: #19bc8b 
 
 );
 
 @each $button, $color in $colors {
   .#{$button} {
     --color: #{$color};
-    --hover: #{adjust-hue($color, 20deg)};
+    --hover: #{adjust-hue($color, 10deg)};
   }
 }
 
