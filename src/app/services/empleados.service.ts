@@ -17,4 +17,9 @@ export class EmpleadosService {
 
     return this._http.post(this.url + '/registrarEmpleado', parametros, {headers: this.headersVariable});
   }
+
+  obtenerEmpleados() : Observable<any> {
+    return this._http.get(this.url + '/Empleados', { headers: this.headersVariable});
+  }
 }
+
