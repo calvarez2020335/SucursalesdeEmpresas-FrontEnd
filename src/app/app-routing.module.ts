@@ -9,9 +9,9 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
 
 const routes: Routes = [
   { path: 'empresas', component: EmpresasComponent},
-  {path: '', component: InicioComponent},
+  {path: 'inicio', component: InicioComponent},
   {path: 'sucursales', component: SucursalesComponent},
-  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
   {path: 'registrar' , component: RegistrarComponent }
 
 ];
