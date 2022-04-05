@@ -1,0 +1,26 @@
+#content {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.btn-primary {
+  background-color: #111B54;
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: var(#111B54);
+}
+
+.stat {
+  border-right: 1px solid #efefef;
+}
+
+.bg-grey{
+  background: #efefef;
+}
+
+.bg-mix{
+  background: linear-gradient(180deg, #ffffff 50%, #efefef 0)
+}
