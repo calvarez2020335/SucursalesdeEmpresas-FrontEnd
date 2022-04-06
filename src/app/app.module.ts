@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
+import { Empresas2Component } from './components/empresas2/empresas2.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
     RegistrarComponent,
     InicioComponent,
     SucursalesComponent,
+    Empresas2Component,
     
   ],
   imports: [
