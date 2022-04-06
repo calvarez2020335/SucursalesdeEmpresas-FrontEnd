@@ -11,24 +11,32 @@
             <h2>Formulario De Registro</h2>
             <div class="mb-3">
               <label for="NombreUsuario" class="form-label">Nombre De Usuario</label>
-              <input type="text" class="form-control" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario">
+              <input type="text" class="form-control" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario" name="nombre" #nombre="ngModel"
+              [(ngModel)]="usuarioModelPost.nombre">
+            </div>
+            <div class="mb-3">
+              <label for="NombreUsuario" class="form-label">Tipo de Empresa</label>
+              <input type="text" class="form-control" id="NombreUsuario" placeholder="Ingresar el tipo de empresa" name="tipoEmpresa" #tipoEmpresa="ngModel"
+              [(ngModel)]="usuarioModelPost.tipoEmpresa">
             </div>
             <div class="mb-3">
               <label for="Email1" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Ingresar Su Correo">
+              <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Ingresar Su Correo" name="email" #email="ngModel"
+              [(ngModel)]="usuarioModelPost.email">
               <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
             </div>
             <div class="mb-3">
               <label for="password1" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña">
+              <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña" name="password" #password="ngModel"
+              [(ngModel)]="usuarioModelPost.password">
             </div>
 
               <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
-              <a routerLink="/dash">
-                <input type="button" value="Registrarse">
+              <a routerLink="">
+                <input type="button" value="Registrarse" (click)="postRegistarEmpresa()">
             </a>
           </form>
-          <p><a routerLink="/login" >¿Ya tengo Cuenta?</a></p>
+          <p><a routerLink="" >¿Ya tengo Cuenta?</a></p>
 
         </div>
 
