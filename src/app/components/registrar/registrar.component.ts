@@ -32,10 +32,11 @@ export class RegistrarComponent implements OnInit {
 
     this.token = this._usuarioService.getToken();
    }
-  
+
 
   ngOnInit(): void {
   }
+
 
   postRegistarEmpresa(){
     this._usuarioService.RegistrarEmpresa(this.usuarioModelPost, this.token).subscribe(

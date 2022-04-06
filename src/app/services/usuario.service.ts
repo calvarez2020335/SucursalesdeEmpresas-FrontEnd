@@ -15,6 +15,7 @@ export class UsuarioService {
 
   constructor(public _http: HttpClient) { }
 
+
   RegistrarEmpresa(modeloUsuario: Usuario, token) : Observable<any> {
 
     let headersToken = this.headersVariable.set('Authorization', token )
@@ -56,5 +57,7 @@ export class UsuarioService {
 
     return this.identidad;
   }
+
+
 
 }
