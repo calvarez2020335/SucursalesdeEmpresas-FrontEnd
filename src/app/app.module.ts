@@ -7,12 +7,22 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrarComponent } from './components/registrar/registrar.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { SucursalesComponent } from './components/sucursales/sucursales.component';
+import { Empresas2Component } from './components/empresas2/empresas2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     EmpresasComponent,
+    LoginComponent,
+    RegistrarComponent,
+    InicioComponent,
+    SucursalesComponent,
+    Empresas2Component,
     
   ],
   imports: [

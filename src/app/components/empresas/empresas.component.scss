@@ -7,7 +7,7 @@
 }
 
 // Animate the size, outside
-.pulse:hover,
+.pulse:hover, 
 .pulse:focus {
   animation: pulse 1s;
   box-shadow: 0 0 0 2em transparent;
@@ -20,9 +20,9 @@
 // Stack multiple shadows, one from the left, the other from the right
 .close:hover,
 .close:focus {
-  box-shadow:
+  box-shadow: 
     inset -3.5em 0 0 0 var(--hover),
-    inset 3.5em 0 0 0 var(--hover);
+    inset 3.5em 0 0 0 var(--hover);  
 }
 
 // Size can also be negative; see how it's smaller than the element
@@ -45,14 +45,14 @@
 }
 
 // Multiple shadows, one on the outside, another on the inside
-.offset {
-  box-shadow:
+.offset {  
+  box-shadow: 
     0.3em 0.3em 0 0 var(--color),
     inset 0.3em 0.3em 0 0 var(--color);
-
+  
   &:hover,
   &:focus {
-    box-shadow:
+    box-shadow: 
       0 0 0 0 var(--hover),
       inset 6em 3.5em 0 0 var(--hover);
   }
@@ -61,12 +61,12 @@
 
 $colors: (
   fill: #a972cb,
-  pulse: #ef6eae,
-  close: #e0251b,
-  raise: #ffa260,
+  pulse: #ef6eae, 
+  close: #e0251b, 
+  raise: #ffa260, 
   up: #485E7A,
-  slide: #8fc866,
-  offset: #19bc8b
+  slide: #8fc866, 
+  offset: #19bc8b 
 
 );
 
@@ -78,12 +78,12 @@ $colors: (
 }
 
 // Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
-button {
+
+button {  
   color: var(--color);
   transition: 0.25s;
-
   &:hover,
-  &:focus {
+  &:focus { 
     border-color: var(--hover);
     color: #fff;
   }
@@ -99,7 +99,6 @@ button {
   margin: 0.5em;
   padding: 1em 2em;
 }
-
 
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
@@ -278,3 +277,4 @@ html, body {
   right: 1rem;
   font-size: 0.9em;
 }
+

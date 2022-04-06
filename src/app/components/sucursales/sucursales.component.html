@@ -1,0 +1,151 @@
+<head>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex" id="content-wrapper">
+
+    <div class="w-100">
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand">Dashboard</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit"><i class="icon ion-md-search"></i></button>
+          </form>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  "$[nombreEmpresa]"
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item">Perfil</a></li>
+                  <li><a class="dropdown-item">Suscripción</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" routerLink="/">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Fin Navbar -->
+
+      <!-- Contenido de la pagina -->
+
+      <div id="content" class="bg-grey w-100">
+        <section class="bg-light py-3">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">Bienvenido "$[nombreEmpresa]"</h1>
+                <p class="lead text-muted">Revisa tu información detallada</p>
+              </div>
+
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal" data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!--Agregar Sucursales-->
+        <div class="modal fade " id="ModalAgregarSucursales" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Agregar Sucursal</h5>
+                <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+              </div>
+              <div class="modal-body">
+
+                      <form>
+                          <div class="mg-3">
+                              <label for="inputNombre" class="form-label">Nombre</label>
+                                  <input type="text" id="inputNombre" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="sucursalesModelPost.nombre">
+                          </div>
+                          <div class="mg-3">
+                              <label for="inputTelefono" class="form-label">Telefono</label>
+                                  <input type="text" id="inputTelefono" class="form-control" name="teledono" #telefono="ngModel" [(ngModel)]="sucursalesModelPost.telefono">
+                          </div>
+                          <div class="mg-3">
+                              <label for="inputDireccion" class="form-label">Direccion</label>
+                                  <input type="text" id="inputDireccion" class="form-control" name="direccion" #direccion="ngModel" [(ngModel)]="sucursalesModelPost.direccion">
+                          </div>
+
+                          <div class="mg-3">
+                            <label for="inputStock" class="form-label">Stock</label>
+                                <input type="text" id="inputStock" class="form-control" name="Stock" #direccion="ngModel" [(ngModel)]="sucursalesModelPost.stock">
+                        </div>
+
+                    </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="postSucursales()" >Agregar Sucursales</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mostar Sucursales -->
+        <section class="bg-mix py-3">
+          <div class="container" >
+            <div class="card rounded-0" >
+              <div class="card-body" *ngFor="let su of sucursalesModelGet">
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                    <div class="mx-auto">
+                      <h6 class="text-muted">Nombre</h6>
+                      <h3 class="font-weight-bold">{{su.nombre}}</h3>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                    <div class="mx-auto">
+                      <h6 class="text-muted">Telefono</h6>
+                      <h3 class="font-weight-bold">{{su.telefono}}</h3>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                    <div class="mx-auto">
+                      <h6 class="text-muted">Direccion</h6>
+                      <h3 class="font-weight-bold">{{su.direccion}}</h3>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</body>
