@@ -9,17 +9,23 @@ import { Sucursales } from '../models/sucursales.model'
 export class SucursalesService {
   public url : String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
+  public token;
+  public identidad;
 
   constructor(public _http: HttpClient) { }
 
-  IngresarSucursales(modeloSucursales: Sucursales): Observable<any> {
+  IngresarSucursales(modeloSucursales: Sucursales, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
     let parametros = JSON.stringify(modeloSucursales);
 
-    return this._http.post(this.url + '/agregarSucursales', parametros, { headers: this.headersVariable })
+    return this._http.post(this.url + '/agregarSucursales', parametros, { headers: headersToken })
   }
 
-  obtenerSucursales() : Observable<any> {
-    return this._http.get(this.url + '/Sucursales', { headers: this.headersVariable});
+  obtenerSucursales(token) : Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.get(this.url + '/Sucursales', { headers: headersToken});
   }
 
 }

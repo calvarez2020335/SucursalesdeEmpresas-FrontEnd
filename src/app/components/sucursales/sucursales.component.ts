@@ -14,7 +14,7 @@ export class SucursalesComponent implements OnInit {
 
   public sucursalesModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
-  public token = this._usuarioService.getToken();
+  public token;
 
   constructor(
     private _sucursalesService: SucursalesService,
@@ -37,18 +37,17 @@ export class SucursalesComponent implements OnInit {
   }
 
   postSucursales(){
-    this._sucursalesService.IngresarSucursales(this.sucursalesModelPost).subscribe(
+    this._sucursalesService.IngresarSucursales(this.sucursalesModelPost, this.token).subscribe(
       (response)=>{
         console.log(response);
         this.getSucursales();
-        localStorage.getItem("token");
 
         this.sucursalesModelPost.nombre = '';
         this.sucursalesModelPost.telefono = '';
         this.sucursalesModelPost.direccion = '';
         this.sucursalesModelPost.stock = 0;
         this.sucursalesModelPost.vendido = 0;
-        this.sucursalesModelPost.idEmpresa = this._usuarioService.getToken()
+        this.sucursalesModelPost.idEmpresa = '';
 
       },
       (error)=>{
@@ -58,7 +57,7 @@ export class SucursalesComponent implements OnInit {
   }
 
   getSucursales(){
-    this._sucursalesService.obtenerSucursales().subscribe(
+    this._sucursalesService.obtenerSucursales(this.token).subscribe(
       (response)=>{
         this.sucursalesModelGet = response.Sucursales;
         console.log(this.sucursalesModelGet)
