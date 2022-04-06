@@ -3,6 +3,7 @@ import { SucursalesService } from 'src/app/services/sucursales.service';
 import { Sucursales} from '../../models/sucursales.model'
 import { UsuarioService} from 'src/app/services/usuario.service';
 
+
 @Component({
   selector: 'app-sucursales',
   templateUrl: './sucursales.component.html',
@@ -66,6 +67,6 @@ export class SucursalesComponent implements OnInit {
         console.log(error);
       }
     )
-  }
 
-}
+    }
+  }
