@@ -53,6 +53,11 @@ export class UsuarioService {
     return this.token;
   }
 
+  clearToken(){
+    localStorage.clear();
+
+  }
+
   getIdentidad() {
     var identidad2 = JSON.parse(localStorage.getItem('identidad'));
     if(identidad2 != undefined){
