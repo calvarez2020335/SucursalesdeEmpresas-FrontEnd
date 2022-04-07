@@ -7,12 +7,20 @@ body {
 
 }
 
+.container-fluid {
+
+  background: linear-gradient(150deg,#ffffff,#03173d);
+  width: 100%;
+  height: 100%;
+}
+
 .container-form {
 
 
   background: rgb(255 255 255 / 0.8);
   padding: 30px;
   margin-top: 75px;
+  margin-bottom: 75px;
   border-radius: 30px;
   font-family: 'calibri';
   color: #607d8b;
