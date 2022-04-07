@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -19,7 +21,16 @@ export class NavbarComponent implements OnInit {
   }
 
   VaciarToken(){
-    this._usuarioService.clearToken()
+    this._usuarioService.clearToken();
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Sesión Cerrada',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
   }
 }
 
