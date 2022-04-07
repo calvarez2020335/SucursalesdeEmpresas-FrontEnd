@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar',
@@ -56,10 +57,24 @@ export class RegistrarComponent implements OnInit {
         NombreProveedor: '',
         Stock: ''
         }];
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se Registro la Empresa',
+          showConfirmButton: false,
+          timer: 1500
+        })
 
       },
       (error) => {
         console.log(<any>error);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })   
       }
     )
   }
