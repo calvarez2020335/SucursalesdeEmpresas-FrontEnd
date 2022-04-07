@@ -68,4 +68,16 @@ export class SucursalesComponent implements OnInit {
     )
 
     }
+
+  eliminarSucursales(id){
+    this._sucursalesService.eliminarSucursales(id,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getSucursales()
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
   }
