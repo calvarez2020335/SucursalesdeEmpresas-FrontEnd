@@ -8,9 +8,9 @@
         <div class="container-form">
 
           <form>
-            <h2>Formulario De Registro</h2>
+            <h2>Registro de Empresa</h2>
             <div class="mb-3">
-              <label for="NombreUsuario" class="form-label">Nombre De Usuario</label>
+              <label for="NombreUsuario" class="form-label">Nombre de Empresa</label>
               <input type="text" class="form-control" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario" name="nombre" #nombre="ngModel"
               [(ngModel)]="usuarioModelPost.nombre">
             </div>
@@ -18,6 +18,16 @@
               <label for="TipoEm" class="form-label">Tipo de Empresa</label>
               <input type="text" class="form-control" id="TipoEm" placeholder="Ingresar el tipo de empresa" name="tipoEmpresa" #tipoEmpresa="ngModel"
               [(ngModel)]="usuarioModelPost.tipoEmpresa">
+            </div>
+            <div class="mb-3">
+              <label for="Dire" class="form-label">Direccion</label>
+              <input type="text" class="form-control" id="Dire" placeholder="Ingresar la direccion" name="Dire" #Dire="ngModel"
+              [(ngModel)]="usuarioModelPost.direccion">
+            </div>
+            <div class="mb-3">
+              <label for="Tel" class="form-label">Telefono</label>
+              <input type="number" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel" #tel="ngModel"
+              [(ngModel)]="usuarioModelPost.telefono">
             </div>
             <div class="mb-3">
               <label for="Email1" class="form-label">Correo Electrónico</label>
