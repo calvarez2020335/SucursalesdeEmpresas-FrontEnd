@@ -25,6 +25,12 @@ export class UsuarioService {
     return this._http.post(this.url + '/registrarEmpresa', parametros, {headers: headersToken});
   }
 
+  VerEmpresas(token) : Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.get(this.url + '/empresas', { headers: headersToken});
+  }
+
   login(usuario, obtenerToken = null): Observable<any> {
 
     if(obtenerToken != null){
@@ -47,6 +53,11 @@ export class UsuarioService {
     return this.token;
   }
 
+  clearToken(){
+    localStorage.clear();
+
+  }
+
   getIdentidad() {
     var identidad2 = JSON.parse(localStorage.getItem('identidad'));
     if(identidad2 != undefined){
@@ -58,6 +69,10 @@ export class UsuarioService {
     return this.identidad;
   }
 
+  EliminarEmpresas( idEmpresas, token ): Observable<any> {
 
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.delete(this.url + '/eliminarEmpresa/'+ idEmpresas, { headers: headersToken})
+  }
 
 }

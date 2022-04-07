@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    color: #f8f9fa;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Raleway", sans-serif;
+  }
+  .page-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(https://www.kyoceradocumentsolutions.es/renditions/content/dam/kyocera/es/images/hero/hero-1536x960-12%20valores%20de%20empresa%20para%20guiar%20tu%20negocio.jpg/jcr%3Acontent/renditions/cq5dam.resized.img.1536.large.time1572879591367.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+  
+    .page-main {
+      width: 100%;
+      margin-bottom: 81px;
+  
+      article {
+        .section {
+          background-color: #4d4d4d;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+  
+          &:first-child {
+            margin-bottom: 500px;
+          }
+        }
+  
+        .article-header {
+          margin-bottom: 30px;
+          max-width: 700px;
+          padding: 30px 20px 0;
+  
+          h1 {
+            font-size: 50px;
+          }
+          h2 {
+            font-size: 35px;
+            margin-bottom: 40px;
+          }
+          p {
+            font-size: 20px;
+            line-height: 1.4;
+          }
+        }
+  
+        .article-content {
+          background-color: #4d4d4d;
+          margin-top: 5px;
+          max-width: 700px;
+          padding: 0 20px;
+          margin-bottom: 20px;
+  
+          p {
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+  
+            &.caption {
+              font-weight: 300;
+              font-size: 15px;
+              line-height: 1.2;
+              text-align: center;
+              margin-bottom: 40px;
+            }
+          }
+        }
+      }
+    }
+    .page-footer {
+      background-color: #4d4d4d;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #424242;
+  
+      .content {
+        display: flex;
+        max-width: 700px;
+        min-width: 700px;
+        display: flex;
+  
+        nav {
+          flex: 1;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+  
+          &:hover {
+            .icon-container {
+              h4 {
+                height: 21px;
+                opacity: 1;
+              }
+            }
+            .link-list {
+              transform: translateY(-100%);
+            }
+          }
+  
+          .icon-container {
+            padding: 10px;
+            height: 81px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            width: 100%;
+            background-color: #4d4d4d;
+  
+            span {
+              font-size: 40px;
+            }
+            h4 {
+              font-size: 18px;
+              height: 0;
+              opacity: 0;
+              transition: 0.3s;
+            }
+          }
+  
+          .link-list {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(0);
+            background-color: #141414;
+            border: 1px solid #424242;
+            border-bottom: 0;
+            width: calc(700px / 3);
+            z-index: 1;
+            transition: 0.3s;
+  
+            a {
+              list-style-type: none;
+              font-size: 16px;
+              padding: 8px;
+              text-decoration: none;
+  
+              &:hover {
+                background-color: #1e1e1e;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
