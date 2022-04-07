@@ -1,1 +1,71 @@
-<p>empresas2 works!</p>
+<head>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex" id="content-wrapper">
+
+    <div class="w-100">
+      <!-- Contenido de la pagina -->
+
+      <div id="content" class="bg-grey w-100">
+        <section class="bg-light py-3">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{ _usuarioService.getIdentidad().nombre }} </h1>
+                <p class="lead text-muted">Revisa tu información detallada</p>
+              </div>
+
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Mostar Sucursales -->
+        <section class="bg-mix py-3">
+          <div class="container">
+            <div class="card rounded-0">
+              <div class="card-body" *ngFor="let em of empresasModelGet">
+                <!-- Cifras -->
+                <section class="bg-mix py-3">
+                  <div class="container">
+                    <div class="card rounded-0">
+                      <div class="card-body">
+                        <div class="row">
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Nombre</h6>
+                              <h3 class="font-weight-bold">{{em.nombre}}</h3>
+                            </div>
+                          </div>
+
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+      <!-- Fin Contenido de la pagina -->
+      </section>
+    </div>
+  </div>
+
+
+  </div>
+
+
+</body>
+
