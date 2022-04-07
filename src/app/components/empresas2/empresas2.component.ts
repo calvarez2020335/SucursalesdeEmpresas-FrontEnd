@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-empresas2',
@@ -33,4 +34,24 @@ export class Empresas2Component implements OnInit {
       )
 
   }
+
+  eliminarEmpresas(id){
+    this._usuarioService.EliminarEmpresas(id,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresas();
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
+
 }

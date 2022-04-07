@@ -64,6 +64,10 @@ export class UsuarioService {
     return this.identidad;
   }
 
+  EliminarEmpresas( idEmpresas, token ): Observable<any> {
 
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.delete(this.url + '/eliminarEmpresa/'+ idEmpresas, { headers: headersToken})
+  }
 
 }
