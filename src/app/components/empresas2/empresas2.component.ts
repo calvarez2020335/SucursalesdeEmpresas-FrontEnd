@@ -13,7 +13,8 @@ export class Empresas2Component implements OnInit {
   public empresasModelGet: Usuario;
   public token;
 
-  constructor(public _usuarioService: UsuarioService) {
+  constructor(
+    public _usuarioService: UsuarioService) {
     this.token = this._usuarioService.getToken()
   }
 
