@@ -15,7 +15,7 @@
             <div class="row">
 
               <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Bienvenido "$[nombreEmpresa]"</h1>
+                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{ _usuarioService.getIdentidad().nombre }} </h1>
                 <p class="lead text-muted">Revisa tu información detallada</p>
               </div>
 
@@ -118,8 +118,6 @@
                             <div class="col-lg-3 col-md-4 d-flex">
                               <button class="btn btn-primary w-100 align-self-center" (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
                             </div>
-
-
 
                         </div>
                       </div>

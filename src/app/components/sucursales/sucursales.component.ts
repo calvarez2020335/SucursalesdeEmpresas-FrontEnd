@@ -18,7 +18,7 @@ export class SucursalesComponent implements OnInit {
 
   constructor(
     private _sucursalesService: SucursalesService,
-    private _usuarioService: UsuarioService ) {
+    public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
     (
       '',
