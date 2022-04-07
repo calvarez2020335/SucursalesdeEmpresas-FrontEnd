@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { Sucursales} from '../../models/sucursales.model'
 import { UsuarioService} from 'src/app/services/usuario.service';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-sucursales',
@@ -18,7 +18,7 @@ export class SucursalesComponent implements OnInit {
 
   constructor(
     private _sucursalesService: SucursalesService,
-    private _usuarioService: UsuarioService ) {
+    public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
     (
       '',
@@ -48,10 +48,23 @@ export class SucursalesComponent implements OnInit {
         this.sucursalesModelPost.stock = 0;
         this.sucursalesModelPost.vendido = 0;
         this.sucursalesModelPost.idEmpresa = '';
-
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Sucursal Agregado Correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       (error)=>{
-        console.log(error);
+        console.log(<any>error);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     )
   }
@@ -68,4 +81,23 @@ export class SucursalesComponent implements OnInit {
     )
 
     }
+
+  eliminarSucursales(id){
+    this._sucursalesService.eliminarSucursales(id,this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getSucursales()
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
   }
