@@ -58,7 +58,6 @@ export class RegistrarComponent implements OnInit {
         Stock: ''
         }];
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Se Registro la Empresa',
           showConfirmButton: false,
@@ -69,12 +68,11 @@ export class RegistrarComponent implements OnInit {
       (error) => {
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
           timer: 1500
-        })   
+        })
       }
     )
   }
