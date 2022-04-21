@@ -49,7 +49,7 @@ export class SucursalesComponent implements OnInit {
         this.sucursalesModelPost.vendido = 0;
         this.sucursalesModelPost.idEmpresa = '';
         Swal.fire({
-          position: 'top-end',
+
           icon: 'success',
           title: 'Sucursal Agregado Correctamente',
           showConfirmButton: false,
@@ -59,7 +59,7 @@ export class SucursalesComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
+
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
@@ -87,11 +87,18 @@ export class SucursalesComponent implements OnInit {
       (response)=>{
         console.log(response);
         this.getSucursales()
+        Swal.fire({
+
+          icon: 'error',
+          title: 'eliminado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
+
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,

@@ -1,27 +1,60 @@
-body {
-  background: linear-gradient(10deg,#03173d,#fff);
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-}
+
+
 
 .container-fluid{
-  background: linear-gradient(10deg,#03173d,#fff);
+  background: linear-gradient(10deg,#a2bcec,#fff);
   width: 100%;
-  height: 100%;
+  height: 100vh ;
+
 }
 
+
+@media (max-height: 946px){
+
+  .container-fluid{
+    background: linear-gradient(10deg,#7a9ddf,#fff);
+    width: 100%;
+    height: 100% ;
+
+  }
+}
+
+
+@media (min-height: 1180px){
+
+  .container-fluid{
+    background: linear-gradient(10deg,#628cda,#fff);
+    width: 100%;
+    height: 100vh ;
+  }
+}
+
+@media (max-width: 1366px){
+
+  .container-fluid{
+    background: linear-gradient(10deg,#4f83e4,#fff);
+    width: 100%;
+    height: 100% ;
+  }
+}
+
+@media (min-width: 1815px){
+
+  .container-fluid{
+    background: linear-gradient(10deg,#164fb9,#fff);
+    width: 100%;
+    height: 100vh ;
+  }
+}
+
+
+
 .container-form {
-
-
-
   border-radius: 30px;
   background: rgb(255 255 255 / 0.8);
   padding: 30px;
-
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-family: 'calibri';
   color: #607d8b;
   box-shadow: 1px 1px 20px #000;
