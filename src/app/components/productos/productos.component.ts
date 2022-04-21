@@ -28,7 +28,7 @@ export class ProductosComponent implements OnInit {
       '',
       '',
       0
-    )
+    );
     this.productosModelGetId = new ProductosEmpresa('','','','',0);
     this.token = this._usuarioService.getToken()
    }
@@ -86,8 +86,8 @@ export class ProductosComponent implements OnInit {
   getProductosId(idProducto){
     this._productosService.obtenerProductoId(idProducto,this.token).subscribe(
       (response)=>{
-        this.productosModelGetId = response.Productos;
-        console.log(response);
+        this.productosModelGetId = response.Producto;
+        console.log(this.productosModelGetId);
       },
       (error)=> {
         console.log(error);

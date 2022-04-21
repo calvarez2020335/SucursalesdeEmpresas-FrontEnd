@@ -137,35 +137,38 @@
 
   </div>
 
-  <!-- OffCanvas Editar Producto -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-  aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <form>
-      <div class="mb-3">
-        <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
-        <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto" #NombreProducto="ngModel"
-          [(ngModel)]="productosModelGetId.NombreProducto">
-      </div>
-      <div class="mb-3">
-        <label for="inputNombreProveedor" class="form-label">Nombre Proveedo</label>
-        <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor" #NombreProveedor="ngModel"
-          [(ngModel)]="productosModelGetId.NombreProveedor">
-      </div>
-      <div class="mb-3">
-        <label for="inputPrecio" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
-          [(ngModel)]="productosModelGetId.Stock">
-      </div>
-      <button type="submit" class="btn btn-success" (click)="putProductos()" data-bs-dismiss="offcanvas">Editar
-        Producto</button>
-    </form>
-  </div>
-</div>
+
 
 
 </body>
+
+ <!-- OffCanvas Editar Producto -->
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+ aria-labelledby="offcanvasExampleLabel">
+ <div class="offcanvas-header">
+   <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+ </div>
+ <div class="offcanvas-body">
+   <form>
+
+     <div class="mb-3">
+       <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
+       <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto" #NombreProducto="ngModel"
+         [(ngModel)]="productosModelGetId.NombreProducto">
+     </div>
+     <div class="mb-3">
+       <label for="inputNombreProveedor" class="form-label">Nombre Proveedor</label>
+       <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor" #NombreProveedor="ngModel"
+         [(ngModel)]="productosModelGetId.NombreProveedor">
+     </div>
+     <div class="mb-3">
+       <label for="inputStock" class="form-label">Stock</label>
+       <input type="number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
+         [(ngModel)]="productosModelGetId.Stock">
+     </div>
+     <button type="submit" class="btn btn-success" (click)="putProductos()" data-bs-dismiss="offcanvas">Editar
+       Producto</button>
+   </form>
+ </div>
+</div>

@@ -41,7 +41,7 @@ export class ProductosService {
     let parametros = JSON.stringify(modeloProductos);
     let headersToken = this.headersVariable.set('Authorization', token )
 
-    return this._http.put(this.url + '/EditarProductosEmpresas/'+ modeloProductos._id,parametros,{ headers: headersToken})
+    return this._http.put(this.url + '/EditarProductosEmpresas/'+ modeloProductos._id, parametros,{ headers: headersToken})
 
   }
 
