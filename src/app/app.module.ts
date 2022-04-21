@@ -14,6 +14,7 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { Empresas2Component } from './components/empresas2/empresas2.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { Empresas2Component } from './components/empresas2/empresas2.component';
     InicioComponent,
     SucursalesComponent,
     Empresas2Component,
+    ProductosComponent,
     
   ],
   imports: [
