@@ -23,12 +23,7 @@ export class RegistrarComponent implements OnInit {
       "",
       "",
       "",
-      "",
-      [{
-        nombreProducto: "",
-        NombreProveedor: "",
-        Stock: ""
-      }],
+      ""
     );
 
     this.token = this._usuarioService.getToken();
@@ -51,12 +46,7 @@ export class RegistrarComponent implements OnInit {
         this.usuarioModelPost.direccion = '';
         this.usuarioModelPost.password = '';
         this.usuarioModelPost.rol = '';
-        this.usuarioModelPost.tipoEmpresa = '';
-        this.usuarioModelPost.ProductoEmpresa = [{
-          nombreProducto: '',
-        NombreProveedor: '',
-        Stock: ''
-        }];
+        this.usuarioModelPost.tipoEmpresa = ''
         Swal.fire({
           icon: 'success',
           title: 'Se Registro la Empresa',

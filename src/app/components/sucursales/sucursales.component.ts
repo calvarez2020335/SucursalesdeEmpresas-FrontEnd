@@ -14,6 +14,7 @@ export class SucursalesComponent implements OnInit {
 
   public sucursalesModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
+  public sucursalesModelGetId: Sucursales;
   public token;
 
   constructor(
@@ -26,9 +27,9 @@ export class SucursalesComponent implements OnInit {
       '',
       '',
       0,
-      0,
       ''
-    )
+    );
+    this.sucursalesModelGetId = new Sucursales('','','','',0,'');
     this.token = this._usuarioService.getToken()
    }
 
@@ -45,11 +46,9 @@ export class SucursalesComponent implements OnInit {
         this.sucursalesModelPost.nombre = '';
         this.sucursalesModelPost.telefono = '';
         this.sucursalesModelPost.direccion = '';
-        this.sucursalesModelPost.stock = 0;
         this.sucursalesModelPost.vendido = 0;
         this.sucursalesModelPost.idEmpresa = '';
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Sucursal Agregado Correctamente',
           showConfirmButton: false,
@@ -59,7 +58,6 @@ export class SucursalesComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
@@ -82,6 +80,40 @@ export class SucursalesComponent implements OnInit {
 
     }
 
+    getSucursalesId(idSucursal){
+      this._sucursalesService.obtenerSucursalesId(idSucursal,this.token).subscribe(
+        (response)=>{
+          this.sucursalesModelGetId = response.Sucursal;
+          console.log(this.sucursalesModelGetId)
+        },(error)=>{
+          console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        }
+      )
+    }
+
+    putSucursales(){
+      this._sucursalesService.editarSucursales(this.sucursalesModelGetId, this.token).subscribe(
+        (response)=>{
+          console.log(response);
+          this.getSucursales()
+        },(error)=>{
+          console.log(<any>error);
+          Swal.fire({
+            icon: 'error',
+            title: error.error.mensaje,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      )
+    }
+
   eliminarSucursales(id){
     this._sucursalesService.eliminarSucursales(id,this.token).subscribe(
       (response)=>{
@@ -91,7 +123,6 @@ export class SucursalesComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,

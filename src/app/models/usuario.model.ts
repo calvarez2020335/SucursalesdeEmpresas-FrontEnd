@@ -7,11 +7,6 @@ export class Usuario {
     public direccion: String,
     public password: String,
     public rol: String,
-    public tipoEmpresa:String,
-    public ProductoEmpresa: [{
-      nombreProducto: String,
-        NombreProveedor: String,
-        Stock: String
-    }],
+    public tipoEmpresa:String
   ){}
 }

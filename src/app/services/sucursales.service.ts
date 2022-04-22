@@ -34,4 +34,17 @@ export class SucursalesService {
     return this._http.delete(this.url + '/eliminarSucursales/'+ idSucursales, { headers: headersToken})
   }
 
+  obtenerSucursalesId(idSucursal, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+    return this._http.get(this.url + '/SucursalesId/'+idSucursal, { headers: headersToken})
+  }
+
+  editarSucursales(modeloSucursal:Sucursales, token): Observable<any> {
+    let parametros = JSON.stringify(modeloSucursal);
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.put(this.url + '/editarSurcursal/'+modeloSucursal._id, parametros, { headers: headersToken })
+  }
+
 }

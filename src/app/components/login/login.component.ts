@@ -21,12 +21,7 @@ export class LoginComponent implements OnInit {
       "",
       "",
       "",
-      "",
-      [{
-        nombreProducto: "",
-        NombreProveedor: "",
-        Stock: ""
-      }]
+      ""
     );
   }
 
