@@ -4,7 +4,6 @@ export class Sucursales {
     public nombre: String,
     public telefono: String,
     public direccion: String,
-    public stock: Number,
     public vendido: Number,
     public idEmpresa: String
   ){}
