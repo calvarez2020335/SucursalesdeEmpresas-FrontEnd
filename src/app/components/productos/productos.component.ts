@@ -86,7 +86,7 @@ export class ProductosComponent implements OnInit {
   getProductosId(idProducto){
     this._productosService.obtenerProductoId(idProducto,this.token).subscribe(
       (response)=>{
-        this.productosModelGetId = response.Producto;
+        this.productosModelGetId = response.Productos;
         console.log(this.productosModelGetId);
       },
       (error)=> {
