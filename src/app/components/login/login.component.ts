@@ -21,12 +21,7 @@ export class LoginComponent implements OnInit {
       "",
       "",
       "",
-      "",
-      [{
-        nombreProducto: "",
-        NombreProveedor: "",
-        Stock: ""
-      }]
+      ""
     );
   }
 
@@ -38,11 +33,11 @@ export class LoginComponent implements OnInit {
       (response)=>{
         console.log(response.token);
         localStorage.setItem("token", response.token)
-        
+
       },
       (error)=>{
         console.log(<any>error);
-        
+
 
       }
     )
@@ -55,7 +50,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('identidad', JSON.stringify(response.usuario))
         this.getToken();
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Logeado correctamente',
           showConfirmButton: false,
@@ -65,7 +59,6 @@ export class LoginComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,

@@ -30,6 +30,59 @@
           </div>
         </section>
 
+        <!-- Mostar Sucursales -->
+        <section class="bg-mix py-3" >
+          <div class="container">
+            <div class="card rounded-0">
+              <div class="card-body" *ngIf="_usuarioService.getIdentidad()">
+                <!-- Cifras-->
+                <section class="bg-mix py-3">
+                  <div class="container">
+                    <div class="card rounded-0">
+                      <div class="card-body">
+                        <div class="row">
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Telefono</h6>
+                              <h3 class="font-weight-bold">{{
+                                _usuarioService.getIdentidad().telefono }}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Direccion</h6>
+                              <h3 class="font-weight-bold">{{
+                                _usuarioService.getIdentidad().direccion }}</h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+          <!-- Fin Contenido de la pagina-->
+        </section>
+
+        <section class="bg-light py-3">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">Informacion De Sucursales</h1>
+                <p class="lead text-muted">Revisa tu información detallada</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
         <!--Agregar Sucursales-->
         <div class="modal fade " id="ModalAgregarSucursales" data-bs-backdrop="static" data-bs-keyboard="false"
           tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -57,13 +110,6 @@
                     <input type="text" id="inputDireccion" class="form-control" name="direccion" #direccion="ngModel"
                       [(ngModel)]="sucursalesModelPost.direccion">
                   </div>
-
-                  <div class="mg-3">
-                    <label for="inputStock" class="form-label">Stock</label>
-                    <input type="text" id="inputStock" class="form-control" name="Stock" #direccion="ngModel"
-                      [(ngModel)]="sucursalesModelPost.stock">
-                  </div>
-
                 </form>
 
               </div>
@@ -108,16 +154,19 @@
                               <h3 class="font-weight-bold">{{su.direccion}}</h3>
                             </div>
                           </div>
-
-                            <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                              <div class="mx-auto">
-                                <h6 class="text-muted">Stock</h6>
-                                <h3 class="font-weight-bold">{{su.stock}}</h3>
-                              </div>
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" routerLink="/productos">Ver Productos</button>
                             </div>
 
                             <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
+                              <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                                (click)="getSucursalesId(su._id)">
+                                Editar
+                              </button>
                             </div>
 
                         </div>
@@ -138,3 +187,34 @@
 
 
 </body>
+
+ <!-- OffCanvas Editar Producto -->
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+ aria-labelledby="offcanvasExampleLabel">
+ <div class="offcanvas-header">
+   <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
+   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+ </div>
+ <div class="offcanvas-body">
+   <form>
+
+     <div class="mb-3">
+       <label for="inputnombre" class="form-label">Nombre Sucursal</label>
+       <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+         [(ngModel)]="sucursalesModelGetId.nombre">
+     </div>
+     <div class="mb-3">
+       <label for="inputtelefono" class="form-label">Telefono</label>
+       <input type="text" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+         [(ngModel)]="sucursalesModelGetId.telefono">
+     </div>
+     <div class="mb-3">
+       <label for="inputdireccion" class="form-label">Direccion</label>
+       <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+         [(ngModel)]="sucursalesModelGetId.direccion">
+     </div>
+     <button type="submit" class="btn btn-success" (click)="putSucursales()" data-bs-dismiss="offcanvas">Editar
+       Sucursales</button>
+   </form>
+ </div>
+</div>

@@ -23,12 +23,7 @@ export class RegistrarComponent implements OnInit {
       "",
       "",
       "",
-      "",
-      [{
-        nombreProducto: "",
-        NombreProveedor: "",
-        Stock: ""
-      }],
+      ""
     );
 
     this.token = this._usuarioService.getToken();
@@ -51,14 +46,8 @@ export class RegistrarComponent implements OnInit {
         this.usuarioModelPost.direccion = '';
         this.usuarioModelPost.password = '';
         this.usuarioModelPost.rol = '';
-        this.usuarioModelPost.tipoEmpresa = '';
-        this.usuarioModelPost.ProductoEmpresa = [{
-          nombreProducto: '',
-        NombreProveedor: '',
-        Stock: ''
-        }];
+        this.usuarioModelPost.tipoEmpresa = ''
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Se Registro la Empresa',
           showConfirmButton: false,
@@ -69,12 +58,11 @@ export class RegistrarComponent implements OnInit {
       (error) => {
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
           timer: 1500
-        })   
+        })
       }
     )
   }
