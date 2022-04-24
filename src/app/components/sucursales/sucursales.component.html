@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <head>
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
@@ -16,7 +17,8 @@
             <div class="row">
 
               <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{ _usuarioService.getIdentidad().nombre }} </h1>
+                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
+                  _usuarioService.getIdentidad().nombre }} </h1>
                 <p class="lead text-muted">Revisa tu información detallada</p>
               </div>
 
@@ -31,7 +33,7 @@
         </section>
 
         <!-- Mostar Sucursales -->
-        <section class="bg-mix py-3" >
+        <section class="bg-mix py-3">
           <div class="container">
             <div class="card rounded-0">
               <div class="card-body" *ngIf="_usuarioService.getIdentidad()">
@@ -57,6 +59,19 @@
                                 _usuarioService.getIdentidad().direccion }}</h3>
                             </div>
                           </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Tipo Empresa</h6>
+                              <h3 class="font-weight-bold">{{
+                                _usuarioService.getIdentidad().tipoEmpresa }}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <button class="btn btn-primary w-100 align-self-center" routerLink="/productos">Administrar mis productos</button>
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -154,20 +169,17 @@
                               <h3 class="font-weight-bold">{{su.direccion}}</h3>
                             </div>
                           </div>
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
-                            </div>
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" routerLink="/productos">Ver Productos</button>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                                (click)="getSucursalesId(su._id)">
-                                Editar
-                              </button>
-                            </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button class="btn btn-primary w-100 align-self-center"
+                              (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
+                          </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                              (click)="getSucursalesId(su._id)">
+                              Editar
+                            </button>
+                          </div>
 
                         </div>
                       </div>
@@ -177,10 +189,10 @@
               </div>
             </div>
           </div>
-      <!-- Fin Contenido de la pagina -->
-      </section>
+          <!-- Fin Contenido de la pagina -->
+        </section>
+      </div>
     </div>
-  </div>
 
 
   </div>
@@ -188,33 +200,32 @@
 
 </body>
 
- <!-- OffCanvas Editar Producto -->
- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
- aria-labelledby="offcanvasExampleLabel">
- <div class="offcanvas-header">
-   <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
-   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
- </div>
- <div class="offcanvas-body">
-   <form>
+<!-- OffCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
 
-     <div class="mb-3">
-       <label for="inputnombre" class="form-label">Nombre Sucursal</label>
-       <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
-         [(ngModel)]="sucursalesModelGetId.nombre">
-     </div>
-     <div class="mb-3">
-       <label for="inputtelefono" class="form-label">Telefono</label>
-       <input type="text" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
-         [(ngModel)]="sucursalesModelGetId.telefono">
-     </div>
-     <div class="mb-3">
-       <label for="inputdireccion" class="form-label">Direccion</label>
-       <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
-         [(ngModel)]="sucursalesModelGetId.direccion">
-     </div>
-     <button type="submit" class="btn btn-success" (click)="putSucursales()" data-bs-dismiss="offcanvas">Editar
-       Sucursales</button>
-   </form>
- </div>
+      <div class="mb-3">
+        <label for="inputnombre" class="form-label">Nombre Sucursal</label>
+        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="sucursalesModelGetId.nombre">
+      </div>
+      <div class="mb-3">
+        <label for="inputtelefono" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+          [(ngModel)]="sucursalesModelGetId.telefono">
+      </div>
+      <div class="mb-3">
+        <label for="inputdireccion" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="sucursalesModelGetId.direccion">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="putSucursales()" data-bs-dismiss="offcanvas">Editar
+        Sucursales</button>
+    </form>
+  </div>
 </div>
