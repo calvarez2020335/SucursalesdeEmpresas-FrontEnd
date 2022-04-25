@@ -25,6 +25,8 @@
                 <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
               </div>
 
+
+
             </div>
           </div>
         </section>
@@ -80,6 +82,14 @@
                               <button class="btn btn-primary w-100 align-self-center" (click)="eliminarEmpresas(em._id)">Eliminar Empresas</button>
                             </div>
 
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                                (click)="getEmpresasId(em._id)">
+                                Editar
+                              </button>
+                            </div>
+
                         </div>
                       </div>
                     </div>
@@ -98,6 +108,43 @@
 
 
 </body>
+
+<!-- OffCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas-header">
+  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+  <form>
+
+    <div class="mb-3">
+      <label for="inputnombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+        [(ngModel)]="empresasModelGetId.nombre">
+    </div>
+    <div class="mb-3">
+      <label for="inputemail" class="form-label">email</label>
+      <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
+        [(ngModel)]="empresasModelGetId.email">
+    </div>
+    <div class="mb-3">
+      <label for="inputtelefono" class="form-label">telefono</label>
+      <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+        [(ngModel)]="empresasModelGetId.telefono">
+    </div>
+    <div class="mb-3">
+      <label for="inputdireccion" class="form-label">direccion</label>
+      <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+        [(ngModel)]="empresasModelGetId.direccion">
+    </div>
+    <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
+      Empresa</button>
+  </form>
+</div>
+</div>
+
 
 
 
