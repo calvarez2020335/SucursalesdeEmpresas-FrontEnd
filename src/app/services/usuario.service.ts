@@ -75,4 +75,16 @@ export class UsuarioService {
     return this._http.delete(this.url + '/eliminarEmpresa/'+ idEmpresas, { headers: headersToken})
   }
 
+  obtenerEmpresaId(idEmpresa, token):Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token );
+    return this._http.get(this.url + '/EmpresaId/'+ idEmpresa,{ headers: headersToken})
+  }
+
+  editarEmpresa(modeloEmpresa:Usuario, token):Observable<any> {
+    let parametros = JSON.stringify(modeloEmpresa);
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.put(this.url + '/editarEmpresa/'+ modeloEmpresa._id, parametros, { headers: headersToken})
+  }
+
 }
