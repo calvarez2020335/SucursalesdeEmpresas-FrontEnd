@@ -49,7 +49,6 @@ export class ProductosComponent implements OnInit {
         this.productosModelPost.Stock = 0;
 
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Sucursal Agregado Correctamente',
           showConfirmButton: false,
@@ -60,7 +59,6 @@ export class ProductosComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
@@ -90,7 +88,13 @@ export class ProductosComponent implements OnInit {
         console.log(this.productosModelGetId);
       },
       (error)=> {
-        console.log(error);
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     )
   }
@@ -102,7 +106,13 @@ export class ProductosComponent implements OnInit {
         this.getProductos()
       },
       (error)=>{
-        console.log(error);
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     )
   }
@@ -116,7 +126,6 @@ export class ProductosComponent implements OnInit {
       (error)=>{
         console.log(<any>error);
         Swal.fire({
-          position: 'top-end',
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,

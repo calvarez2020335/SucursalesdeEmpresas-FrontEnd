@@ -24,7 +24,6 @@ export class NavbarComponent implements OnInit {
     this._usuarioService.clearToken();
 
     Swal.fire({
-
       icon: 'success',
       title: 'Sesión Cerrada',
       showConfirmButton: false,
