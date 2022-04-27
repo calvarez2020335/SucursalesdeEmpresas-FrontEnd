@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 export class NavbarComponent implements OnInit {
   public token;
 
-  constructor(private _usuarioService: UsuarioService) {
+  constructor(
+    public _usuarioService: UsuarioService) {
     this.token = this._usuarioService.getToken();
    }
 
