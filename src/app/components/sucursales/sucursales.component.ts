@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { Sucursales} from '../../models/sucursales.model'
 import { UsuarioService} from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -15,6 +16,8 @@ export class SucursalesComponent implements OnInit {
   public sucursalesModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
   public sucursalesModelGetId: Sucursales;
+  public empresasModelGet: Usuario;
+  public empresasModelGetId: Usuario;
   public token;
 
   constructor(
@@ -30,6 +33,7 @@ export class SucursalesComponent implements OnInit {
       ''
     );
     this.sucursalesModelGetId = new Sucursales('','','','',0,'');
+    this.empresasModelGetId = new Usuario('','','',0,'','','','');
     this.token = this._usuarioService.getToken()
    }
 
@@ -131,4 +135,54 @@ export class SucursalesComponent implements OnInit {
       }
     )
   }
+
+  getEmpresasId(idEmpresa){
+    this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(
+      (response)=>{
+        this.empresasModelGetId = response.Empresa;
+        console.log(this.empresasModelGetId);
+      },
+      (error)=> {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
+
+  putEmpresa(){
+    this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
+      (response)=> {
+        console.log(response);
+        this.getEmpresas()
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
+
+  getEmpresas(){
+
+    this._usuarioService.VerEmpresas(this.token).subscribe(
+      (response)=>{
+        this.empresasModelGet = response.Empresas;
+        console.log(this.empresasModelGet)
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+
+}
   }

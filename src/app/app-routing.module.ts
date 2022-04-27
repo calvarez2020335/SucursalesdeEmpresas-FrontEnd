@@ -10,10 +10,10 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
 
 
 const routes: Routes = [
+  {path: '', component: InicioComponent},
   { path: 'empresas', component: EmpresasComponent},
-  {path: 'inicio', component: InicioComponent},
   {path: 'sucursales', component: SucursalesComponent},
-  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'registrar' , component: RegistrarComponent },
   { path: 'empresas2', component: Empresas2Component},
   {path: 'productos', component: ProductosComponent}
