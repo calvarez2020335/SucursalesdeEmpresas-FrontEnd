@@ -6,7 +6,7 @@ import { UsuarioService } from '../services/usuario.service'
 @Injectable({
   providedIn: 'root'
 })
-export class ValidacionGuard implements CanActivate {
+export class AdminValiGuard implements CanActivate {
   public identidad;
 
   constructor(
@@ -15,7 +15,7 @@ export class ValidacionGuard implements CanActivate {
     ){}
 
   canActivate(){
-    if (this.userRest.getIdentidad().rol === 'ROL_EMPRESA') {
+    if (this.userRest.getIdentidad().rol === 'ROL_ADMIN') {
 
       return true;
       

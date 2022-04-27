@@ -9,18 +9,21 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
+import { ValidacionGuard } from './services/validacion.guard';
+import { AdminValiGuard } from './services/admin-vali.guard';
+import { NadieValiGuard } from './services/nadie-vali.guard';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistrarComponent },
-  { path: 'empresas2', component: Empresas2Component },
+  { path: 'empresas2', component: Empresas2Component, canActivate: [ NadieValiGuard, AdminValiGuard]  },
 
-  { path: 'empresas', component: EmpresasComponent },
+  { path: 'empresas', component: EmpresasComponent},
   { path: '', component: InicioComponent },
 
   {
-    path: 'usuario', component: InicioUsuarioComponent, children: [
+    path: 'usuario', component: InicioUsuarioComponent, canActivate: [NadieValiGuard, ValidacionGuard ], children: [
       { path: 'sucursales', component: SucursalesComponent },
       { path: 'productos', component: ProductosComponent }
     ]
