@@ -8,22 +8,33 @@
 
       <div class="container-form">
 
-        <form>
-          <h2>Iniciar Sesión</h2>
-          <div class="mb-3">
-            <label for="Email1" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
-              placeholder="Ingresar Su Correo" name="email" #email="ngModel" [(ngModel)]="usuarioModel.email">
-            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
-          </div>
-          <div class="mb-3">
-            <label for="password1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña"
-              name="password" #password="ngModel" [(ngModel)]="usuarioModel.password">
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
+          <form>
+            <h2>Iniciar Sesión</h2>
+            <div class="mb-3">
+              <label for="Email1" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
+                placeholder="Ingresar Su Correo" name="email" #email="ngModel"
+                [(ngModel)]="usuarioModel.email">
+              <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña" name="password" #password="ngModel"
+              [(ngModel)]="usuarioModel.password">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
+            </div>
+
+           <!---->
+            <a routerLink="">
+              <input type="button" value="Acceder" (click)="login()">
+          </a>
+          </form>
+
+          <div class="input-box">
+            <p>No Tienes Una Cuenta? <a routerLink="/registrar">Registrate</a></p>
           </div>
 
 

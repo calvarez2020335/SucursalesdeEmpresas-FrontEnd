@@ -2,7 +2,7 @@
 <div class="nav">
   <input type="checkbox" id="nav-check" >
   <div class="nav-header">
-    <div class="nav-title" routerLink="/inicio">
+    <div class="nav-title" routerLink="">
       Inicio
     </div>
   </div>
@@ -15,14 +15,14 @@
   </div>
 
   <div class="nav-links">
-    <a routerLink="/empresas2">Empresas</a>
-    <a routerLink="/sucursales">Sucursales</a>
-    <a routerLink="">Login</a>
+    <a routerLink="/empresas2" *ngIf="_usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Empresas</a>
+    <a routerLink="/usuario/sucursales" *ngIf="_usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Sucursales</a>
+    <a routerLink="/login">Login</a>
     <a routerLink="/registrar">Registrar</a>
   </div>
 
   <div class="nav-linksI">
-    <a routerLink="" (click)="VaciarToken()">Cerrar Sesión</a>
+    <a routerLink="/login" (click)="VaciarToken()">Cerrar Sesión</a>
   </div>
 </div>
 
