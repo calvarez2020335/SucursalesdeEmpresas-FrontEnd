@@ -3,6 +3,8 @@
   <input type="checkbox" id="nav-check" >
   <div class="nav-header">
     <div class="nav-title" routerLink="/">
+
+    <div class="nav-title" routerLink="">
       Inicio
     </div>
   </div>
@@ -16,13 +18,15 @@
 
   <div class="nav-links">
     <a routerLink="/empresas2">Empresas</a>
+
     <a routerLink="/sucursales">Sucursales</a>
+    <a routerLink="/usuario/sucursales">Sucursales</a>
     <a routerLink="/login">Login</a>
     <a routerLink="/registrar">Registrar</a>
   </div>
 
   <div class="nav-linksI">
-    <a routerLink="" (click)="VaciarToken()">Cerrar Sesión</a>
+    <a routerLink="/login" (click)="VaciarToken()">Cerrar Sesión</a>
   </div>
 </div>
 

@@ -23,8 +23,6 @@
               </div>
 
               <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                  data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
                 <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
               </div>
 
@@ -79,6 +77,7 @@
                               (click)="getEmpresasId(_usuarioService.getIdentidad()._id)">
                               Editar
                             </button>
+                            <button class="btn btn-primary w-100 align-self-center" routerLink="/usuario/productos">Administrar mis productos</button>
                           </div>
 
                         </div>
@@ -96,11 +95,16 @@
         <section class="bg-light py-3">
           <div class="container">
             <div class="row">
-
               <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Informacion De Sucursales</h1>
+                <h1 class="font-weight-bold mb-0">Administra tu sucursales</h1>
                 <p class="lead text-muted">Revisa tu información detallada</p>
               </div>
+
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
+                  data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
+              </div>
+
             </div>
           </div>
         </section>
