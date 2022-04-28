@@ -1,1 +1,83 @@
-<p>productos-sucursales works!</p>
+<head>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+  <div class="d-flex" id="content-wrapper">
+
+    <div class="w-100">
+      <!-- Contenido de la pagina -->
+
+      <div id="content" class="bg-grey w-100">
+        <section class="bg-light py-3">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">Administra tus Productos por sucursales</h1>
+                <p class="lead text-muted">Revisa tus productos, recuerda que puedes venderlos!!</p>
+              </div>
+
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button class="btn btn-primary w-100 align-self-center" routerLink="/usuario/sucursales">Regresar Productos</button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Mostar Sucursales -->
+        <section class="bg-mix py-3">
+          <div class="container">
+            <div class="card rounded-0">
+              <div class="card-body" *ngFor="let su of productosModelGet">
+                <!-- Cifras -->
+                <section class="bg-mix py-3">
+                  <div class="container">
+                    <div class="card rounded-0">
+                      <span class="btn position-absolute top-0 start-100 translate-middle badge bg-info text-dark" routerLink="/usuario/productosSucursales">
+                        Administrar productos sucursal
+                      </span>
+                      <div class="card-body">
+                        <div class="row">
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Nombre Producto</h6>
+                              <h3 class="font-weight-bold">{{su.NombreProductoSucursal}}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Stock</h6>
+                              <h3 class="font-weight-bold">{{su.StockSurcursal}}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Cantidad Vendida</h6>
+                              <h3 class="font-weight-bold">{{su.CantidadVendida}}</h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!-- Fin Contenido de la pagina -->
+        </section>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</body>
