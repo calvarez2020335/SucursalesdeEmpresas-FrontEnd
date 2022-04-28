@@ -22,7 +22,7 @@
   </div>
 
   <div class="nav-linksI">
-    <a routerLink="/login" (click)="VaciarToken()">Cerrar Sesión</a>
+    <a routerLink="/login" (click)="VaciarToken()" *ngIf="_usuarioService.getIdentidad()">Cerrar Sesión</a>
   </div>
 </div>
 
