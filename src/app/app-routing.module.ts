@@ -15,6 +15,14 @@ import { NadieValiGuard } from './services/nadie-vali.guard';
 
 
 const routes: Routes = [
+
+  {path: '', component: InicioComponent},
+  { path: 'empresas', component: EmpresasComponent},
+  {path: 'sucursales', component: SucursalesComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registrar' , component: RegistrarComponent },
+  { path: 'empresas2', component: Empresas2Component},
+  {path: 'productos', component: ProductosComponent},
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistrarComponent },
   { path: 'empresas2', component: Empresas2Component, canActivate: [ NadieValiGuard, AdminValiGuard]  },

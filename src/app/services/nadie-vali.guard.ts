@@ -18,11 +18,11 @@ export class NadieValiGuard implements CanActivate {
     if (this.userRest.getIdentidad() == null) {
       this.router.navigate(['/login'])
       return false;
-      
+
     }else{
-      
+
       return true;
     }
   }
-  
+
 }

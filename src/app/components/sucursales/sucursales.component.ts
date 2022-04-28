@@ -2,22 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { Sucursales} from '../../models/sucursales.model'
 import { UsuarioService} from 'src/app/services/usuario.service';
+import { ProductoSucursalService } from 'src/app/services/productoSucursal.service';
+import { Usuario } from 'src/app/models/usuario.model';
+import {ProductosSucursal} from 'src/app/models/productos.sucursales.model';
 import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-sucursales',
   templateUrl: './sucursales.component.html',
   styleUrls: ['./sucursales.component.scss'],
-  providers: [SucursalesService, UsuarioService]
+  providers: [SucursalesService, UsuarioService, ProductoSucursalService]
 })
 export class SucursalesComponent implements OnInit {
 
   public sucursalesModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
   public sucursalesModelGetId: Sucursales;
+  public empresasModelGet: Usuario;
+  public empresasModelGetId: Usuario;
+  public productoModelPost: ProductosSucursal;
+
   public token;
 
   constructor(
+    private _sucursalesService: SucursalesService,
+    public _productosService: ProductoSucursalService,
     public _sucursalesService: SucursalesService,
     public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
@@ -29,12 +38,43 @@ export class SucursalesComponent implements OnInit {
       0,
       ''
     );
+    this.productoModelPost = new ProductosSucursal ('','','',0,0);
     this.sucursalesModelGetId = new Sucursales('','','','',0,'');
+    this.empresasModelGetId = new Usuario('','','',0,'','','','');
     this.token = this._usuarioService.getToken()
    }
 
   ngOnInit(): void {
     this.getSucursales();
+  }
+
+  putProductosSucursal(){
+    this._productosService.EnviarProducto( this.sucursalesModelGetId._id ,this.productoModelPost, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+
+        this.productoModelPost.idSucursal = '';
+        this.productoModelPost.NombreProductoSucursal = '';
+        this.productoModelPost.StockSurcursal= 0;
+        this.productoModelPost.CantidadVendida = 0;
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucursal Agregado Correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
   }
 
   postSucursales(){
@@ -138,4 +178,54 @@ export class SucursalesComponent implements OnInit {
       }
     )
   }
+
+  getEmpresasId(idEmpresa){
+    this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(
+      (response)=>{
+        this.empresasModelGetId = response.Empresa;
+        console.log(this.empresasModelGetId);
+      },
+      (error)=> {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
+
+  putEmpresa(){
+    this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
+      (response)=> {
+        console.log(response);
+        this.getEmpresas()
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
+
+  getEmpresas(){
+
+    this._usuarioService.VerEmpresas(this.token).subscribe(
+      (response)=>{
+        this.empresasModelGet = response.Empresas;
+        console.log(this.empresasModelGet)
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+
+}
   }

@@ -70,6 +70,15 @@
                             <button class="btn btn-primary w-100 align-self-center" routerLink="/usuario/productos">Administrar mis productos</button>
                           </div>
 
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2"
+                              (click)="getEmpresasId(_usuarioService.getIdentidad()._id)">
+                              Editar
+                            </button>
+
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -183,6 +192,10 @@
                               Editar
                             </button>
                           </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
+                            data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">Enviar Producto</button>
+                          </div>
 
                         </div>
                       </div>
@@ -200,10 +213,43 @@
 
   </div>
 
+         <!--Enviar productos a Sucursales-->
+         <div class="modal fade " id="ModalEnviarProducto" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">Enviar Producto</h5>
+               <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+             </div>
+             <div class="modal-body" >
+
+               <form>
+                 <div class="mg-3">
+                  <label for="inputNombreProductoSucursal" class="form-label">Nombre Producto</label>
+                  <input type="text" id="inputNombreProductoSucursal" class="form-control" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel"
+                    [(ngModel)]="productoModelPost.NombreProductoSucursal">
+                </div>
+                 <div class="mg-3">
+                   <label for="inputStockSurcursal" class="form-label">Stock</label>
+                   <input type="number" id="inputStockSurcursal" class="form-control" name="StockSurcursal" #StockSurcursal="ngModel"
+                     [(ngModel)]="productoModelPost.StockSurcursal">
+                 </div>
+               </form>
+
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
+               <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="putProductosSucursal()">Enviar Productos</button>
+             </div>
+           </div>
+         </div>
+       </div>
+
 
 </body>
 
-<!-- OffCanvas Editar Producto -->
+<!-- OffCanvas Editar Sucursal -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
@@ -229,6 +275,41 @@
       </div>
       <button type="submit" class="btn btn-success" (click)="putSucursales()" data-bs-dismiss="offcanvas">Editar
         Sucursales</button>
+    </form>
+  </div>
+</div>
+
+<!-- OffCanvas Editar Usuario -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="mb-3">
+        <label for="inputnombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="empresasModelGetId.nombre">
+      </div>
+      <div class="mb-3">
+        <label for="inputemail" class="form-label">email</label>
+        <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
+          [(ngModel)]="empresasModelGetId.email">
+      </div>
+      <div class="mb-3">
+        <label for="inputtelefono" class="form-label">telefono</label>
+        <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+          [(ngModel)]="empresasModelGetId.telefono">
+      </div>
+      <div class="mb-3">
+        <label for="inputdireccion" class="form-label">direccion</label>
+        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="empresasModelGetId.direccion">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
+        Empresa</button>
     </form>
   </div>
 </div>
