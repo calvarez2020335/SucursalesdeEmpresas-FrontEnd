@@ -119,6 +119,13 @@ export class SucursalesComponent implements OnInit {
       (response)=>{
         console.log(response);
         this.getSucursales()
+        Swal.fire({
+
+          icon: 'error',
+          title: 'eliminado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       (error)=>{
         console.log(<any>error);
