@@ -20,4 +20,9 @@ export class ProductoSucursalService {
     return this._http.put(this.url+'/EnviarProductosSurcursales/'+ idSurcursal, parametros, { headers: headersToken })
   }
 
+  ObtenerProductoSucursal(idSurcursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.get(this.url+'/VerProductosPorSucursales/'+ idSurcursal, { headers: headersToken})
+  }
+
 }
