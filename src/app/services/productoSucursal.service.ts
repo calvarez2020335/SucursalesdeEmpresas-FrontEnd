@@ -25,4 +25,12 @@ export class ProductoSucursalService {
     return this._http.get(this.url+'/VerProductosPorSucursales/'+ idSurcursal, { headers: headersToken})
   }
 
+  
+
+  VentaSimulada(idSurcursal, modeloProductoSucursales: ProductosSucursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+    let parametros = JSON.stringify(modeloProductoSucursales);
+
+    return this._http.post(this.url + '/VentaSimuladaSurcursal/' + idSurcursal, parametros, { headers: headersToken })
+  }
 }

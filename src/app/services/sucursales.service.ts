@@ -9,6 +9,7 @@ import { Sucursales } from '../models/sucursales.model'
 export class SucursalesService {
   public url : String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
+
   public token;
   public identidad;
 
@@ -46,5 +47,7 @@ export class SucursalesService {
 
     return this._http.put(this.url + '/editarSurcursal/'+modeloSucursal._id, parametros, { headers: headersToken })
   }
+
+  
 
 }

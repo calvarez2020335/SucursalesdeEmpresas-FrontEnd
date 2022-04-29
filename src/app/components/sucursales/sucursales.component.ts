@@ -27,7 +27,7 @@ export class SucursalesComponent implements OnInit {
   constructor(
     private _sucursalesService: SucursalesService,
     public _productosService: ProductoSucursalService,
-    public _usuarioService: UsuarioService) {
+    public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
       (
         '',
@@ -47,9 +47,10 @@ export class SucursalesComponent implements OnInit {
     this.getSucursales();
   }
 
-  putProductosSucursal() {
-    this._productosService.EnviarProducto(this.sucursalesModelGetId._id, this.productoModelPost, this.token).subscribe(
-      (response) => {
+  putProductosSucursal(){
+    this._productosService.EnviarProducto( this.sucursalesModelGetId._id ,this.productoModelPost, this.token).subscribe(
+      (response)=>{
+
         console.log(response);
 
         this.productoModelPost.idSucursal = '';
@@ -59,7 +60,7 @@ export class SucursalesComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: 'Sucursal Agregado Correctamente',
+          title: 'Producto Enviado Correctamente',
           showConfirmButton: false,
           timer: 1500
         })
@@ -78,7 +79,8 @@ export class SucursalesComponent implements OnInit {
 
   postSucursales() {
     this._sucursalesService.IngresarSucursales(this.sucursalesModelPost, this.token).subscribe(
-      (response) => {
+      (response)=>{
+        this.sucursalesModelPost = response.Sucursales;
         console.log(response);
         this.getSucursales();
 
@@ -119,13 +121,14 @@ export class SucursalesComponent implements OnInit {
 
   }
 
-  getSucursalesId(idSucursal) {
-    this._sucursalesService.obtenerSucursalesId(idSucursal, this.token).subscribe(
-      (response) => {
-        this.sucursalesModelGetId = response.Sucursal;
-        console.log(this.sucursalesModelGetId)
-      }, (error) => {
-        console.log(<any>error);
+    getSucursalesId(idSucursal){
+      this._sucursalesService.obtenerSucursalesId(idSucursal,this.token).subscribe(
+        (response)=>{
+          this.sucursalesModelGetId = response.Sucursal;
+          console.log(this.sucursalesModelGetId)
+
+        },(error)=>{
+          console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
