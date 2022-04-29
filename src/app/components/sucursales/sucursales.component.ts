@@ -27,7 +27,6 @@ export class SucursalesComponent implements OnInit {
   constructor(
     private _sucursalesService: SucursalesService,
     public _productosService: ProductoSucursalService,
-    public _sucursalesService: SucursalesService,
     public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
     (
@@ -125,6 +124,7 @@ export class SucursalesComponent implements OnInit {
         (response)=>{
           this.sucursalesModelGetId = response.Sucursal;
           console.log(this.sucursalesModelGetId)
+
         },(error)=>{
           console.log(<any>error);
         Swal.fire({

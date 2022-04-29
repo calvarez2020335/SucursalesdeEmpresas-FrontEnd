@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'usuario', component: InicioUsuarioComponent, canActivate: [NadieValiGuard, ValidacionGuard ], children: [
       { path: 'sucursales', component: SucursalesComponent },
       { path: 'productos', component: ProductosComponent },
-      { path: 'productosSucursales', component: ProductosSucursalesComponent }
+      { path: 'productosSucursales/:idSurcursal', component: ProductosSucursalesComponent }
     ]
   },
 
