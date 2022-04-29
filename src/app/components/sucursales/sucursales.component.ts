@@ -50,6 +50,7 @@ export class SucursalesComponent implements OnInit {
   putProductosSucursal(){
     this._productosService.EnviarProducto( this.sucursalesModelGetId._id ,this.productoModelPost, this.token).subscribe(
       (response)=>{
+
         console.log(response);
 
         this.productoModelPost.idSucursal = '';
@@ -59,7 +60,7 @@ export class SucursalesComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: 'Sucursal Agregado Correctamente',
+          title: 'Producto Enviado Correctamente',
           showConfirmButton: false,
           timer: 1500
         })
@@ -79,6 +80,7 @@ export class SucursalesComponent implements OnInit {
   postSucursales(){
     this._sucursalesService.IngresarSucursales(this.sucursalesModelPost, this.token).subscribe(
       (response)=>{
+        this.sucursalesModelPost = response.Sucursales;
         console.log(response);
         this.getSucursales();
 
