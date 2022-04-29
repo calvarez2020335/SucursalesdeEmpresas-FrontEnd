@@ -4,8 +4,8 @@ import { Sucursales } from '../../models/sucursales.model'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoSucursalService } from 'src/app/services/productoSucursal.service';
 import { ProductosSucursal } from 'src/app/models/productos.sucursales.model';
-/* import {SucursalesComponent} from '../../components/sucursales/sucursales.component'; */
 import Swal from 'sweetalert2'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-productos-sucursales',
@@ -16,27 +16,33 @@ import Swal from 'sweetalert2'
 export class ProductosSucursalesComponent implements OnInit {
 
   public productosModelGet: ProductosSucursal;
-  public idSurcursal;
+  public productoModelPost: ProductosSucursal;
   public token;
   constructor(
-    /* public SucursalesType: SucursalesComponent, */
+
     private _productosService: ProductoSucursalService,
     public _sucursalesService: SucursalesService,
-    public _usuarioService: UsuarioService) {
+    public _usuarioService: UsuarioService,
+    public _activatedRoute: ActivatedRoute) {
 
-    this.idSurcursal = this._sucursalesService.getSucursalesIdTT(),
+    
+    this.productoModelPost = new ProductosSucursal ('','','',0,0);
     this.token = this._usuarioService.getToken()
   }
 
   ngOnInit(): void {
-    this.getProductoSucursal()
+    
 
+      this._activatedRoute.paramMap.subscribe((dataRuta)=>{
+        console.log(dataRuta.get('idSurcursal'));
+        this.getProductoSucursal(dataRuta.get('idSurcursal'))
+      })
 
   }
 
 
-  getProductoSucursal(){
-    this._productosService.ObtenerProductoSucursal(this.idSurcursal, this.token).subscribe(
+  getProductoSucursal(idSurcursal){
+    this._productosService.ObtenerProductoSucursal(idSurcursal, this.token).subscribe(
       (response)=>{
         
         this.productosModelGet = response.Productos;
@@ -48,4 +54,32 @@ export class ProductosSucursalesComponent implements OnInit {
       }
     )
   };
+
+
+  putVenta(idSurcursal){
+    this._productosService.VentaSimulada( idSurcursal, this.productoModelPost, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+
+        this.productoModelPost.NombreProductoSucursal = '';
+        this.productoModelPost.StockSurcursal= 0;
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Producto Vendido',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      },
+      (error)=>{
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
 }

@@ -9,7 +9,7 @@ import { Sucursales } from '../models/sucursales.model'
 export class SucursalesService {
   public url : String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
-  public idSucursal4;
+
   public token;
   public identidad;
 
@@ -48,15 +48,6 @@ export class SucursalesService {
     return this._http.put(this.url + '/editarSurcursal/'+modeloSucursal._id, parametros, { headers: headersToken })
   }
 
-  getSucursalesIdTT() {
-    var idSucursal42 = JSON.parse(localStorage.getItem('idSucursal4'));
-    if(idSucursal42 != undefined){
-      this.idSucursal4 = idSucursal42;
-    }else{
-      this.idSucursal4 = null;
-    }
-
-    return this.idSucursal4;
-  }
+  
 
 }

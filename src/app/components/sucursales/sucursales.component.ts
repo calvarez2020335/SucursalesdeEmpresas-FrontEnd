@@ -124,7 +124,7 @@ export class SucursalesComponent implements OnInit {
         (response)=>{
           this.sucursalesModelGetId = response.Sucursal;
           console.log(this.sucursalesModelGetId)
-          localStorage.setItem('idSucursal4', JSON.stringify(this.sucursalesModelGetId._id))
+
         },(error)=>{
           console.log(<any>error);
         Swal.fire({
