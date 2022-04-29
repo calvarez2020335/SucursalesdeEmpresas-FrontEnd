@@ -4,6 +4,7 @@ import { Sucursales } from '../../models/sucursales.model'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoSucursalService } from 'src/app/services/productoSucursal.service';
 import { ProductosSucursal } from 'src/app/models/productos.sucursales.model';
+/* import {SucursalesComponent} from '../../components/sucursales/sucursales.component'; */
 import Swal from 'sweetalert2'
 
 @Component({
@@ -15,30 +16,34 @@ import Swal from 'sweetalert2'
 export class ProductosSucursalesComponent implements OnInit {
 
   public productosModelGet: ProductosSucursal;
-  public sucursalesModelGetId: Sucursales;
+  public idSurcursal;
   public token;
   constructor(
+    /* public SucursalesType: SucursalesComponent, */
     private _productosService: ProductoSucursalService,
     public _sucursalesService: SucursalesService,
     public _usuarioService: UsuarioService) {
 
-    this.sucursalesModelGetId = new Sucursales('', '', '', '', 0, '');
+    this.idSurcursal = this._sucursalesService.getSucursalesIdTT(),
     this.token = this._usuarioService.getToken()
   }
 
   ngOnInit(): void {
-    this.getProductoSucursal();
+    this.getProductoSucursal()
+
 
   }
 
+
   getProductoSucursal(){
-    this._productosService.ObtenerProductoSucursal(this.sucursalesModelGetId._id, this.token).subscribe(
+    this._productosService.ObtenerProductoSucursal(this.idSurcursal, this.token).subscribe(
       (response)=>{
-        console.log(this.sucursalesModelGetId._id)
-        this.productosModelGet = response.ProductosSucursal;
+        
+        this.productosModelGet = response.Productos;
+        console.log(this.productosModelGet)
+
       },
       (error)=>{
-        console.log(this.sucursalesModelGetId._id)
         console.log(<any>error);
       }
     )
