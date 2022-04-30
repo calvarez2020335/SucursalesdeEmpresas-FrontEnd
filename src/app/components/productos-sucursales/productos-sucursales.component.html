@@ -60,6 +60,15 @@
                               <h3 class="font-weight-bold">{{su.CantidadVendida}}</h3>
                             </div>
                           </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+
+                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                              (click)="getProductoSucursal()">
+                              Venta
+                            </button>
+
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -79,3 +88,29 @@
 
 
 </body>
+
+<!-- OffCanvas Venta-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Realizar una Venta</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="mb-3">
+        <label for="inputnombre" class="form-label">Nombre del Producto</label>
+        <input type="text" class="form-control" id="inputnombre" name="nombre" 
+          >
+      </div>
+      <div class="mb-3">
+        <label for="inputtelefono" class="form-label">Cantidad a Vender</label>
+        <input type="number" class="form-control" id="inputtelefono" name="telefono" 
+          >
+      </div>
+
+     
+      <button type="submit" class="btn btn-success"  data-bs-dismiss="offcanvas">Vender</button>
+    </form>
+  </div>
+</div>
