@@ -53,7 +53,7 @@ export class SucursalesComponent implements OnInit {
 
         console.log(response);
 
-        this.productoModelPost.idSucursal = '';
+        this.productoModelPost.idSurcursal = '';
         this.productoModelPost.NombreProductoSucursal = '';
         this.productoModelPost.StockSurcursal= 0;
         this.productoModelPost.CantidadVendida = 0;
