@@ -84,7 +84,6 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
         console.log(response);
 
-
         console.log(this.productosSucursalesModelGetId.idSurcursal)
         this.getProductoSucursal(this.productosSucursalesModelGetId.idSurcursal);
         Swal.fire({
