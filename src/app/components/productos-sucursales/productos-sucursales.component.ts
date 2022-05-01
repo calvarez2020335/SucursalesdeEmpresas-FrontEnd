@@ -25,13 +25,13 @@ export class ProductosSucursalesComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public _activatedRoute: ActivatedRoute) {
 
-
+    
     this.productoModelPost = new ProductosSucursal ('','','',0,0);
     this.token = this._usuarioService.getToken()
   }
 
   ngOnInit(): void {
-
+    
 
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
         console.log(dataRuta.get('idSurcursal'));
@@ -44,7 +44,7 @@ export class ProductosSucursalesComponent implements OnInit {
   getProductoSucursal(idSurcursal){
     this._productosService.ObtenerProductoSucursal(idSurcursal, this.token).subscribe(
       (response)=>{
-
+        
         this.productosModelGet = response.Productos;
         console.log(this.productosModelGet)
 
