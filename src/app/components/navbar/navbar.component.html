@@ -15,7 +15,7 @@
   </div>
 
   <div class="nav-links">
-    <a routerLink="/empresas2" *ngIf="_usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Empresas</a>
+    <a routerLink="/admin/empresas2" *ngIf="_usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Empresas</a>
     <a routerLink="/usuario/sucursales" *ngIf="_usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Sucursales</a>
     <a routerLink="/login" >Login</a>
     <a routerLink="/registrar" >Registrar</a>
