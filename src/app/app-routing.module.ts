@@ -12,26 +12,26 @@ import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuar
 import { ValidacionGuard } from './services/validacion.guard';
 import { AdminValiGuard } from './services/admin-vali.guard';
 import { NadieValiGuard } from './services/nadie-vali.guard';
+import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
 
 
 const routes: Routes = [
 
   {path: '', component: InicioComponent},
   { path: 'empresas', component: EmpresasComponent},
-  {path: 'sucursales', component: SucursalesComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'registrar' , component: RegistrarComponent },
-  { path: 'empresas2', component: Empresas2Component},
-  {path: 'productos', component: ProductosComponent},
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistrarComponent },
-  { path: 'empresas2', component: Empresas2Component, canActivate: [ NadieValiGuard, AdminValiGuard]  },
 
-  { path: 'empresas', component: EmpresasComponent},
-  { path: '', component: InicioComponent },
+  { path: 'admin', component: InicioAdminComponent, canActivate: [NadieValiGuard, AdminValiGuard], children: [
+    { path: 'empresas2', component: Empresas2Component},
+    { path: 'sucursales/:idEmpresa', component: SucursalesComponent },
+  ]},
+  
 
-  {
-    path: 'usuario', component: InicioUsuarioComponent, canActivate: [NadieValiGuard, ValidacionGuard ], children: [
+
+
+  {path: 'usuario', component: InicioUsuarioComponent, canActivate: [NadieValiGuard, ValidacionGuard ], children: [
       { path: 'sucursales', component: SucursalesComponent },
       { path: 'productos', component: ProductosComponent },
       { path: 'productosSucursales/:idSurcursal', component: ProductosSucursalesComponent }

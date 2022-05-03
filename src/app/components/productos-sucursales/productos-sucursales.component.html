@@ -64,7 +64,7 @@
 
                             <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
                               data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                              (click)="getProductoSucursal()">
+                              (click)="getProductosSucursalesId(su._id)">
                               Venta
                             </button>
 
@@ -99,18 +99,19 @@
     <form>
 
       <div class="mb-3">
-        <label for="inputnombre" class="form-label">Nombre del Producto</label>
-        <input type="text" class="form-control" id="inputnombre" name="nombre" 
+        <label for="inputNombreProductoSucursal" class="form-label">Nombre del Producto</label>
+        <input type="text" class="form-control" id="inputNombreProductoSucursal" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel"
+          [(ngModel)]="productosSucursalesModelGetId.NombreProductoSucursal"
           >
       </div>
       <div class="mb-3">
-        <label for="inputtelefono" class="form-label">Cantidad a Vender</label>
-        <input type="number" class="form-control" id="inputtelefono" name="telefono" 
-          >
+        <label for="inputCan" class="form-label">Cantidad a Vender</label>
+        <input type="number" class="form-control" id="inputCan" name="StockSurcursal" #StockSurcursal="ngModel" 
+        [(ngModel)]="productosSucursalesModelGetId.StockSurcursal">
       </div>
 
      
-      <button type="submit" class="btn btn-success"  data-bs-dismiss="offcanvas">Vender</button>
+      <button type="submit" class="btn btn-success"  data-bs-dismiss="offcanvas" (click)="putVenta()">Vender</button>
     </form>
   </div>
 </div>

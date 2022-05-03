@@ -31,10 +31,12 @@ export class ProductoSucursalService {
     return this._http.get(this.url + '/ProductosSurcursalesId/'+idProducto, { headers: headersToken})
   }
 
-  VentaSimulada(idSurcursal, modeloProductoSucursales: ProductosSucursal, token): Observable<any> {
+  VentaSimulada( modeloProductoSucursales: ProductosSucursal, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
     let parametros = JSON.stringify(modeloProductoSucursales);
+    
 
-    return this._http.post(this.url + '/VentaSimuladaSurcursal/' + idSurcursal, parametros, { headers: headersToken })
+    return this._http.put(this.url + '/VentaSimuladaSurcursal/' + modeloProductoSucursales.idSurcursal, parametros, { headers: headersToken })
   }
+  
 }

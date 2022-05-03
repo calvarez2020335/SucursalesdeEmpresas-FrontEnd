@@ -17,6 +17,7 @@ export class ProductosSucursalesComponent implements OnInit {
 
   public productosModelGet: ProductosSucursal;
   public productoModelPost: ProductosSucursal;
+  public productosSucursalesModelGetId: ProductosSucursal;
   public token;
   constructor(
 
@@ -27,7 +28,9 @@ export class ProductosSucursalesComponent implements OnInit {
 
     
     this.productoModelPost = new ProductosSucursal ('','','',0,0);
-    this.token = this._usuarioService.getToken()
+    this.productosSucursalesModelGetId = new ProductosSucursal ('','','',0,0);
+    this.token = this._usuarioService.getToken();
+    
   }
 
   ngOnInit(): void {
@@ -35,11 +38,14 @@ export class ProductosSucursalesComponent implements OnInit {
 
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
         console.log(dataRuta.get('idSurcursal'));
+
         this.getProductoSucursal(dataRuta.get('idSurcursal'))
+
       })
 
   }
 
+  
 
   getProductoSucursal(idSurcursal){
     this._productosService.ObtenerProductoSucursal(idSurcursal, this.token).subscribe(
@@ -55,15 +61,33 @@ export class ProductosSucursalesComponent implements OnInit {
     )
   };
 
+  getProductosSucursalesId(idProducto ){
+    this._productosService.obtenerProductosSucursalesId(idProducto,this.token).subscribe(
+      (response)=>{
+        this.productosSucursalesModelGetId = response.Productos;
+        console.log(this.productosSucursalesModelGetId)
+        this.productosSucursalesModelGetId.StockSurcursal = 0;
 
-  putVenta(idSurcursal){
-    this._productosService.VentaSimulada( idSurcursal, this.productoModelPost, this.token).subscribe(
+      },(error)=>{
+        console.log(<any>error);
+      Swal.fire({
+        icon: 'error',
+        title: error.error.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      }
+    )
+  }
+
+  putVenta(){
+    this._productosService.VentaSimulada(this.productosSucursalesModelGetId, this.token).subscribe(
       (response)=>{
         console.log(response);
 
-        this.productoModelPost.NombreProductoSucursal = '';
-        this.productoModelPost.StockSurcursal= 0;
 
+        console.log(this.productosSucursalesModelGetId.idSurcursal)
+        this.getProductoSucursal(this.productosSucursalesModelGetId.idSurcursal);
         Swal.fire({
           icon: 'success',
           title: 'Producto Vendido',

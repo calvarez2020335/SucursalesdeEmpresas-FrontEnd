@@ -11,14 +11,17 @@ import Swal from 'sweetalert2';
   providers: [UsuarioService]
 })
 export class NavbarComponent implements OnInit {
-  public token;
+  public token: any;
 
   constructor(
     public _usuarioService: UsuarioService) {
-    this.token = this._usuarioService.getToken();
+      this.token = this._usuarioService.getToken();
+    
    }
 
   ngOnInit(): void {
+    
+    console.log(this._usuarioService.getToken());
   }
 
   VaciarToken(){
