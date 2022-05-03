@@ -66,6 +66,7 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
         this.productosSucursalesModelGetId = response.Productos;
         console.log(this.productosSucursalesModelGetId)
+        this.productosSucursalesModelGetId.StockSurcursal = 0;
 
       },(error)=>{
         console.log(<any>error);
@@ -83,6 +84,7 @@ export class ProductosSucursalesComponent implements OnInit {
     this._productosService.VentaSimulada(this.productosSucursalesModelGetId, this.token).subscribe(
       (response)=>{
         console.log(response);
+
 
         console.log(this.productosSucursalesModelGetId.idSurcursal)
         this.getProductoSucursal(this.productosSucursalesModelGetId.idSurcursal);

@@ -82,13 +82,13 @@ export class SucursalesComponent implements OnInit {
       (response)=>{
         this.sucursalesModelPost = response.Sucursales;
         console.log(response);
-        this.getSucursales();
 
         this.sucursalesModelPost.nombre = '';
         this.sucursalesModelPost.telefono = '';
         this.sucursalesModelPost.direccion = '';
         this.sucursalesModelPost.vendido = 0;
         this.sucursalesModelPost.idEmpresa = '';
+        this.getSucursales()
         Swal.fire({
           icon: 'success',
           title: 'Sucursal Agregado Correctamente',
