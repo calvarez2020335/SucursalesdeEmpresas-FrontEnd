@@ -16,8 +16,10 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
 import { Empresas2Component } from './components/empresas2/empresas2.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductosSucursalesComponent } from './components/productos-sucursales/productos-sucursales.component';
+import { ChartsModule } from '@rinminase/ng-charts';
 import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
 import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
+import { GraficasComponent } from './components/graficas/graficas.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.com
     ProductosSucursalesComponent,
     InicioUsuarioComponent,
     InicioAdminComponent,
-    
+    GraficasComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
