@@ -6,6 +6,7 @@ import { ProductoSucursalService } from 'src/app/services/productoSucursal.servi
 import { Usuario } from 'src/app/models/usuario.model';
 import {ProductosSucursal} from 'src/app/models/productos.sucursales.model';
 import Swal from 'sweetalert2'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sucursales',
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2'
 export class SucursalesComponent implements OnInit {
 
   public sucursalesModelGet: Sucursales;
+  public sucursalesAdminModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
   public sucursalesModelGetId: Sucursales;
   public empresasModelGet: Usuario;
@@ -25,6 +27,7 @@ export class SucursalesComponent implements OnInit {
   public token;
 
   constructor(
+    public _activatedRoute: ActivatedRoute,
     private _sucursalesService: SucursalesService,
     public _productosService: ProductoSucursalService,
     public _usuarioService: UsuarioService ) {
@@ -44,7 +47,16 @@ export class SucursalesComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+      this._activatedRoute.paramMap.subscribe((dataRuta)=>{
+        console.log(dataRuta.get('idEmpresa'));
+  
+        this.getSucursalesAdmin(dataRuta.get('idEmpresa'))
+      })
+    
     this.getSucursales();
+
+    
   }
 
   putProductosSucursal(){
@@ -120,6 +132,19 @@ export class SucursalesComponent implements OnInit {
     )
 
     }
+
+    getSucursalesAdmin(idEmpresa){
+      this._sucursalesService.obtenerSucursalesAdmin(idEmpresa, this.token).subscribe(
+        (response)=>{
+          this.sucursalesModelGet = response.Sucursales;
+          console.log(this.sucursalesModelGet)
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+  
+      }
 
     getSucursalesId(idSucursal){
       this._sucursalesService.obtenerSucursalesId(idSucursal,this.token).subscribe(
