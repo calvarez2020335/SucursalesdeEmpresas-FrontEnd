@@ -18,10 +18,13 @@ export class Empresas2Component implements OnInit {
     public _usuarioService: UsuarioService) {
     this.token = this._usuarioService.getToken()
     this.empresasModelGetId = new Usuario('','','' ,0,'','','','');
+    
   }
 
   ngOnInit(): void {
     this.getEmpresas();
+
+    
   }
 
   getEmpresas(){
@@ -37,6 +40,10 @@ export class Empresas2Component implements OnInit {
       )
 
   }
+
+
+
+
 
   eliminarEmpresas(id){
     this._usuarioService.EliminarEmpresas(id,this.token).subscribe(

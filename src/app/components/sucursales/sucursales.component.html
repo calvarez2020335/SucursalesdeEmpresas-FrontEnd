@@ -19,7 +19,8 @@
               <div class="col-lg-9 col-md-8">
                 <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
                   _usuarioService.getIdentidad().nombre }} </h1>
-                <p class="lead text-muted">Revisa tu información detallada</p>
+                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Revisa tu información detallada</p>
+                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Comenzemos a vizualizar!</p>
               </div>
 
               <div class="col-lg-3 col-md-4 d-flex">
@@ -30,13 +31,13 @@
           </div>
         </section>
 
-        <!-- Mostar Sucursales -->
-        <section class="bg-mix py-3">
+        <!-- Mostar Datos Empresa -->
+        <section class="bg-mix py-3" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
           <div class="container">
             <div class="card rounded-0">
-              <div class="card-body" *ngIf="_usuarioService.getIdentidad()">
+              <div class="card-body" >
                 <!-- Cifras-->
-                <section class="bg-mix py-3">
+                <section class="bg-mix py-3" >
                   <div class="container">
                     <div class="card rounded-0">
                       <div class="card-body">
@@ -91,17 +92,20 @@
           <!-- Fin Contenido de la pagina-->
         </section>
 
-        <section class="bg-light py-3">
+        <!-- Segundo Cuadro-->
+        <section class="bg-light py-3" >
           <div class="container">
             <div class="row">
               <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Administra tu sucursales</h1>
-                <p class="lead text-muted">Revisa tu información detallada</p>
+                <h1 class="font-weight-bold mb-0" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Administra tus sucursales</h1>
+                <h1 class="font-weight-bold mb-0" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Administra las Sucursales de</h1>
+                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Revisa tu información detallada</p>
+                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Estas son las sucursales</p>
               </div>
 
               <div class="col-lg-3 col-md-4 d-flex">
                 <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                  data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
+                *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
               </div>
 
             </div>
@@ -111,7 +115,7 @@
 
 
         <!--Agregar Sucursales-->
-        <div class="modal fade " id="ModalAgregarSucursales" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" class="modal fade " id="ModalAgregarSucursales" data-bs-backdrop="static" data-bs-keyboard="false"
           tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -149,8 +153,8 @@
           </div>
         </div>
 
-        <!-- Mostar Sucursales -->
-        <section class="bg-mix py-3">
+        <!-- Mostar Sucursales Empresa -->
+        <section class="bg-mix py-3"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
           <div class="container">
             <div class="card rounded-0">
               <div class="card-body" *ngFor="let su of sucursalesModelGet">
@@ -199,6 +203,9 @@
                             <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
                             data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">Enviar Producto</button>
                           </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button class="btn btn-primary w-100 align-self-center" (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/graficas', su._id]">Ver grafica</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -209,6 +216,56 @@
           </div>
           <!-- Fin Contenido de la pagina -->
         </section>
+
+
+
+
+
+        <!-- Mostar Sucursales Admin -->
+        <section class="bg-mix py-3"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">
+          <div class="container">
+            <div class="card rounded-0">
+              <div class="card-body" *ngFor="let su of sucursalesModelGet">
+                <!-- Cifras -->
+                <section class="bg-mix py-3">
+                  <div class="container">
+                    <div class="card rounded-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Nombre</h6>
+                              <h3 class="font-weight-bold">{{su.nombre}}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Telefono</h6>
+                              <h3 class="font-weight-bold">{{su.telefono}}</h3>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                            <div class="mx-auto">
+                              <h6 class="text-muted">Direccion</h6>
+                              <h3 class="font-weight-bold">{{su.direccion}}</h3>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!-- Fin Contenido de la pagina -->
+        </section>
+
+
+
       </div>
     </div>
 

@@ -21,9 +21,7 @@
                 <p class="lead text-muted">Revisa tu información detallada</p>
               </div>
 
-              <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
-              </div>
+
 
 
 
@@ -72,7 +70,13 @@
 
 
                             <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarEmpresas(em._id)">Eliminar Empresas</button>
+                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarEmpresas(em._id)">Eliminar Empresa</button>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" >Editar Empresa</button>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" [routerLink]="['/admin/sucursales/', em._id]">Ver Sucursales</button>
                             </div>
 
 
