@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SucursalesService } from 'src/app/services/sucursales.service';
-import { Sucursales} from '../../models/sucursales.model'
-import { UsuarioService} from 'src/app/services/usuario.service';
+import { Sucursales } from '../../models/sucursales.model'
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoSucursalService } from 'src/app/services/productoSucursal.service';
 import { Usuario } from 'src/app/models/usuario.model';
-import {ProductosSucursal} from 'src/app/models/productos.sucursales.model';
+import { ProductosSucursal } from 'src/app/models/productos.sucursales.model';
 import Swal from 'sweetalert2'
 import { ActivatedRoute } from '@angular/router';
 
@@ -32,19 +32,19 @@ export class SucursalesComponent implements OnInit {
     public _productosService: ProductoSucursalService,
     public _usuarioService: UsuarioService ) {
     this.sucursalesModelPost = new Sucursales
-    (
-      '',
-      '',
-      '',
-      '',
-      0,
-      ''
-    );
-    this.productoModelPost = new ProductosSucursal ('','','',0,0);
-    this.sucursalesModelGetId = new Sucursales('','','','',0,'');
-    this.empresasModelGetId = new Usuario('','','',0,'','','','');
+      (
+        '',
+        '',
+        '',
+        '',
+        0,
+        ''
+      );
+    this.productoModelPost = new ProductosSucursal('', '', '', 0, 0);
+    this.sucursalesModelGetId = new Sucursales('', '', '', '', 0, '');
+    this.empresasModelGetId = new Usuario('', '', '', 0, '', '', '', '');
     this.token = this._usuarioService.getToken()
-   }
+  }
 
   ngOnInit(): void {
 
@@ -67,7 +67,7 @@ export class SucursalesComponent implements OnInit {
 
         this.productoModelPost.idSurcursal = '';
         this.productoModelPost.NombreProductoSucursal = '';
-        this.productoModelPost.StockSurcursal= 0;
+        this.productoModelPost.StockSurcursal = 0;
         this.productoModelPost.CantidadVendida = 0;
 
         Swal.fire({
@@ -77,7 +77,7 @@ export class SucursalesComponent implements OnInit {
           timer: 1500
         })
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
         Swal.fire({
           icon: 'error',
@@ -89,7 +89,7 @@ export class SucursalesComponent implements OnInit {
     )
   }
 
-  postSucursales(){
+  postSucursales() {
     this._sucursalesService.IngresarSucursales(this.sucursalesModelPost, this.token).subscribe(
       (response)=>{
         this.sucursalesModelPost = response.Sucursales;
@@ -108,7 +108,7 @@ export class SucursalesComponent implements OnInit {
           timer: 1500
         })
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
         Swal.fire({
           icon: 'error',
@@ -120,18 +120,18 @@ export class SucursalesComponent implements OnInit {
     )
   }
 
-  getSucursales(){
+  getSucursales() {
     this._sucursalesService.obtenerSucursales(this.token).subscribe(
-      (response)=>{
+      (response) => {
         this.sucursalesModelGet = response.Sucursales;
         console.log(this.sucursalesModelGet)
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     )
 
-    }
+  }
 
     getSucursalesAdmin(idEmpresa){
       this._sucursalesService.obtenerSucursalesAdmin(idEmpresa, this.token).subscribe(
@@ -160,30 +160,30 @@ export class SucursalesComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        }
-      )
-    }
+      }
+    )
+  }
 
-    putSucursales(){
-      this._sucursalesService.editarSucursales(this.sucursalesModelGetId, this.token).subscribe(
-        (response)=>{
-          console.log(response);
-          this.getSucursales()
-        },(error)=>{
-          console.log(<any>error);
-          Swal.fire({
-            icon: 'error',
-            title: error.error.mensaje,
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      )
-    }
+  putSucursales() {
+    this._sucursalesService.editarSucursales(this.sucursalesModelGetId, this.token).subscribe(
+      (response) => {
+        console.log(response);
+        this.getSucursales()
+      }, (error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+  }
 
-  eliminarSucursales(id){
-    this._sucursalesService.eliminarSucursales(id,this.token).subscribe(
-      (response)=>{
+  eliminarSucursales(id) {
+    this._sucursalesService.eliminarSucursales(id, this.token).subscribe(
+      (response) => {
         console.log(response);
         this.getSucursales()
         Swal.fire({
@@ -194,7 +194,7 @@ export class SucursalesComponent implements OnInit {
           timer: 1500
         })
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
         Swal.fire({
           icon: 'error',
@@ -206,13 +206,13 @@ export class SucursalesComponent implements OnInit {
     )
   }
 
-  getEmpresasId(idEmpresa){
-    this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(
-      (response)=>{
+  getEmpresasId(idEmpresa) {
+    this._usuarioService.obtenerEmpresaId(idEmpresa, this.token).subscribe(
+      (response) => {
         this.empresasModelGetId = response.Empresa;
         console.log(this.empresasModelGetId);
       },
-      (error)=> {
+      (error) => {
         console.log(<any>error);
         Swal.fire({
           icon: 'error',
@@ -224,13 +224,13 @@ export class SucursalesComponent implements OnInit {
     )
   }
 
-  putEmpresa(){
+  putEmpresa() {
     this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
-      (response)=> {
+      (response) => {
         console.log(response);
         this.getEmpresas()
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
         Swal.fire({
           icon: 'error',
@@ -242,17 +242,16 @@ export class SucursalesComponent implements OnInit {
     )
   }
 
-  getEmpresas(){
+  getEmpresas() {
 
     this._usuarioService.VerEmpresas(this.token).subscribe(
-      (response)=>{
+      (response) => {
         this.empresasModelGet = response.Empresas;
         console.log(this.empresasModelGet)
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     )
-
-}
   }
+}
