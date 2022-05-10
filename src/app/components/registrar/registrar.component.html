@@ -21,8 +21,11 @@
             </div>
             <div class="mb-3">
               <label for="Dire" class="form-label">Direccion</label>
-              <input type="text" class="form-control" id="Dire" placeholder="Ingresar la direccion" name="Dire" #Dire="ngModel"
-              [(ngModel)]="usuarioModelPost.direccion">
+
+              <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel" [(ngModel)]="usuarioModelPost.direccion">
+                <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">{{departamento.nombre}}</option>
+              </select>
+
             </div>
 
             <div class="mb-3">
