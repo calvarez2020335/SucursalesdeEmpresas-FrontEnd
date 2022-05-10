@@ -133,7 +133,7 @@
                   </div>
                   <div class="mg-3">
                     <label for="inputTelefono" class="form-label">Telefono</label>
-                    <input type="text" id="inputTelefono" class="form-control" name="teledono" #telefono="ngModel"
+                    <input type="text" id="inputTelefono" class="form-control" name="telefono" #telefono="ngModel"
                       [(ngModel)]="sucursalesModelPost.telefono">
                   </div>
                   <div class="mg-3">
@@ -156,7 +156,7 @@
         <!-- Mostar Sucursales Empresa -->
         <section class="bg-mix py-3"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
           <div class="container">
-            <div class="card rounded-0">
+            <div class="card rounded-0" *ngIf="load">
               <div class="card-body" *ngFor="let su of sucursalesModelGet">
                 <!-- Cifras -->
                 <section class="bg-mix py-3">
@@ -188,6 +188,7 @@
                               <h3 class="font-weight-bold">{{su.direccion}}</h3>
                             </div>
                           </div>
+                          
                           <div class="col-lg-3 col-md-4 d-flex">
                             <button class="btn btn-primary w-100 align-self-center"
                               (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
