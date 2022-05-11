@@ -20,6 +20,7 @@ import { ChartsModule } from '@rinminase/ng-charts';
 import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
 import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GraficasComponent } from './components/graficas/graficas.component';
     InicioUsuarioComponent,
     InicioAdminComponent,
     GraficasComponent,
+    EditarUsuarioComponent,
 
   ],
   imports: [

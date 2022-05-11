@@ -14,6 +14,7 @@ import { AdminValiGuard } from './services/admin-vali.guard';
 import { NadieValiGuard } from './services/nadie-vali.guard';
 import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'empresas', component: EmpresasComponent},
   {path: 'login', component: LoginComponent},
   { path: 'registrar', component: RegistrarComponent },
+  {path: 'editarUsuario', component: EditarUsuarioComponent},
   { path: 'admin', component: InicioAdminComponent, canActivate: [NadieValiGuard, AdminValiGuard], children: [
     { path: 'empresas2', component: Empresas2Component},
     { path: 'sucursales/:idEmpresa', component: SucursalesComponent }
@@ -33,6 +35,7 @@ const routes: Routes = [
   {path: 'usuario', component: InicioUsuarioComponent, canActivate: [NadieValiGuard, ValidacionGuard ], children: [
       { path: 'sucursales', component: SucursalesComponent },
       { path: 'productos', component: ProductosComponent },
+      {path: 'editarUsuario', component: EditarUsuarioComponent},
       { path: 'productosSucursales/:idSurcursal', component: ProductosSucursalesComponent },
       { path: 'graficas/:idSurcursal', component: GraficasComponent },
     ]
