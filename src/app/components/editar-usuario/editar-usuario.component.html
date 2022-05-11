@@ -21,10 +21,18 @@
               class="form-control" value="" placeholder="surname"></div>
         </div>
         <div class="row mt-3">
-          <div class="col-md-12"><label class="labels">Password</label><input [(ngModel)]="user.password" name="password" type="text"
-              class="form-control" placeholder="enter password" value=""></div>
-          <div class="col-md-12"><label class="labels">Direccion</label><input [(ngModel)]="user.direccion" name = "direccion" type="text"
-              class="form-control" placeholder="enter email id" value=""></div>
+
+
+          <div class="col-md-12">
+            <label class="labels">Direccion</label>
+
+            <select [(ngModel)]="user.direccion" name = "direccion" type="text" class="form-control" placeholder="enter email id" value="">
+              <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">{{departamento.nombre}}</option>
+            </select>
+
+            </div>
+
+
           <div class="col-md-12"><label class="labels">Telefono</label><input [(ngModel)]="user.telefono" name="telefono" type="text"
               class="form-control" placeholder="enter email id" value=""></div>
           <div class="col-md-12"><label class="labels">Tipo de Empresa</label><input [(ngModel)]="user.tipoEmpresa" name="tipoEmpresa" type="text"
@@ -32,12 +40,6 @@
         </div>
         <div class="mt-5 text-center"><button (click)="updateUser()" class="btn btn-primary profile-button" type="button">Save Profile</button>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="p-3 py-5">
-        <div class="d-flex justify-content-between align-items-center experience"><span>Edit Image</span><span
-            class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Select Image</span></div><br>
       </div>
     </div>
   </div>
