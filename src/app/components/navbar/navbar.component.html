@@ -19,6 +19,7 @@
     <a routerLink="/usuario/sucursales" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Sucursales</a>
     <a routerLink="/login" *ngIf="!token" >Login</a>
     <a routerLink="/registrar" *ngIf="!token">Registrar</a>
+    <a routerLink="/usuario/editarUsuario" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Editar Perfil</a>
   </div>
 
   <div class="nav-linksI">

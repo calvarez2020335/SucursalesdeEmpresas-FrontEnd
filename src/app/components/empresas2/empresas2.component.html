@@ -17,7 +17,8 @@
             <div class="row">
 
               <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{ _usuarioService.getIdentidad().nombre }} </h1>
+                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
+                  _usuarioService.getIdentidad().nombre }} </h1>
                 <p class="lead text-muted">Revisa tu información detallada</p>
               </div>
 
@@ -69,15 +70,19 @@
                           </div>
 
 
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" (click)="eliminarEmpresas(em._id)">Eliminar Empresa</button>
-                            </div>
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" >Editar Empresa</button>
-                            </div>
-                            <div class="col-lg-3 col-md-4 d-flex">
-                              <button class="btn btn-primary w-100 align-self-center" [routerLink]="['/admin/sucursales/', em._id]">Ver Sucursales</button>
-                            </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button class="btn btn-primary w-100 align-self-center"
+                              (click)="eliminarEmpresas(em._id)">Eliminar Empresa</button>
+                          </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                              (click)="getEmpresasId(em._id)">Editar Empresa</button>
+                          </div>
+                          <div class="col-lg-3 col-md-4 d-flex">
+                            <button class="btn btn-primary w-100 align-self-center"
+                              [routerLink]="['/admin/sucursales/', em._id]">Ver Sucursales</button>
+                          </div>
 
 
                         </div>
@@ -88,10 +93,10 @@
               </div>
             </div>
           </div>
-      <!-- Fin Contenido de la pagina -->
-      </section>
+          <!-- Fin Contenido de la pagina -->
+        </section>
+      </div>
     </div>
-  </div>
 
 
   </div>
@@ -100,42 +105,72 @@
 </body>
 
 <!-- OffCanvas Editar Producto -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-aria-labelledby="offcanvasExampleLabel">
-<div class="offcanvas-header">
-  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
-  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="mb-3">
+        <label for="inputnombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="empresasModelGetId.nombre">
+      </div>
+      <div class="mb-3">
+        <label for="inputemail" class="form-label">email</label>
+        <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
+          [(ngModel)]="empresasModelGetId.email">
+      </div>
+      <div class="mb-3">
+        <label for="inputtelefono" class="form-label">telefono</label>
+        <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+          [(ngModel)]="empresasModelGetId.telefono">
+      </div>
+      <div class="mb-3">
+        <label for="inputdireccion" class="form-label">direccion</label>
+        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="empresasModelGetId.direccion">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
+        Empresa</button>
+    </form>
+  </div>
 </div>
-<div class="offcanvas-body">
-  <form>
 
-    <div class="mb-3">
-      <label for="inputnombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
-        [(ngModel)]="empresasModelGetId.nombre">
-    </div>
-    <div class="mb-3">
-      <label for="inputemail" class="form-label">email</label>
-      <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
-        [(ngModel)]="empresasModelGetId.email">
-    </div>
-    <div class="mb-3">
-      <label for="inputtelefono" class="form-label">telefono</label>
-      <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
-        [(ngModel)]="empresasModelGetId.telefono">
-    </div>
-    <div class="mb-3">
-      <label for="inputdireccion" class="form-label">direccion</label>
-      <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
-        [(ngModel)]="empresasModelGetId.direccion">
-    </div>
-    <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
-      Empresa</button>
-  </form>
+
+<!-- OffCanvas Editar Usuario -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="mb-3">
+        <label for="inputnombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="empresasModelGetId.nombre">
+      </div>
+      <div class="mb-3">
+        <label for="inputemail" class="form-label">email</label>
+        <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
+          [(ngModel)]="empresasModelGetId.email">
+      </div>
+      <div class="mb-3">
+        <label for="inputtelefono" class="form-label">telefono</label>
+        <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
+          [(ngModel)]="empresasModelGetId.telefono">
+      </div>
+      <div class="mb-3">
+        <label for="inputdireccion" class="form-label">direccion</label>
+        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="empresasModelGetId.direccion">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
+        Empresa</button>
+    </form>
+  </div>
 </div>
-</div>
-
-
-
-
-
