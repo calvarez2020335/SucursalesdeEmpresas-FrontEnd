@@ -25,6 +25,7 @@ export class SucursalesComponent implements OnInit {
   public productoModelPost: ProductosSucursal;
 
   public token;
+  load: boolean = false;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -92,7 +93,6 @@ export class SucursalesComponent implements OnInit {
   postSucursales() {
     this._sucursalesService.IngresarSucursales(this.sucursalesModelPost, this.token).subscribe(
       (response)=>{
-        this.sucursalesModelPost = response.Sucursales;
         console.log(response);
 
         this.sucursalesModelPost.nombre = '';
@@ -123,6 +123,7 @@ export class SucursalesComponent implements OnInit {
   getSucursales() {
     this._sucursalesService.obtenerSucursales(this.token).subscribe(
       (response) => {
+        this.load = true;
         this.sucursalesModelGet = response.Sucursales;
         console.log(this.sucursalesModelGet)
       },
@@ -188,7 +189,7 @@ export class SucursalesComponent implements OnInit {
         this.getSucursales()
         Swal.fire({
 
-          icon: 'error',
+          icon: 'success',
           title: 'eliminado exitosamente',
           showConfirmButton: false,
           timer: 1500
