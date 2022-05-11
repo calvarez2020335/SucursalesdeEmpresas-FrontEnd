@@ -33,9 +33,10 @@ export class EditarUsuarioComponent implements OnInit {
         })
       },
       error: (err)=> {
+        console.log(<any>err);
         Swal.fire({
           icon: 'error',
-          title: err.error.mensaje,
+          title: err.mensaje,
           showConfirmButton: false,
           timer: 1500
         })
