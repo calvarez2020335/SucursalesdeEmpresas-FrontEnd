@@ -130,8 +130,11 @@
       </div>
       <div class="mb-3">
         <label for="inputdireccion" class="form-label">direccion</label>
-        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
-          [(ngModel)]="empresasModelGetId.direccion">
+
+        <select class="form-select" aria-label="multiple select example" id="inputdireccion" name="direccion" #direccion="ngModel" [(ngModel)]="empresasModelGetId.direccion">
+          <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">{{departamento.nombre}}</option>
+        </select>
+
       </div>
       <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
         Empresa</button>

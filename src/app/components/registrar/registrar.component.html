@@ -16,8 +16,11 @@
             </div>
             <div class="mb-3">
               <label for="TipoEm" class="form-label">Tipo de Empresa</label>
-              <input type="text" class="form-control" id="TipoEm" placeholder="Ingresar el tipo de empresa" name="tipoEmpresa" #tipoEmpresa="ngModel"
-              [(ngModel)]="usuarioModelPost.tipoEmpresa">
+
+              <select class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa" #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
+                <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
+              </select>
+
             </div>
             <div class="mb-3">
               <label for="Dire" class="form-label">Direccion</label>
@@ -30,7 +33,7 @@
 
             <div class="mb-3">
               <label for="Tel" class="form-label">Telefono</label>
-              <input type="number" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel" #tel="ngModel"
+              <input type="tel" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel" #tel="ngModel"
               [(ngModel)]="usuarioModelPost.telefono">
             </div>
             <div class="mb-3">
@@ -46,7 +49,7 @@
             </div>
 
               <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
-              <a routerLink="/login">
+              <a>
                 <input type="button" value="Registrarse" (click)="postRegistarEmpresa()">
             </a>
           </form>
