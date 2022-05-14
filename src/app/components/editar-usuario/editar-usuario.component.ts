@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from 'src/app/services/usuario.service'
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,25 +17,7 @@ export class EditarUsuarioComponent implements OnInit {
       this.token = this.userRest.getToken()
     }
 
-    departamentos = [
-      {codigo:"Guatemala", nombre:"Guatemala"},
-      {codigo:"Mixco", nombre:"Mixco"},
-      {codigo:"Villa Nueva", nombre:"Villa Nueva"},
-      {codigo:"San Juan Sacatepéquez", nombre:"San Juan Sacatepéquez"},
-      {codigo:"Villa Canales", nombre:"Villa Canales"},
-      {codigo:"Amatitlán", nombre:"Amatitlán"},
-      {codigo:"San Miguel Petapa", nombre:"San Miguel Petapa"},
-      {codigo:"Chinautla", nombre:"Chinautla"},
-      {codigo:"San José Pinula", nombre:"San José Pinula"},
-      {codigo:"Santa Catarina Pinula", nombre:"Santa Catarina Pinula"},
-      {codigo:"Palencia", nombre:"Palencia"},
-      {codigo:"San Pedro Ayampuc", nombre:"San Pedro Ayampuc"},
-      {codigo:"Fraijanes", nombre:"Fraijanes"},
-      {codigo:"San Pedro Sacatepéquez", nombre:"San Pedro Sacatepéquez"},
-      {codigo:"San Raymundo", nombre:"San Raymundo"},
-      {codigo:"Chuarrancho", nombre:"Chuarrancho"},
-      {codigo:"San José del Golfo", nombre:"San José del Golfo"},
-    ]
+  departamentos = environment.departamentos;
 
   ngOnInit(): void {
     this.user = this.userRest.getIdentidad();

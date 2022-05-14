@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Router } from '@angular/router';
+import { environment, environment2 } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +16,7 @@ export class RegistrarComponent implements OnInit {
   public token;
 
 
-  constructor(private _usuarioService: UsuarioService) {
+  constructor(private _usuarioService: UsuarioService, private _router: Router) {
     this.usuarioModelPost = new Usuario(
       "",
       "",
@@ -29,25 +31,9 @@ export class RegistrarComponent implements OnInit {
     this.token = this._usuarioService.getToken();
    }
 
-   departamentos = [
-     {codigo:"Guatemala", nombre:"Guatemala"},
-     {codigo:"Mixco", nombre:"Mixco"},
-     {codigo:"Villa Nueva", nombre:"Villa Nueva"},
-     {codigo:"San Juan Sacatepéquez", nombre:"San Juan Sacatepéquez"},
-     {codigo:"Villa Canales", nombre:"Villa Canales"},
-     {codigo:"Amatitlán", nombre:"Amatitlán"},
-     {codigo:"San Miguel Petapa", nombre:"San Miguel Petapa"},
-     {codigo:"Chinautla", nombre:"Chinautla"},
-     {codigo:"San José Pinula", nombre:"San José Pinula"},
-     {codigo:"Santa Catarina Pinula", nombre:"Santa Catarina Pinula"},
-     {codigo:"Palencia", nombre:"Palencia"},
-     {codigo:"San Pedro Ayampuc", nombre:"San Pedro Ayampuc"},
-     {codigo:"Fraijanes", nombre:"Fraijanes"},
-     {codigo:"San Pedro Sacatepéquez", nombre:"San Pedro Sacatepéquez"},
-     {codigo:"San Raymundo", nombre:"San Raymundo"},
-     {codigo:"Chuarrancho", nombre:"Chuarrancho"},
-     {codigo:"San José del Golfo", nombre:"San José del Golfo"},
-   ]
+   tipoEmpresas = environment2.tipoEmpresas;
+   departamentos = environment.departamentos;
+
 
   ngOnInit(): void {
   }
@@ -66,6 +52,7 @@ export class RegistrarComponent implements OnInit {
         this.usuarioModelPost.password = '';
         this.usuarioModelPost.rol = '';
         this.usuarioModelPost.tipoEmpresa = ''
+        this._router.navigate(['/login'])
         Swal.fire({
           icon: 'success',
           title: 'Se Registro la Empresa',

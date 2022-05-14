@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,6 +21,8 @@ export class Empresas2Component implements OnInit {
     this.empresasModelGetId = new Usuario('','','' ,0,'','','','');
 
   }
+
+  departamentos = environment.departamentos;
 
   ngOnInit(): void {
     this.getEmpresas();
