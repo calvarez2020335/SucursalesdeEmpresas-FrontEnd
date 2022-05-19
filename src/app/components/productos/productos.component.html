@@ -76,11 +76,26 @@
           </div>
         </div>
 
-        <!-- Mostar Sucursales -->
+        <!--Busquedas producto-->
+        <div class="container">
+          <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Nombre" aria-label="Search">
+          <input [(ngModel)]="buscarPro" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Proveedor" aria-label="Search">
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMayor()">
+            Ordenar por mayor stock
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">+</span>
+          </button>
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMenor()">
+            Ordenar por menor stock
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">-</span>
+          </button>
+        </div>
+
+
+        <!-- Mostar Productos -->
         <section class="bg-mix py-3">
           <div class="container">
             <div class="card rounded-0">
-              <div class="card-body" *ngFor="let su of productosModelGet">
+              <div class="card-body" *ngFor="let su of productosModelGet | buscarEmpresa:buscarProducto | buscarEmpresaProveedor:buscarPro">
                 <!-- Cifras-->
                 <section class="bg-mix py-3">
                   <div class="container">

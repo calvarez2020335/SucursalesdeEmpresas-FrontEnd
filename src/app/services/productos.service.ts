@@ -45,4 +45,15 @@ export class ProductosService {
 
   }
 
+  obtenerProductoMayorStock(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.get(this.url + '/OrdenarStockMayor',{ headers: headersToken })
+  }
+
+  obtenerProductoMenorStock(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.get(this.url + '/OrdenarStockMenor',{ headers: headersToken })
+  }
+
+
 }
