@@ -17,6 +17,8 @@ export class ProductosComponent implements OnInit {
   public productosModelPost: ProductosEmpresa;
   public productosModelGetId: ProductosEmpresa;
   public token;
+  public buscarProducto;
+  public buscarPro;
 
   constructor(
     private _productosService: ProductosService,
@@ -78,6 +80,28 @@ export class ProductosComponent implements OnInit {
         console.log(error);
       }
 
+    )
+  }
+
+  getProductosStokMayor(){
+    this._productosService.obtenerProductoMayorStock(this.token).subscribe(
+      (response)=>{
+        this.productosModelGet = response.Productos;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  getProductosStokMenor(){
+    this._productosService.obtenerProductoMenorStock(this.token).subscribe(
+      (response)=>{
+        this.productosModelGet = response.Productos;
+      },
+      (error)=>{
+        console.log(error);
+      }
     )
   }
 

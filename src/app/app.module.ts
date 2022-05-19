@@ -21,6 +21,8 @@ import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuar
 import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import { BuscarEmpresaPipe } from './pipes/buscar-empresa.pipe';
+import { BuscarEmpresaProveedorPipe } from './pipes/buscar-empresa-proveedor.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuar
     InicioAdminComponent,
     GraficasComponent,
     EditarUsuarioComponent,
+    BuscarEmpresaPipe,
+    BuscarEmpresaProveedorPipe,
 
   ],
   imports: [
