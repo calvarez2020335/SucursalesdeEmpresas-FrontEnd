@@ -180,7 +180,7 @@
                               <h3 class="font-weight-bold">{{su.direccion}}</h3>
                             </div>
                           </div>
-                          
+
                           <div class="col-lg-3 col-md-4 d-flex">
                             <button class="btn btn-primary w-100 align-self-center"
                               (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
@@ -279,8 +279,13 @@
                <form>
                  <div class="mg-3">
                   <label for="inputNombreProductoSucursal" class="form-label">Nombre Producto</label>
-                  <input type="text" id="inputNombreProductoSucursal" class="form-control" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel"
-                    [(ngModel)]="productoModelPost.NombreProductoSucursal">
+
+                  <select class="form-select" aria-label="multiple select example" id="inputNombreProductoSucursal" class="form-control" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel" [(ngModel)]="productoModelPost.NombreProductoSucursal">
+
+                    <option *ngFor="let su of productosModelGet" [value]="su.NombreProducto">{{su.NombreProducto}}</option>
+
+                  </select>
+
                 </div>
                  <div class="mg-3">
                    <label for="inputStockSurcursal" class="form-label">Stock</label>

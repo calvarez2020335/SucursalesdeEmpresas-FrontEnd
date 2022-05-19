@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from 'src/app/services/usuario.service'
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,6 +16,8 @@ export class EditarUsuarioComponent implements OnInit {
     private userRest: UsuarioService,) {
       this.token = this.userRest.getToken()
     }
+
+  departamentos = environment.departamentos;
 
   ngOnInit(): void {
     this.user = this.userRest.getIdentidad();

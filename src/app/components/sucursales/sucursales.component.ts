@@ -5,6 +5,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoSucursalService } from 'src/app/services/productoSucursal.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { ProductosSucursal } from 'src/app/models/productos.sucursales.model';
+import { ProductosEmpresa} from '../../models/productos.empresas.model';
+import { ProductosService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2'
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,10 +14,11 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-sucursales',
   templateUrl: './sucursales.component.html',
   styleUrls: ['./sucursales.component.scss'],
-  providers: [SucursalesService, UsuarioService, ProductoSucursalService]
+  providers: [SucursalesService, UsuarioService, ProductoSucursalService, ProductosService]
 })
 export class SucursalesComponent implements OnInit {
 
+  public productosModelGet: ProductosEmpresa;
   public sucursalesModelGet: Sucursales;
   public sucursalesAdminModelGet: Sucursales;
   public sucursalesModelPost: Sucursales;
@@ -28,6 +31,7 @@ export class SucursalesComponent implements OnInit {
   load: boolean = false;
 
   constructor(
+    public _productosServiceEmpresa: ProductosService,
     public _activatedRoute: ActivatedRoute,
     private _sucursalesService: SucursalesService,
     public _productosService: ProductoSucursalService,
@@ -51,13 +55,25 @@ export class SucursalesComponent implements OnInit {
 
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
         console.log(dataRuta.get('idEmpresa'));
-  
+
         this.getSucursalesAdmin(dataRuta.get('idEmpresa'))
       })
-    
-    this.getSucursales();
 
-    
+    this.getSucursales();
+    console.log(this.getProductos())
+  }
+
+  getProductos(){
+    this._productosServiceEmpresa.obtenerProducto(this.token).subscribe(
+      (response)=>{
+        this.productosModelGet = response.Productos;
+        console.log(this.productosModelGet)
+      },
+      (error)=>{
+        console.log(error);
+      }
+
+    )
   }
 
   putProductosSucursal(){
@@ -144,7 +160,7 @@ export class SucursalesComponent implements OnInit {
           console.log(error);
         }
       )
-  
+
       }
 
     getSucursalesId(idSucursal){
