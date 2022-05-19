@@ -54,6 +54,6 @@ export class SucursalesService {
     return this._http.put(this.url + '/editarSurcursal/'+modeloSucursal._id, parametros, { headers: headersToken })
   }
 
-  
+
 
 }
