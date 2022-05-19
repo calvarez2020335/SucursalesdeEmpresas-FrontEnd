@@ -21,7 +21,6 @@ export class EditarUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userRest.getIdentidad();
-    console.log(this.user);
   }
 
   updateUser(){
@@ -36,7 +35,7 @@ export class EditarUsuarioComponent implements OnInit {
         })
       },
       error: (err)=> {
-        console.log(<any>err);
+        console.log(err);
         Swal.fire({
           icon: 'error',
           title: err.mensaje,
