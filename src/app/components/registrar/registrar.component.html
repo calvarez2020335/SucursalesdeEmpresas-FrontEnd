@@ -10,7 +10,7 @@
   <meta name="keywords" content="Colorlib Templates">
 
   <!-- Title Page-->
-  <title>Au Register Forms by Colorlib</title>
+  <title>Registro</title>
 
 </head>
 
@@ -20,7 +20,7 @@
 
       <div class="card card-1">
         <div class="card-heading border-secondary">
-          <h2 class="title">Registration Info</h2>
+          <h2 class="title">Registrate</h2>
         </div>
         <div class="card-body">
 
@@ -53,6 +53,7 @@
 
                 <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel"
                   [(ngModel)]="usuarioModelPost.direccion">
+      <option value="" disabled selected hidden>Selecione un Municipio</option>
                   <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
                     {{departamento.nombre}}</option>
                 </select>
@@ -65,6 +66,7 @@
             <label for="TipoEm" class="form-label text-light  fs-4">Tipo de Empresa</label>
             <select class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa"
               #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
+              <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
               <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
 
             </select>
@@ -76,9 +78,12 @@
               </div>
             </div>
             <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
-            <a>
-              <input type="button" value="Registrarse"  id="Registrarse" (click)="postRegistarEmpresa()">
-            </a>
+            <div class="text-center">
+              <a>
+                <input type="button" value="Registrarse"  id="Registrarse" (click)="postRegistarEmpresa()">
+              </a>
+            </div>
+
           </form>
           <p><a routerLink="/login">¿Ya tengo Cuenta?</a></p>
         </div>

@@ -1,271 +1,298 @@
-
 /* ==========================================================================
    #FONT
    ========================================================================== */
-   .font-robo {
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-  }
+.font-robo {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+}
 
-#Registrarse{
+#Registrarse {
   background-color: #1a1c2c;
   color: #fff;
-   width: 200px;
-  height: 30px;
+  width: 300px;
+  height: 35px;
   border-radius: 10px;
   border-color: #1a1c2c;
+  text-align: center;
+  font-size: 20px;
 }
 
 
- #Registrarse:hover{
-   background-color: #454f97;
- }
+#Registrarse:hover {
+  background-color: #454f97;
+}
 
-  p a{
-    text-align: center;
-    line-height: 40px;
-    color: #ff4584;
-  }
+p {
+  color: #fff;
+  text-align: center;
+}
 
-   a {
-    color: #ff4584;
-    text-decoration: none;
-  }
-  /* ==========================================================================
+p a {
+  text-align: center;
+  line-height: 40px;
+  color: #1f1199;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+p a:hover {
+  color: #083950;
+}
+
+
+/* ==========================================================================
      #GRID
      ========================================================================== */
-  .row {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 
-  .row-space {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  }
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
 
+.col-2 {
+  width: -webkit-calc((100% - 60px) / 2);
+  width: -moz-calc((100% - 60px) / 2);
+  width: calc((100% - 60px) / 2);
+}
+
+@media (max-width: 767px) {
   .col-2 {
-    width: -webkit-calc((100% - 60px) / 2);
-    width: -moz-calc((100% - 60px) / 2);
-    width: calc((100% - 60px) / 2);
+    width: 100%;
   }
+}
 
-  @media (max-width: 767px) {
-    .col-2 {
-      width: 100%;
-    }
-  }
-
-  /* ==========================================================================
+/* ==========================================================================
      #BOX-SIZING
      ========================================================================== */
-  /**
+/**
    * More sensible default box-sizing:
    * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
    */
-  html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-  * {
-    padding: 0;
-    margin: 0;
-  }
+* {
+  padding: 0;
+  margin: 0;
+}
 
-  *, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-  }
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #RESET
      ========================================================================== */
-  /**
+/**
    * A very simple reset that sits on top of Normalize.css.
    */
-  body,
-  h1, h2, h3, h4, h5, h6,
-  blockquote, p, pre,
-  dl, dd, ol, ul,
-  figure,
-  hr,
-  fieldset, legend {
-    margin: 0;
-    padding: 0;
-  }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
 
 
 
 
-  /**
+/**
    * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
    *    on fieldsets.
    */
-  fieldset {
-    min-width: 0;
-    /* [1] */
-    border: 0;
-  }
+fieldset {
+  min-width: 0;
+  /* [1] */
+  border: 0;
+}
 
-  button {
-    outline: none;
-    background: none;
-    border: none;
-  }
+button {
+  outline: none;
+  background: none;
+  border: none;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #PAGE WRAPPER
      ========================================================================== */
-  .page-wrapper {
-    min-height: 100vh;
-    background-color: #1a1c2c
-  }
+.page-wrapper {
+  min-height: 100vh;
+  background-color: #1a1c2c
+}
 
-  body {
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-  }
+body {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
 
-  h1 {
-    font-size: 36px;
-  }
+h1 {
+  font-size: 36px;
+}
 
-  h2 {
-    font-size: 30px;
-  }
+h2 {
+  font-size: 30px;
+}
 
-  h3 {
-    font-size: 24px;
-  }
+h3 {
+  font-size: 24px;
+}
 
-  h4 {
-    font-size: 18px;
-  }
+h4 {
+  font-size: 18px;
+}
 
-  h5 {
-    font-size: 15px;
-  }
+h5 {
+  font-size: 15px;
+}
 
-  h6 {
-    font-size: 13px;
-  }
+h6 {
+  font-size: 13px;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #BACKGROUND
      ========================================================================== */
-  .bg-blue {
-    background: #2c6ed5;
-  }
+.bg-blue {
+  background: #2c6ed5;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #SPACING
      ========================================================================== */
-  .p-t-100 {
-    padding-top: 100px;
-  }
+.p-t-100 {
+  padding-top: 100px;
+}
 
-  .p-t-20 {
-    padding-top: 20px;
-  }
+.p-t-20 {
+  padding-top: 20px;
+}
 
-  .p-b-100 {
-    padding-bottom: 100px;
-  }
+.p-b-100 {
+  padding-bottom: 100px;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #WRAPPER
      ========================================================================== */
-  .wrapper {
-    margin: 0 auto;
-  }
+.wrapper {
+  margin: 0 auto;
+}
 
-  .wrapper--w680 {
-    max-width: 730px;
-  }
+.wrapper--w680 {
+  max-width: 730px;
+}
 
 
-  /* ==========================================================================
+/* ==========================================================================
      #TITLE
      ========================================================================== */
-  .title {
+.title {
 
-    margin: 10px;
-  }
+  margin: 10px;
+}
 
-  /* ==========================================================================
+/* ==========================================================================
      #CARD
      ========================================================================== */
-  .card {
-    overflow: hidden;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background: #fff;
-  }
+.card {
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+}
 
-  .card-1 {
-    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    background-color: #406882 ;
-    border-radius: 10px;
+.card-1 {
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  background-color: #406882;
+  border-radius: 10px;
 
-  }
+}
 
-  .card-1 .card-heading {
+.card-1 .card-heading {
 
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #406882 ;
-    text-align: center;
-color: #fff;
-  }
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #406882;
+  text-align: center;
+  color: #fff;
+}
 
+.card-1 .card-body {
+  padding: 0 40px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  background-color: #6998ab;
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
   .card-1 .card-body {
     padding: 0 40px;
-    padding-top: 30px;
-    padding-bottom: 65px;
-    background-color:  #6998ab;
-    border-radius: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
-
-  @media (max-width: 767px) {
-    .card-1 .card-body {
-      padding: 0 40px;
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-  }
+}
 
 
-  .form-control{
-    background-color: #b1d0e0;
-    border-radius: 5px;
-    border-color: #6998ab;
-    color: #fff;
-font-size: 20px;
-  }
+.form-control {
+  background-color: #b1d0e0;
+  border-radius: 5px;
+  border-color: #6998ab;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
 
-  .form-select{
-    background-color: #b1d0e0;
-    border-radius: 5px;
-    border-color: #6998ab;
-    color: #fff;
-font-size: 20px;
-  }
+.form-select {
+  background-color: #b1d0e0;
+  border-radius: 5px;
+  border-color: #6998ab;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
