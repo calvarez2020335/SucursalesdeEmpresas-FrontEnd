@@ -1,68 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 col-sm-10 col-xs-12"> </div>
+<head>
+  <!-- Required meta tags-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
 
-      <div class="col-md-6 col-sm-12 col-xs-12">
+  <!-- Title Page-->
+  <title>Registro</title>
 
-        <div class="container-form">
+</head>
+
+<body>
+  <div class="page-wrapper p-t-100 p-b-100 font-robo">
+    <div class="wrapper wrapper--w680">
+
+      <div class="card card-1">
+        <div class="card-heading border-secondary">
+          <h2 class="title">Registrate</h2>
+        </div>
+        <div class="card-body">
 
           <form>
-            <h2>Registro de Empresa</h2>
-            <div class="mb-3">
-              <label for="NombreUsuario" class="form-label">Nombre de Empresa</label>
-              <input type="text" class="form-control" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario" name="nombre" #nombre="ngModel"
-              [(ngModel)]="usuarioModelPost.nombre">
-            </div>
-            <div class="mb-3">
-              <label for="TipoEm" class="form-label">Tipo de Empresa</label>
+            <div class="row row-space">
+              <div class="col-2">
+                <label for="Email1" class="form-label text-light  fs-4">Correo Electrónico</label>
+                <input type="email" class="form-control" id="Email1" placeholder="Ingresar Su Correo" name="email"
+                  #email="ngModel" [(ngModel)]="usuarioModelPost.email">
 
-              <select class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa" #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
-                <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
-              </select>
+              </div>
+              <div class="col-2">
 
-            </div>
-            <div class="mb-3">
-              <label for="Dire" class="form-label">Direccion</label>
+                <label for="NombreUsuario" class="form-label text-light  fs-4">Nombre de Empresa</label>
+                <input class="form-control" type="text" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario"
+                  name="nombre" #nombre="ngModel" [(ngModel)]="usuarioModelPost.nombre">
 
-              <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel" [(ngModel)]="usuarioModelPost.direccion">
-                <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">{{departamento.nombre}}</option>
-              </select>
+              </div>
+
 
             </div>
+            <div class="row row-space">
+              <div class="col-2">
+                <label for="Tel" class="form-label text-light  fs-4">Telefono</label>
+                <input type="tel" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel"
+                  #tel="ngModel" [(ngModel)]="usuarioModelPost.telefono">
+              </div>
+              <div class="col-2">
+                <label for="Dire" class="form-label text-light  fs-4">Direccion</label>
 
-            <div class="mb-3">
-              <label for="Tel" class="form-label">Telefono</label>
-              <input type="tel" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel" #tel="ngModel"
-              [(ngModel)]="usuarioModelPost.telefono">
-            </div>
-            <div class="mb-3">
-              <label for="Email1" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Ingresar Su Correo" name="email" #email="ngModel"
-              [(ngModel)]="usuarioModelPost.email">
-              <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
-            </div>
-            <div class="mb-3">
-              <label for="password1" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña" name="password" #password="ngModel"
-              [(ngModel)]="usuarioModelPost.password">
+                <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel"
+                  [(ngModel)]="usuarioModelPost.direccion">
+      <option value="" disabled selected hidden>Selecione un Municipio</option>
+                  <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
+                    {{departamento.nombre}}</option>
+                </select>
+              </div>
             </div>
 
-              <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
+
+
+
+            <label for="TipoEm" class="form-label text-light  fs-4">Tipo de Empresa</label>
+            <select class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa"
+              #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
+              <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
+              <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
+
+            </select>
+            <div class="row row-space">
+              <div class="col-2">
+                <label for="password1" class="form-label text-light  fs-4">Contraseña</label>
+                <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña"
+                  name="password" #password="ngModel" [(ngModel)]="usuarioModelPost.password">
+              </div>
+            </div>
+            <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
+            <div class="text-center">
               <a>
-                <input type="button" value="Registrarse" (click)="postRegistarEmpresa()">
-            </a>
+                <input type="button" value="Registrarse"  id="Registrarse" (click)="postRegistarEmpresa()">
+              </a>
+            </div>
+
           </form>
-          <p><a routerLink="/login" >¿Ya tengo Cuenta?</a></p>
-
+          <p><a routerLink="/login">¿Ya tengo Cuenta?</a></p>
         </div>
-
       </div>
-
-
-      <div class="col-md-4 col-sm-4 col-xs-12"> </div>
     </div>
-
-
-
   </div>
+
+  <!-- Jquery JS-->
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
