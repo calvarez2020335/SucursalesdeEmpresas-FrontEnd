@@ -20,6 +20,7 @@ export class ProductosSucursalesComponent implements OnInit {
   public productosSucursalesModelGetId: ProductosSucursal;
   public token;
   public buscarProducto;
+  public elId;
   constructor(
 
     private _productosService: ProductoSucursalService,
@@ -41,8 +42,10 @@ export class ProductosSucursalesComponent implements OnInit {
         console.log(dataRuta.get('idSurcursal'));
 
         this.getProductoSucursal(dataRuta.get('idSurcursal'))
+        this.elId = dataRuta.get('idSurcursal')
 
       })
+      console.log(this.elId)
 
   }
 
@@ -63,7 +66,39 @@ export class ProductosSucursalesComponent implements OnInit {
   };
 
   getProductoStockMayorSucursal(idSurcursal){
-    this._productosService.ObtenerProductoStokMayorSucursal(idSurcursal, this.token).subscribe(
+    this._productosService.ObtenerProductoStokMayorSucursal(this.elId, this.token).subscribe(
+      (response)=>{
+
+        this.productosModelGet = response.Productos;
+        console.log(this.productosModelGet)
+
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+
+
+  }
+
+  getProductoStockMenorSucursal(idSurcursal){
+    this._productosService.ObtenerProductoStokMenorSucursal(this.elId, this.token).subscribe(
+      (response)=>{
+
+        this.productosModelGet = response.Productos;
+        console.log(this.productosModelGet)
+
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+
+
+  }
+
+  getProductoMasVendidoSucursal(idSurcursal){
+    this._productosService.ObtenerProductoMasVendidoSucursal(this.elId, this.token).subscribe(
       (response)=>{
 
         this.productosModelGet = response.Productos;

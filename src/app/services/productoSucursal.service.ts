@@ -44,4 +44,14 @@ export class ProductoSucursalService {
     return this._http.get(this.url+'/stockMasAlto/'+ idSurcursal, { headers: headersToken})
   }
 
+  ObtenerProductoStokMenorSucursal(idSurcursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.get(this.url+'/stockMasBajo/'+ idSurcursal, { headers: headersToken})
+  }
+  
+  ObtenerProductoMasVendidoSucursal(idSurcursal, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token )
+    return this._http.get(this.url+'/ElProductoMasVendido/'+ idSurcursal, { headers: headersToken})
+  }
 }
+

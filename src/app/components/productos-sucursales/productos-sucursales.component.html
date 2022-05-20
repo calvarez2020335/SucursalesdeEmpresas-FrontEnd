@@ -31,11 +31,14 @@
         <!--Busquedas producto-->
         <div class="container">
           <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Nombre" aria-label="Search">
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMayorSucursal(productosModelGet.idSurcursal)">
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMayorSucursal('idSurcursal')">
             Ordenar por mayor stock
           </button>
-          <button type="button" class="btn btn-primary position-relative" >
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMenorSucursal('idSurcursal')">
             Ordenar por menor stock
+          </button>
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductoMasVendidoSucursal('idSurcursal')">
+            Producto mas vendido
           </button>
         </div>
 
