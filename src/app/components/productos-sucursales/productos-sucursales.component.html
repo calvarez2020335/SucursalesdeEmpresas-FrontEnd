@@ -21,18 +21,29 @@
 
               <div class="col-lg-3 col-md-4 d-flex">
                 <button class="btn btn-primary w-100 align-self-center" routerLink="/usuario/sucursales">Regresar Productos</button>
-                
+
               </div>
 
             </div>
           </div>
         </section>
 
+        <!--Busquedas producto-->
+        <div class="container">
+          <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Nombre" aria-label="Search">
+          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMayorSucursal(productosModelGet.idSurcursal)">
+            Ordenar por mayor stock
+          </button>
+          <button type="button" class="btn btn-primary position-relative" >
+            Ordenar por menor stock
+          </button>
+        </div>
+
         <!-- Mostar Sucursales -->
         <section class="bg-mix py-3">
           <div class="container">
             <div class="card rounded-0">
-              <div class="card-body" *ngFor="let su of productosModelGet">
+              <div class="card-body" *ngFor="let su of productosModelGet | nombreProductoSucursal:buscarProducto">
                 <!-- Cifras -->
                 <section class="bg-mix py-3">
                   <div class="container">
@@ -106,11 +117,11 @@
       </div>
       <div class="mb-3">
         <label for="inputCan" class="form-label">Cantidad a Vender</label>
-        <input type="number" class="form-control" id="inputCan" name="StockSurcursal" #StockSurcursal="ngModel" 
+        <input type="number" class="form-control" id="inputCan" name="StockSurcursal" #StockSurcursal="ngModel"
         [(ngModel)]="productosSucursalesModelGetId.StockSurcursal">
       </div>
 
-     
+
       <button type="submit" class="btn btn-success"  data-bs-dismiss="offcanvas" (click)="putVenta()">Vender</button>
     </form>
   </div>
