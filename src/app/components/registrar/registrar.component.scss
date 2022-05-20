@@ -24,6 +24,12 @@
 p {
   color: #fff;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+#botton-p-a{
+  margin-top: 10px;
 }
 
 p a {
@@ -59,6 +65,7 @@ p a:hover {
   -moz-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+    margin-bottom: 10px
 }
 
 .col-2 {
@@ -156,7 +163,7 @@ button {
 
 body {
   font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-  font-weight: 400;
+  font-weight: 400px;
   font-size: 14px;
 }
 
@@ -287,6 +294,8 @@ h6 {
   border-color: #6998ab;
   color: rgb(0, 0, 0);
   font-size: 20px;
+
+
 }
 
 .form-select {
@@ -295,4 +304,5 @@ h6 {
   border-color: #6998ab;
   color: rgb(0, 0, 0);
   font-size: 20px;
+  margin-bottom: 10px
 }
