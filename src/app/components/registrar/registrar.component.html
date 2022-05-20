@@ -73,8 +73,15 @@
             </div>
             <div id="botton-p-a" class="text-center m-2 p-2">
               <p class="m-2">Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
-                <a class="m-2">
-                  <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()">
+
+              <a class="m-2" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">
+                <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()" routerLink="/admin/empresas2">
+              </a>
+                <a class="m-2"*ngIf="!token">
+                  <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()" routerLink="/login">
+                </a>
+                <a class="m-2"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
+                  <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()" routerLink="/login">
                 </a>
               <p class="m-2"><a routerLink="/login">¿Ya tengo Cuenta?</a></p>
             </div>
