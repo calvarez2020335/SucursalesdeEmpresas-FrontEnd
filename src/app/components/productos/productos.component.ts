@@ -52,7 +52,7 @@ export class ProductosComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: 'Sucursal Agregado Correctamente',
+          title: 'Producto Agregado Correctamente',
           showConfirmButton: false,
           timer: 1500
         })
