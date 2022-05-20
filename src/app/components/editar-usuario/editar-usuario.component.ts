@@ -26,6 +26,7 @@ export class EditarUsuarioComponent implements OnInit {
   updateUser(){
     this.userRest.updateUser(this.user._id, this.user, this.token).subscribe({
       next: (response: any) => {
+        localStorage.setItem('identidad', JSON.stringify(response.usuario))
         Swal.fire({
           icon: 'success',
           title: 'usuario Actualizado',
