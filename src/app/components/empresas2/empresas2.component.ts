@@ -59,15 +59,34 @@ export class Empresas2Component implements OnInit {
 
 
   eliminarEmpresas(id){
+
+    Swal
+    .fire({
+        title: "¿Estas Seguro de Eliminar?",
+        icon: 'warning',
+        iconColor: "#0D6EFD" ,
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        confirmButtonColor: "#0D6EFD",
+        cancelButtonText: "Cancelar",
+    }).then(resultado => {
+      if (resultado.value) {
+          // Hicieron click en "Sí"
     this._usuarioService.EliminarEmpresas(id,this.token).subscribe(
       (response)=>{
         console.log(response);
         this.getEmpresas();
+        Swal.fire({
+      
+          icon: 'success',
+          title: 'eliminado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
         Swal.fire({
-
           icon: 'error',
           title: error.error.mensaje,
           showConfirmButton: false,
@@ -75,7 +94,14 @@ export class Empresas2Component implements OnInit {
         })
       }
     )
-  }
+} else {
+    // Dijeron que no
+
+}
+});
+
+
+}
 
   getEmpresasId(idEmpresa){
     this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(

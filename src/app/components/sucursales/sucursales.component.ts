@@ -202,28 +202,47 @@ export class SucursalesComponent implements OnInit {
   }
 
   eliminarSucursales(id) {
-    this._sucursalesService.eliminarSucursales(id, this.token).subscribe(
-      (response) => {
-        console.log(response);
-        this.getSucursales()
-        Swal.fire({
 
-          icon: 'success',
-          title: 'eliminado exitosamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      },
-      (error) => {
-        console.log(<any>error);
-        Swal.fire({
-          icon: 'error',
-          title: error.error.mensaje,
-          showConfirmButton: false,
-          timer: 1500
-        })
+    Swal
+    .fire({
+        title: "¿Estas Seguro de Eliminar?",
+        icon: 'warning',
+        iconColor: "#0D6EFD" ,
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        confirmButtonColor: "#0D6EFD",
+        cancelButtonText: "Cancelar",
+    }).then(resultado => {
+      if (resultado.value) {
+          // Hicieron click en "Sí"
+          this._sucursalesService.eliminarSucursales(id, this.token).subscribe(
+            (response) => {
+              this.getSucursales()
+              Swal.fire({
+      
+                icon: 'success',
+                title: 'eliminado exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            },
+            (error) => {
+              console.log(<any>error);
+              Swal.fire({
+                icon: 'error',
+                title: error.error.mensaje,
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+          )
+      } else {
+          // Dijeron que no
+
       }
-    )
+  });
+
+    
   }
 
   getEmpresasId(idEmpresa) {
