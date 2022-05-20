@@ -53,7 +53,7 @@
 
                 <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel"
                   [(ngModel)]="usuarioModelPost.direccion">
-      <option value="" disabled selected hidden>Selecione un Municipio</option>
+                  <option value="" disabled selected hidden>Selecione un Municipio</option>
                   <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
                     {{departamento.nombre}}</option>
                 </select>
@@ -80,7 +80,7 @@
             <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
             <div class="text-center">
               <a>
-                <input type="button" value="Registrarse"  id="Registrarse" (click)="postRegistarEmpresa()">
+                <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()">
               </a>
             </div>
 
