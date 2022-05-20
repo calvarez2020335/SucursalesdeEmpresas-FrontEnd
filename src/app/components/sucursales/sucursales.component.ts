@@ -9,6 +9,7 @@ import { ProductosEmpresa} from '../../models/productos.empresas.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2'
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sucursales',
@@ -50,6 +51,8 @@ export class SucursalesComponent implements OnInit {
     this.empresasModelGetId = new Usuario('', '', '', 0, '', '', '', '');
     this.token = this._usuarioService.getToken()
   }
+
+  departamentos = environment.departamentos;
 
   ngOnInit(): void {
 
