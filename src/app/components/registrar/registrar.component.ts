@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class RegistrarComponent implements OnInit {
   public usuarioModelPost: Usuario;
   public token;
-
+  nuevaOpcion:boolean = false;
 
   constructor(private _usuarioService: UsuarioService, private _router: Router) {
     this.usuarioModelPost = new Usuario(
@@ -35,7 +35,17 @@ export class RegistrarComponent implements OnInit {
    departamentos = environment.departamentos;
 
 
+
   ngOnInit(): void {
+  }
+
+  otraOpcion(){
+    if(this.usuarioModelPost.tipoEmpresa == ''){
+      this.nuevaOpcion = true;
+    }else{
+      this.nuevaOpcion = false;
+    }
+
   }
 
 
