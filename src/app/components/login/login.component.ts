@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
         },
         (error)=>{
           console.log(<any>error);
-  
-  
+
+
         }
       )
     })
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
   login(){
     this._usuarioService.login(this.usuarioModel).subscribe(
       (response)=>{
-        
+
         this.getTokenPromesa().then(respuesta => {
 
           console.log(response.usuario);
