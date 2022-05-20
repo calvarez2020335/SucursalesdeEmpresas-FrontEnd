@@ -35,7 +35,7 @@
             </div>
           </div>
         </section>
-        <!--Agregar Sucursales-->
+        <!--Agregar Produto-->
         <div class="modal fade " id="ModalAgregarProductos" data-bs-backdrop="static" data-bs-keyboard="false"
           tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -60,7 +60,7 @@
 
                   <div class="mg-3">
                     <label for="inputStock" class="form-label">Stock</label>
-                    <input type="number" id="inputStock" class="form-control" name="Stock" #direccion="ngModel"
+                    <input type="number" min="1" max="999" id="inputStock" class="form-control" name="Stock" #direccion="ngModel"
                       [(ngModel)]="productosModelPost.Stock">
                   </div>
 
