@@ -19,6 +19,7 @@ export class ProductosSucursalesComponent implements OnInit {
   public productoModelPost: ProductosSucursal;
   public productosSucursalesModelGetId: ProductosSucursal;
   public token;
+  public buscarProducto;
   constructor(
 
     private _productosService: ProductoSucursalService,
@@ -26,15 +27,15 @@ export class ProductosSucursalesComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public _activatedRoute: ActivatedRoute) {
 
-    
+
     this.productoModelPost = new ProductosSucursal ('','','',0,0);
     this.productosSucursalesModelGetId = new ProductosSucursal ('','','',0,0);
     this.token = this._usuarioService.getToken();
-    
+
   }
 
   ngOnInit(): void {
-    
+
 
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
         console.log(dataRuta.get('idSurcursal'));
@@ -45,12 +46,12 @@ export class ProductosSucursalesComponent implements OnInit {
 
   }
 
-  
+
 
   getProductoSucursal(idSurcursal){
     this._productosService.ObtenerProductoSucursal(idSurcursal, this.token).subscribe(
       (response)=>{
-        
+
         this.productosModelGet = response.Productos;
         console.log(this.productosModelGet)
 
@@ -60,6 +61,22 @@ export class ProductosSucursalesComponent implements OnInit {
       }
     )
   };
+
+  getProductoStockMayorSucursal(idSurcursal){
+    this._productosService.ObtenerProductoStokMayorSucursal(idSurcursal, this.token).subscribe(
+      (response)=>{
+
+        this.productosModelGet = response.Productos;
+        console.log(this.productosModelGet)
+
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+
+
+  }
 
   getProductosSucursalesId(idProducto ){
     this._productosService.obtenerProductosSucursalesId(idProducto,this.token).subscribe(

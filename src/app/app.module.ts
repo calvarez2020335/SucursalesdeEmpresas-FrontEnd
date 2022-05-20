@@ -23,6 +23,7 @@ import { GraficasComponent } from './components/graficas/graficas.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { BuscarEmpresaPipe } from './pipes/buscar-empresa.pipe';
 import { BuscarEmpresaProveedorPipe } from './pipes/buscar-empresa-proveedor.pipe';
+import { NombreProductoSucursalPipe } from './pipes/nombre-producto-sucursal.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { BuscarEmpresaProveedorPipe } from './pipes/buscar-empresa-proveedor.pip
     EditarUsuarioComponent,
     BuscarEmpresaPipe,
     BuscarEmpresaProveedorPipe,
+    NombreProductoSucursalPipe,
 
   ],
   imports: [
