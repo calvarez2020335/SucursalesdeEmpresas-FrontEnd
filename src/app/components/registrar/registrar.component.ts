@@ -16,7 +16,7 @@ export class RegistrarComponent implements OnInit {
   public token;
   nuevaOpcion:boolean = false;
 
-  constructor(private _usuarioService: UsuarioService, private _router: Router) {
+  constructor(public _usuarioService: UsuarioService, private _router: Router) {
     this.usuarioModelPost = new Usuario(
       "",
       "",
@@ -63,7 +63,6 @@ export class RegistrarComponent implements OnInit {
         this.usuarioModelPost.password = '';
         this.usuarioModelPost.rol = '';
         this.usuarioModelPost.tipoEmpresa = ''
-        this._router.navigate(['/login'])
         Swal.fire({
           icon: 'success',
           title: 'Se Registro la Empresa',
