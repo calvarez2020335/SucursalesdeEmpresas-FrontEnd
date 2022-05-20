@@ -17,92 +17,72 @@
 <body>
   <div class="page-wrapper p-t-100 p-b-100 font-robo">
     <div class="wrapper wrapper--w680">
-
       <div class="card card-1">
         <div class="card-heading border-secondary">
           <h2 class="title">Registrate</h2>
         </div>
         <div class="card-body">
-
           <form>
             <div class="row row-space">
               <div class="col-2">
-                <label for="Email1" class="form-label text-light  fs-4">Correo Electrónico</label>
-                <input type="email" class="form-control" id="Email1" placeholder="Ingresar Su Correo" name="email"
-                  #email="ngModel" [(ngModel)]="usuarioModelPost.email">
-
-              </div>
-              <div class="col-2">
-
                 <label for="NombreUsuario" class="form-label text-light  fs-4">Nombre de Empresa</label>
                 <input class="form-control" type="text" id="NombreUsuario" placeholder="Ingresar Su Nombre De Usuario"
                   name="nombre" #nombre="ngModel" [(ngModel)]="usuarioModelPost.nombre">
-
               </div>
-
-
-            </div>
-            <div class="row row-space">
               <div class="col-2">
                 <label for="Tel" class="form-label text-light  fs-4">Telefono</label>
                 <input type="tel" class="form-control" id="Tel" placeholder="Ingresar el Telefono" name="tel"
                   #tel="ngModel" [(ngModel)]="usuarioModelPost.telefono">
               </div>
-              <div class="col-2">
-                <label for="Dire" class="form-label text-light  fs-4">Direccion</label>
-
-                <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel"
-                  [(ngModel)]="usuarioModelPost.direccion">
-                  <option value="" disabled selected hidden>Selecione un Municipio</option>
-                  <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
-                    {{departamento.nombre}}</option>
-                </select>
-              </div>
             </div>
-
-
-
-
-            <label for="TipoEm" class="form-label text-light  fs-4">Tipo de Empresa</label>
-
-            <select (click)="otraOpcion()" class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa"
-              #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
-              <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
-              <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
-              <option value="">Otro...</option>
+            <label for="Dire" class="form-label text-light  fs-4">Direccion</label>
+            <select class="form-select" aria-label="multiple select example" id="Dire" name="Dire" #Dire="ngModel"
+              [(ngModel)]="usuarioModelPost.direccion">
+              <option value="" disabled selected hidden>Selecione un Municipio</option>
+              <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
+                {{departamento.nombre}}</option>
             </select>
-
-            <div *ngIf="nuevaOpcion" class="row row-space">
-              <div class="col-2">
-                <label for="TipoEm" class="form-label text-light  fs-4">Nuevo tipo de empresa</label>
-                <input type="text" class="form-control" id="TipoEm" name="tipoEmpresa" placeholder="Ingrese su tipo de empresa" #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
-              </div>
-            </div>
-
             <div class="row row-space">
               <div class="col-2">
-                <label for="password1" class="form-label text-light  fs-4">Contraseña</label>
-                <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña"
-                  name="password" #password="ngModel" [(ngModel)]="usuarioModelPost.password">
+                <label for="TipoEm" class="form-label text-light  fs-4">Tipo de Empresa</label>
+                <select (click)="otraOpcion()" class="form-select" aria-label="multiple select example" id="TipoEm"
+                  name="tipoEmpresa" #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
+                  <option value="" disabled selected hidden>Selecione un Tipo Empresa</option>
+                  <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
+                  <option value="other">Otros...</option>
+                </select>
+              </div>
+              <div *ngIf="nuevaOpcion" class="col-2">
+                <label for="TipoEm" class="form-label text-light  fs-4">Nuevo tipo de empresa</label>
+                <input type="text" class="form-control" id="TipoEm" name="tipoEmpresa"
+                  placeholder="Ingrese su tipo de empresa" #tipoEmpresa="ngModel" value=""
+                  [(ngModel)]="usuarioModelPost.tipoEmpresa">
               </div>
             </div>
-
-            <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
-            <div class="text-center">
-              <a>
-                <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()">
-              </a>
+            <div class="row row-space">
+              <div class="col-2">
+                <label for="Email1" class="form-label text-light  fs-4">Correo Electrónico</label>
+                <input type="email" class="form-control" id="Email1" placeholder="Ingresar Su Correo" name="email"
+                  #email="ngModel" [(ngModel)]="usuarioModelPost.email">
+              </div>
+              <div class="col-2">
+                  <label for="password1" class="form-label text-light  fs-4">Contraseña</label>
+                  <input type="password" class="form-control" id="password1" placeholder="Ingrese su Contraseña"
+                    name="password" #password="ngModel" [(ngModel)]="usuarioModelPost.password">
+              </div>
             </div>
-
+            <div id="botton-p-a" class="text-center m-2 p-2">
+              <p class="m-2">Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
+                <a class="m-2">
+                  <input type="button" value="Registrarse" id="Registrarse" (click)="postRegistarEmpresa()">
+                </a>
+              <p class="m-2"><a routerLink="/login">¿Ya tengo Cuenta?</a></p>
+            </div>
           </form>
-          <p><a routerLink="/login">¿Ya tengo Cuenta?</a></p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Jquery JS-->
-
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

@@ -40,7 +40,8 @@ export class RegistrarComponent implements OnInit {
   }
 
   otraOpcion(){
-    if(this.usuarioModelPost.tipoEmpresa == ''){
+    if(this.usuarioModelPost.tipoEmpresa == "other"){
+
       this.nuevaOpcion = true;
     }else{
       this.nuevaOpcion = false;
