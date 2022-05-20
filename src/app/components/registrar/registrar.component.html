@@ -64,12 +64,21 @@
 
 
             <label for="TipoEm" class="form-label text-light  fs-4">Tipo de Empresa</label>
-            <select class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa"
+
+            <select (click)="otraOpcion()" class="form-select" aria-label="multiple select example" id="TipoEm" name="tipoEmpresa"
               #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
               <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
               <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
-
+              <option value="">Otro...</option>
             </select>
+
+            <div *ngIf="nuevaOpcion" class="row row-space">
+              <div class="col-2">
+                <label for="TipoEm" class="form-label text-light  fs-4">Nuevo tipo de empresa</label>
+                <input type="text" class="form-control" id="TipoEm" name="tipoEmpresa" placeholder="Ingrese su tipo de empresa" #tipoEmpresa="ngModel" [(ngModel)]="usuarioModelPost.tipoEmpresa">
+              </div>
+            </div>
+
             <div class="row row-space">
               <div class="col-2">
                 <label for="password1" class="form-label text-light  fs-4">Contraseña</label>
@@ -77,6 +86,7 @@
                   name="password" #password="ngModel" [(ngModel)]="usuarioModelPost.password">
               </div>
             </div>
+
             <p>Estoy de acuerdo con <a routerLink="/registrar">Terminos y Condiciones</a></p>
             <div class="text-center">
               <a>
