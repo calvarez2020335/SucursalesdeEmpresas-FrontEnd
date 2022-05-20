@@ -36,7 +36,6 @@ export class EmpresasComponent implements OnInit {
   postEmpleados(){
     this._empleadosService.registrarEmpleado(this.empleadosModelPost).subscribe(
       (response) => {
-        console.log(response);
         this.getEmpleados();
 
         this.empleadosModelPost.nombre = '';
@@ -54,7 +53,6 @@ export class EmpresasComponent implements OnInit {
     this._empleadosService.obtenerEmpleados().subscribe(
       (response) => {
         this.empleadosModelGet = response.Empleados;
-        console.log(this.empleadosModelGet);
       },
       (error) => {
         console.log(<any>error);

@@ -41,7 +41,6 @@ export class GraficasComponent implements OnInit {
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-      console.log(dataRuta.get('idSurcursal'));
 
       this.getProductoSucursal(dataRuta.get('idSurcursal'))
 
@@ -59,10 +58,8 @@ export class GraficasComponent implements OnInit {
           this.chartLabels.push(dato.NombreProductoSucursal);
           this.chartData.push(dato.CantidadVendida);
           this.chartColors[0].backgroundColor.push(`#${Math.floor(Math.random()*16777215).toString(16)}`);
-          console.log(dato)
         })
-        console.log(this.productosModelGet)
-        
+
       },
       (error)=>{
         console.log(<any>error);

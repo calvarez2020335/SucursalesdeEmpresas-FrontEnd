@@ -39,13 +39,11 @@ export class ProductosSucursalesComponent implements OnInit {
 
 
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-        console.log(dataRuta.get('idSurcursal'));
 
         this.getProductoSucursal(dataRuta.get('idSurcursal'))
         this.elId = dataRuta.get('idSurcursal')
 
       })
-      console.log(this.elId)
 
   }
 
@@ -56,7 +54,6 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
 
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
 
       },
       (error)=>{
@@ -70,7 +67,6 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
 
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
 
       },
       (error)=>{
@@ -86,7 +82,6 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
 
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
 
       },
       (error)=>{
@@ -102,7 +97,6 @@ export class ProductosSucursalesComponent implements OnInit {
       (response)=>{
 
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
 
       },
       (error)=>{
@@ -135,10 +129,6 @@ export class ProductosSucursalesComponent implements OnInit {
   putVenta(){
     this._productosService.VentaSimulada(this.productosSucursalesModelGetId, this.token).subscribe(
       (response)=>{
-        console.log(response);
-
-
-        console.log(this.productosSucursalesModelGetId.idSurcursal)
         this.getProductoSucursal(this.productosSucursalesModelGetId.idSurcursal);
         Swal.fire({
           icon: 'success',

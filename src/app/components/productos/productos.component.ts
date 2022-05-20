@@ -42,7 +42,6 @@ export class ProductosComponent implements OnInit {
   postProductos(){
     this._productosService.IngresarProducto(this.productosModelPost, this.token).subscribe(
       (response)=> {
-        console.log(response);
         this.getProductos();
 
         this.productosModelPost.idEmpresa = '';
@@ -74,7 +73,6 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProducto(this.token).subscribe(
       (response)=>{
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
       },
       (error)=>{
         console.log(error);
@@ -109,7 +107,6 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProductoId(idProducto,this.token).subscribe(
       (response)=>{
         this.productosModelGetId = response.Productos;
-        console.log(this.productosModelGetId);
       },
       (error)=> {
         console.log(<any>error);
@@ -126,7 +123,6 @@ export class ProductosComponent implements OnInit {
   putProductos(){
     this._productosService.editarProductos(this.productosModelGetId, this.token).subscribe(
       (response)=>{
-        console.log(response);
         this.getProductos()
       },
       (error)=>{
@@ -144,7 +140,6 @@ export class ProductosComponent implements OnInit {
   eliminarProductos(id){
     this._productosService.eliminarProductos(id, this.token).subscribe(
       (response)=>{
-        console.log(response);
         this.getProductos()
       },
       (error)=>{

@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     return new Promise<any>((resolve, reject) => {
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
         (response)=>{
-          console.log(response.token);
           localStorage.setItem("token", response.token)
           resolve(response);
         },

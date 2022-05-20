@@ -37,7 +37,6 @@ export class Empresas2Component implements OnInit {
       this._usuarioService.VerEmpresas(this.token).subscribe(
         (response)=>{
           this.empresasModelGet = response.Empresas;
-          console.log(this.empresasModelGet)
         },
         (error)=>{
           console.log(error);
@@ -81,7 +80,6 @@ export class Empresas2Component implements OnInit {
     this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(
       (response)=>{
         this.empresasModelGetId = response.Empresa;
-        console.log(this.empresasModelGetId);
       },
       (error)=> {
         console.log(<any>error);
@@ -98,7 +96,6 @@ export class Empresas2Component implements OnInit {
   putEmpresa(){
     this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
       (response)=> {
-        console.log(response);
         this.getEmpresas()
       },
       (error)=>{
