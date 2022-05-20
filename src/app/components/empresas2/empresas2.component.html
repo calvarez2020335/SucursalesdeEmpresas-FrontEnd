@@ -130,12 +130,25 @@
       </div>
       <div class="mb-3">
         <label for="inputdireccion" class="form-label">direccion</label>
-
         <select class="form-select" aria-label="multiple select example" id="inputdireccion" name="direccion" #direccion="ngModel" [(ngModel)]="empresasModelGetId.direccion">
           <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">{{departamento.nombre}}</option>
         </select>
+      </div>
+      <div class="mb-3">
+        <label for="inputTipo" class="form-label">Tipo Empresa</label>
+
+        <select (click)="otraOpcion()" class="form-select" aria-label="multiple select example" name="tipoEmpresa" [(ngModel)]="empresasModelGetId.tipoEmpresa">
+          <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
+          <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
+          <option value="">Otro...</option>
+        </select>
+
+        <div *ngIf="nuevaOpcion" class="mb-3">
+            <input type="text" class="form-control" name="tipoEmpresa" placeholder="Ingrese su tipo de empresa" [(ngModel)]="empresasModelGetId.tipoEmpresa">
+        </div>
 
       </div>
+
       <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
         Empresa</button>
     </form>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from 'src/app/services/usuario.service'
-import { environment } from 'src/environments/environment';
+import { environment, environment2 } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class EditarUsuarioComponent implements OnInit {
   public token;
   user;
+  nuevaOpcion:boolean = false;
 
   constructor(
     private userRest: UsuarioService,) {
@@ -18,9 +19,19 @@ export class EditarUsuarioComponent implements OnInit {
     }
 
   departamentos = environment.departamentos;
+  tipoEmpresas = environment2.tipoEmpresas;
 
   ngOnInit(): void {
     this.user = this.userRest.getIdentidad();
+  }
+
+  otraOpcion(){
+    if(this.user.tipoEmpresa == ''){
+      this.nuevaOpcion = true;
+    }else{
+      this.nuevaOpcion = false;
+    }
+
   }
 
   updateUser(){

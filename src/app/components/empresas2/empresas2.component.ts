@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { environment } from 'src/environments/environment';
+import { environment, environment2 } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +14,8 @@ export class Empresas2Component implements OnInit {
   public empresasModelGet: Usuario;
   public empresasModelGetId: Usuario;
   public token;
+  nuevaOpcion:boolean = false;
+  tipoEmpresas = environment2.tipoEmpresas;
 
   constructor(
     public _usuarioService: UsuarioService) {
@@ -45,6 +47,14 @@ export class Empresas2Component implements OnInit {
   }
 
 
+  otraOpcion(){
+    if(this.empresasModelGetId.tipoEmpresa == ''){
+      this.nuevaOpcion = true;
+    }else{
+      this.nuevaOpcion = false;
+    }
+
+  }
 
 
 
