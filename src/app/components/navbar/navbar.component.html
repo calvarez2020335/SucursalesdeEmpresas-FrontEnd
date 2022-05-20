@@ -21,7 +21,7 @@
           <a routerLink="/usuario/editarUsuario" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
             class="nav-item nav-link">Editar Perfil</a>
 
-          <a routerLink="/" (click)="VaciarToken()" *ngIf="_usuarioService.getIdentidad()"
+          <a routerLink="/login" (click)="VaciarToken()" *ngIf="_usuarioService.getIdentidad()"
             class="nav-item nav-link">Cerrar Sesión</a>
 
         </div>
