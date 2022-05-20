@@ -33,10 +33,25 @@
             </div>
 
 
-          <div class="col-md-12"><label class="labels">Telefono</label><input [(ngModel)]="user.telefono" name="telefono" type="text"
-              class="form-control" placeholder="enter email id" value=""></div>
-          <div class="col-md-12"><label class="labels">Tipo de Empresa</label><input [(ngModel)]="user.tipoEmpresa" name="tipoEmpresa" type="text"
-              class="form-control" placeholder="enter email id" value=""></div>
+          <div class="col-md-12">
+            <label class="labels">Telefono</label><input [(ngModel)]="user.telefono" name="telefono" type="text" class="form-control" placeholder="enter email id" value="">
+          </div>
+
+          <div class="col-md-12">
+
+            <label class="labels">Tipo de Empresa</label>
+            <select (click)="otraOpcion()" class="form-select" aria-label="multiple select example" name="tipoEmpresa" [(ngModel)]="user.tipoEmpresa">
+              <option value="" disabled selected hidden>Selecione Su Tipo De Empresa</option>
+              <option *ngFor="let tipo of tipoEmpresas" [value]="tipo.codigo">{{tipo.nombre}}</option>
+              <option value="">Otro...</option>
+            </select>
+
+            <div *ngIf="nuevaOpcion" class="col-md-12">
+                <input type="text" class="form-control" name="tipoEmpresa" placeholder="Ingrese su tipo de empresa" [(ngModel)]="user.tipoEmpresa">
+            </div>
+
+          </div>
+
         </div>
         <div class="mt-5 text-center"><button (click)="updateUser()" class="btn btn-primary profile-button" type="button">Save Profile</button>
         </div>
