@@ -42,9 +42,7 @@ export class ProductosComponent implements OnInit {
   postProductos(){
     this._productosService.IngresarProducto(this.productosModelPost, this.token).subscribe(
       (response)=> {
-        console.log(response);
         this.getProductos();
-
         this.productosModelPost.idEmpresa = '';
         this.productosModelPost.NombreProducto = '';
         this.productosModelPost.NombreProveedor = '';
@@ -59,7 +57,6 @@ export class ProductosComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -74,10 +71,8 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProducto(this.token).subscribe(
       (response)=>{
         this.productosModelGet = response.Productos;
-        console.log(this.productosModelGet)
       },
       (error)=>{
-        console.log(error);
       }
 
     )
@@ -89,7 +84,6 @@ export class ProductosComponent implements OnInit {
         this.productosModelGet = response.Productos;
       },
       (error)=>{
-        console.log(error);
       }
     )
   }
@@ -109,10 +103,8 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProductoId(idProducto,this.token).subscribe(
       (response)=>{
         this.productosModelGetId = response.Productos;
-        console.log(this.productosModelGetId);
       },
       (error)=> {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -126,11 +118,9 @@ export class ProductosComponent implements OnInit {
   putProductos(){
     this._productosService.editarProductos(this.productosModelGetId, this.token).subscribe(
       (response)=>{
-        console.log(response);
         this.getProductos()
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -142,7 +132,7 @@ export class ProductosComponent implements OnInit {
   }
 
   eliminarProductos(id){
-    
+
     Swal
     .fire({
         title: "¿Estas Seguro de Eliminar?",
@@ -159,7 +149,7 @@ export class ProductosComponent implements OnInit {
       (response)=>{
         this.getProductos()
         Swal.fire({
-      
+
           icon: 'success',
           title: 'eliminado exitosamente',
           showConfirmButton: false,
@@ -167,7 +157,6 @@ export class ProductosComponent implements OnInit {
         })
       },
       (error) => {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,

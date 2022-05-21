@@ -37,10 +37,8 @@ export class Empresas2Component implements OnInit {
       this._usuarioService.VerEmpresas(this.token).subscribe(
         (response)=>{
           this.empresasModelGet = response.Empresas;
-          console.log(this.empresasModelGet)
         },
         (error)=>{
-          console.log(error);
         }
       )
 
@@ -74,10 +72,9 @@ export class Empresas2Component implements OnInit {
           // Hicieron click en "Sí"
     this._usuarioService.EliminarEmpresas(id,this.token).subscribe(
       (response)=>{
-        console.log(response);
         this.getEmpresas();
         Swal.fire({
-      
+
           icon: 'success',
           title: 'eliminado exitosamente',
           showConfirmButton: false,
@@ -85,7 +82,6 @@ export class Empresas2Component implements OnInit {
         })
       },
       (error) => {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -107,10 +103,8 @@ export class Empresas2Component implements OnInit {
     this._usuarioService.obtenerEmpresaId(idEmpresa,this.token).subscribe(
       (response)=>{
         this.empresasModelGetId = response.Empresa;
-        console.log(this.empresasModelGetId);
       },
       (error)=> {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -124,11 +118,9 @@ export class Empresas2Component implements OnInit {
   putEmpresa(){
     this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
       (response)=> {
-        console.log(response);
         this.getEmpresas()
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,

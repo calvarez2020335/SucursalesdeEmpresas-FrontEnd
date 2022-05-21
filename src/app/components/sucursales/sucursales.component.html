@@ -1,201 +1,37 @@
 <app-navbar></app-navbar>
 
 <head>
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+  <link
+    href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
 <body>
   <div class="d-flex" id="content-wrapper">
-
     <div class="w-100">
-      <!-- Contenido de la pagina -->
+      <!-- Contenido de la pagina-->
 
-      <div id="content" class="bg-grey w-100">
-        <section class="bg-light py-3">
-          <div class="container">
-            <div class="row">
+      <!-- Mostar Sucursales Empresa
+        <section class="bg-mix py-3"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
 
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
-                  _usuarioService.getIdentidad().nombre }} </h1>
-                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Revisa
-                  tu información detallada</p>
-                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">
-                  Comenzemos a vizualizar!</p>
-              </div>
-
-              <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center">Descargar reporte</button>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        <!-- Mostar Datos Empresa -->
-        <section class="bg-mix py-3" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
-          <div class="container">
-            <div class="card rounded-0">
-              <div class="card-body">
-                <!-- Cifras-->
-                <section class="bg-mix py-3">
-                  <div class="container">
-                    <div class="card rounded-0">
-                      <div class="card-body">
-                        <div class="row">
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Telefono</h6>
-                              <h3 class="font-weight-bold">{{
-                                _usuarioService.getIdentidad().telefono }}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Direccion</h6>
-                              <h3 class="font-weight-bold">{{
-                                _usuarioService.getIdentidad().direccion }}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Tipo Empresa</h6>
-                              <h3 class="font-weight-bold">{{
-                                _usuarioService.getIdentidad().tipoEmpresa }}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <button class="btn btn-primary w-100 align-self-center"
-                              routerLink="/usuario/productos">Administrar mis productos</button>
-                          </div>
-
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-              </div>
-            </div>
-          </div>
-          <!-- Fin Contenido de la pagina-->
-        </section>
-
-        <!-- Segundo Cuadro-->
-        <section class="bg-light py-3">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
-                  Administra tus sucursales</h1>
-                <h1 class="font-weight-bold mb-0" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">
-                  Administra las Sucursales de</h1>
-                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">Revisa
-                  tu información detallada</p>
-                <p class="lead text-muted" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">Estas son
-                  las sucursales</p>
-              </div>
-
-              <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                  *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
-                  data-bs-target="#ModalAgregarSucursales">Agregar Sucursales</button>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-
-
-        <!--Agregar Sucursales-->
-        <div *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" class="modal fade "
-          id="ModalAgregarSucursales" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Agregar Sucursal</h5>
-                <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-              </div>
-              <div class="modal-body">
-
-                <form>
-                  <div class="mg-3">
-                    <label for="inputNombre" class="form-label">Nombre</label>
-                    <input type="text" id="inputNombre" class="form-control" name="nombre" #nombre="ngModel"
-                      [(ngModel)]="sucursalesModelPost.nombre">
-                  </div>
-                  <div class="mg-3">
-                    <label for="inputTelefono" class="form-label">Telefono</label>
-                    <input type="text" id="inputTelefono" class="form-control" name="telefono" #telefono="ngModel"
-                      [(ngModel)]="sucursalesModelPost.telefono">
-                  </div>
-                  <div class="mg-3">
-                    <label for="inputDireccion" class="form-label">Direccion</label>
-
-                    <select class="form-select" aria-label="multiple select example" id="inputDireccion" class="form-control" name="direccion" #direccion="ngModel" [(ngModel)]="sucursalesModelPost.direccion">
-                      <option value="" disabled selected hidden>Selecione un Municipio</option>
-                      <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
-                        {{departamento.nombre}}</option>
-                    </select>
-
-                  </div>
-                </form>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="postSucursales()">Agregar
-                  Sucursales</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mostar Sucursales Empresa -->
-        <section class="bg-mix py-3" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
           <div class="container">
             <div class="card rounded-0" *ngIf="load">
               <div class="card-body" *ngFor="let su of sucursalesModelGet">
-                <!-- Cifras -->
+                <!-- Cifras
                 <section class="bg-mix py-3">
                   <div class="container">
                     <div class="card rounded-0">
-                      <span class="btn position-absolute top-0 start-100 translate-middle badge  text-white"
-                      style="background-color: #0D6EFD "
-                        (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/productosSucursales', su._id]">
+                      <span class="btn position-absolute top-0 start-100 translate-middle badge bg-info text-dark" (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/productosSucursales', su._id]">
                         Administrar productos sucursal
                       </span>
                       <div class="card-body">
                         <div class="row">
 
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Nombre</h6>
-                              <h3 class="font-weight-bold">{{su.nombre}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Telefono</h6>
-                              <h3 class="font-weight-bold">{{su.telefono}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Direccion</h6>
-                              <h3 class="font-weight-bold">{{su.direccion}}</h3>
-                            </div>
-                          </div>
 
                           <div class="col-lg-3 col-md-4 d-flex">
                             <button class="btn btn-primary w-100 align-self-center"
@@ -210,12 +46,10 @@
                           </div>
                           <div class="col-lg-3 col-md-4 d-flex">
                             <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                              data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">Enviar
-                              Producto</button>
+                            data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">Enviar Producto</button>
                           </div>
                           <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center" (click)="getSucursalesId(su._id)"
-                              [routerLink]="['/usuario/graficas', su._id]">Ver grafica</button>
+                            <button class="btn btn-primary w-100 align-self-center" (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/graficas', su._id]">Ver grafica</button>
                           </div>
                         </div>
                       </div>
@@ -225,174 +59,426 @@
               </div>
             </div>
           </div>
-          <!-- Fin Contenido de la pagina -->
+          <!-- Fin Contenido de la pagina
         </section>
 
 
+  </div>-->
 
+      <!-- Mostar Sucursales Admin-->
+      <section
+        class="bg-mix py-3"
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+      >
+        <div class="container">
+          <div class="card rounded-0">
+            <div class="card-body" *ngFor="let su of sucursalesModelGet">
+              <!-- Cifras-->
+              <section class="bg-mix py-3">
+                <div class="container">
+                  <div class="card rounded-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                          <div class="mx-auto">
+                            <h6 class="text-muted">Nombre</h6>
+                            <h3 class="font-weight-bold">{{ su.nombre }}</h3>
+                          </div>
+                        </div>
 
+                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                          <div class="mx-auto">
+                            <h6 class="text-muted">Telefono</h6>
+                            <h3 class="font-weight-bold">{{ su.telefono }}</h3>
+                          </div>
+                        </div>
 
-        <!-- Mostar Sucursales Admin -->
-        <section class="bg-mix py-3" *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'">
+                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                          <div class="mx-auto">
+                            <h6 class="text-muted">Direccion</h6>
+                            <h3 class="font-weight-bold">{{ su.direccion }}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Contenido de la pagina-->
+      </section>
+
+      <!-- Mostar Informacion Usuario-->
+      <section
+        class="light"
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
+      >
+        <div class="container py-2">
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"
+            *ngIf="_usuarioService.getIdentidad()"
+          >
+            Bienvenido {{ _usuarioService.getIdentidad().nombre }}
+          </div>
+
+          <article class="postcard light blue">
+            <a class="postcard__img_link" href="#">
+              <img
+                class="postcard__img"
+                src="https://picsum.photos/501/500"
+                alt="Image Title"
+              />
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title blue">
+                <a href="#"
+                  >Nombre Empresa:
+                  {{ _usuarioService.getIdentidad().nombre }}</a
+                >
+              </h1>
+              <div class="postcard__subtitle small">
+                <time datetime="2020-05-25 12:00:00">
+                  <i class="fas fa-calendar-alt mr-2"></i>
+                  {{ _usuarioService.getIdentidad().email }}
+                </time>
+              </div>
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">
+                Telefono: {{ _usuarioService.getIdentidad().telefono }}<br />
+                Direccion: {{ _usuarioService.getIdentidad().direccion }}<br />
+                Tipo Empresa: {{ _usuarioService.getIdentidad().tipoEmpresa }}
+              </div>
+              <ul class="postcard__tagbox">
+                <li class="tag__item" routerLink="/usuario/productos">
+                  <i class="fas fa-tag mr-2"></i>Agregar Productos a mi Empresa
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!--Mostrar informacion sucursales-->
+      <section
+        class="light"
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
+      >
+        <div class="container py-2" *ngIf="load">
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
+            Revisa tus Sucursales
+          </div>
+
           <div class="container">
-            <div class="card rounded-0">
-              <div class="card-body" *ngFor="let su of sucursalesModelGet">
-                <!-- Cifras -->
-                <section class="bg-mix py-3">
-                  <div class="container">
-                    <div class="card rounded-0">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Nombre</h6>
-                              <h3 class="font-weight-bold">{{su.nombre}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Telefono</h6>
-                              <h3 class="font-weight-bold">{{su.telefono}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Direccion</h6>
-                              <h3 class="font-weight-bold">{{su.direccion}}</h3>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button
+                  class="btn btn-primary w-100 align-self-center"
+                  data-bs-toggle="modal"
+                  *ngIf="token &&_usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" data-bs-target="#ModalAgregarSucursales">
+                  Agregar Sucursales
+                </button>
               </div>
             </div>
           </div>
-          <!-- Fin Contenido de la pagina -->
-        </section>
 
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"
+            *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+          >
+            Comenzemos a vizualizar!
+          </div>
+          <br />
 
+          <article class="postcard light green"></article>
 
-      </div>
+          <!--FOR AQUI-->
+          <article
+            class="postcard light green"
+            *ngFor="let su of sucursalesModelGet"
+          >
+            <a class="postcard__img_link" href="#">
+              <img
+                class="postcard__img"
+                src="https://picsum.photos/500/501"
+                alt="Image Title"
+              />
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title green">
+                <a href="#">{{su.nombre}}</a>
+              </h1>
+              <div class="postcard__subtitle small">
+              </div>
+
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">
+                Telefono:  {{su.telefono}} <br/>
+                Direccion: {{su.direccion}}
+              </div>
+              <ul class="postcard__tagbox">
+                <li class="tag__item play green" (click)="getSucursalesId(su._id)"
+                [routerLink]="['/usuario/productosSucursales', su._id]">
+                  <span class="fas fa-tag mr-2" ></span>Administrar productos sucursal
+                </li>
+                <li class="tag__item play green" (click)="eliminarSucursales(su._id)">
+                  <i class="fas fa-clock mr-2"></i>Eliminar Sucursal
+                </li>
+                <li class="tag__item play green" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                (click)="getSucursalesId(su._id)">
+                  <i class="fas fa-clock mr-2"></i>Editar Sucursal
+                </li>
+                <li class="tag__item play green" data-bs-toggle="modal"
+                data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">
+                  <a><i class="fas fa-play mr-2"></i>Enviar
+                    Producto</a>
+                </li>
+                <li class="tag__item play green" (click)="getSucursalesId(su._id)"
+                [routerLink]="['/usuario/graficas', su._id]">
+                  <a ><i class="fas fa-play mr-2"></i>Ver grafica</a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
-
-
   </div>
 
-  <!--Enviar productos a Sucursales-->
-  <div class="modal fade " id="ModalEnviarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- OffCanvas Editar Sucursal-->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        Editar Sucursal
+      </h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="inputnombre" class="form-label">Nombre Sucursal</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputnombre"
+            name="nombre"
+            #nombre="ngModel"
+            [(ngModel)]="sucursalesModelGetId.nombre"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputtelefono" class="form-label">Telefono</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputtelefono"
+            name="telefono"
+            #telefono="ngModel"
+            [(ngModel)]="sucursalesModelGetId.telefono"
+          />
+        </div>
+        <div class="mb-3">
+          <!--Aqui select-->
+          <label for="inputdireccion" class="form-label">Direccion</label>
+          <select class="form-select" aria-label="multiple select example" id="Dire" name="direccion" #direccion="ngModel"
+            [(ngModel)]="sucursalesModelGetId.direccion">
+              <option value="" disabled selected hidden>Selecione un Municipio</option>
+              <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
+                {{departamento.nombre}}</option>
+            </select>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success"
+          (click)="putSucursales()"
+          data-bs-dismiss="offcanvas"
+        >
+          Editar Sucursales
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Agregar Sucursal-->
+  <div
+    *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
+    class="modal fade"
+    id="ModalAgregarSucursales"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Sucursal</h5>
+          <button
+            type="button"
+            class="close btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            X
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mg-3">
+              <label for="inputNombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                id="inputNombre"
+                class="form-control"
+                name="nombre"
+                #nombre="ngModel"
+                [(ngModel)]="sucursalesModelPost.nombre"
+              />
+            </div>
+            <div class="mg-3">
+              <label for="inputTelefono" class="form-label">Telefono</label>
+              <input
+                type="text"
+                id="inputTelefono"
+                class="form-control"
+                name="telefono"
+                #telefono="ngModel"
+                [(ngModel)]="sucursalesModelPost.telefono"
+              />
+            </div>
+            <div class="mg-3">
+              <label for="inputDireccion" class="form-label">Direccion</label>
+
+              <select
+                class="form-select"
+                aria-label="multiple select example"
+                id="inputDireccion"
+                class="form-control"
+                name="direccion"
+                #direccion="ngModel"
+                [(ngModel)]="sucursalesModelPost.direccion"
+              >
+                <option value="" disabled selected hidden>
+                  Selecione un Municipio
+                </option>
+                <option
+                  *ngFor="let departamento of departamentos"
+                  [value]="departamento.codigo"
+                >
+                  {{ departamento.nombre }}
+                </option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="close" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn offset"
+            data-bs-dismiss="modal"
+            (click)="postSucursales()"
+          >
+            Agregar Sucursales
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enviar productos a Sucursales -->
+  <div
+    class="modal fade"
+    id="ModalEnviarProducto"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Enviar Producto</h5>
-          <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+          <button
+            type="button"
+            class="close btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            X
+          </button>
         </div>
         <div class="modal-body">
-
           <form>
             <div class="mg-3">
-              <label for="inputNombreProductoSucursal" class="form-label">Nombre Producto</label>
+              <label for="inputNombreProductoSucursal" class="form-label"
+                >Nombre Producto</label
+              >
 
-              <select class="form-select" aria-label="multiple select example" id="inputNombreProductoSucursal"
-                class="form-control" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel"
-                [(ngModel)]="productoModelPost.NombreProductoSucursal">
-
-                <option *ngFor="let su of productosModelGet" [value]="su.NombreProducto">{{su.NombreProducto}}</option>
-
+              <select
+                class="form-select"
+                aria-label="multiple select example"
+                id="inputNombreProductoSucursal"
+                class="form-control"
+                name="NombreProductoSucursal"
+                #NombreProductoSucursal="ngModel"
+                [(ngModel)]="productoModelPost.NombreProductoSucursal"
+              >
+                <option
+                  *ngFor="let su of productosModelGet"
+                  [value]="su.NombreProducto"
+                >
+                  {{ su.NombreProducto }}
+                </option>
               </select>
-
             </div>
             <div class="mg-3">
               <label for="inputStockSurcursal" class="form-label">Stock</label>
-              <input type="number" id="inputStockSurcursal" class="form-control" name="StockSurcursal"
-                #StockSurcursal="ngModel" [(ngModel)]="productoModelPost.StockSurcursal">
+              <input
+                type="number"
+                id="inputStockSurcursal"
+                class="form-control"
+                name="StockSurcursal"
+                #StockSurcursal="ngModel"
+                [(ngModel)]="productoModelPost.StockSurcursal"
+              />
             </div>
           </form>
-
         </div>
         <div class="modal-footer">
-          <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="putProductosSucursal()">Enviar
-            Productos</button>
+          <button type="button" class="close" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn offset"
+            data-bs-dismiss="modal"
+            (click)="putProductosSucursal()"
+          >
+            Enviar Productos
+          </button>
         </div>
       </div>
     </div>
   </div>
-
-
 </body>
-
-<!-- OffCanvas Editar Sucursal -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <form>
-
-      <div class="mb-3">
-        <label for="inputnombre" class="form-label">Nombre Sucursal</label>
-        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
-          [(ngModel)]="sucursalesModelGetId.nombre">
-      </div>
-      <div class="mb-3">
-        <label for="inputtelefono" class="form-label">Telefono</label>
-        <input type="text" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
-          [(ngModel)]="sucursalesModelGetId.telefono">
-      </div>
-      <div class="mb-3">
-        <label for="inputdireccion" class="form-label">Direccion</label>
-
-        <select class="form-select" aria-label="multiple select example" id="inputDireccion" class="form-control" name="direccion" #direccion="ngModel" [(ngModel)]="sucursalesModelGetId.direccion">
-          <option value="" disabled selected hidden>Selecione un Municipio</option>
-          <option *ngFor="let departamento of departamentos" [value]="departamento.codigo">
-            {{departamento.nombre}}</option>
-        </select>
-
-      </div>
-      <button type="submit" class="btn btn-success" (click)="putSucursales()" data-bs-dismiss="offcanvas">Editar
-        Sucursales</button>
-    </form>
-  </div>
-</div>
-
-<!-- OffCanvas Editar Usuario -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <form>
-
-      <div class="mb-3">
-        <label for="inputnombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel"
-          [(ngModel)]="empresasModelGetId.nombre">
-      </div>
-      <div class="mb-3">
-        <label for="inputemail" class="form-label">email</label>
-        <input type="text" class="form-control" id="inputemailr" name="email" #email="ngModel"
-          [(ngModel)]="empresasModelGetId.email">
-      </div>
-      <div class="mb-3">
-        <label for="inputtelefono" class="form-label">telefono</label>
-        <input type="number" class="form-control" id="inputtelefono" name="telefono" #telefono="ngModel"
-          [(ngModel)]="empresasModelGetId.telefono">
-      </div>
-      <div class="mb-3">
-        <label for="inputdireccion" class="form-label">direccion</label>
-        <input type="text" class="form-control" id="inputdireccion" name="direccion" #direccion="ngModel"
-          [(ngModel)]="empresasModelGetId.direccion">
-      </div>
-      <button type="submit" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar
-        Empresa</button>
-    </form>
-  </div>
-</div>
