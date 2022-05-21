@@ -41,9 +41,7 @@ export class GraficasComponent implements OnInit {
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-
       this.getProductoSucursal(dataRuta.get('idSurcursal'))
-
     })
   }
 
@@ -62,7 +60,6 @@ export class GraficasComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
       }
     )
   };

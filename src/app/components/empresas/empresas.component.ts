@@ -44,7 +44,6 @@ export class EmpresasComponent implements OnInit {
         this.empleadosModelPost.departamento = '';
       },
       (error) => {
-        console.log(<any>error);
       }
     )
   }
@@ -55,7 +54,6 @@ export class EmpresasComponent implements OnInit {
         this.empleadosModelGet = response.Empleados;
       },
       (error) => {
-        console.log(<any>error);
       }
     )
   }

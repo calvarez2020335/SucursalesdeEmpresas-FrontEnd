@@ -36,28 +36,19 @@ export class ProductosSucursalesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
       this._activatedRoute.paramMap.subscribe((dataRuta)=>{
-
         this.getProductoSucursal(dataRuta.get('idSurcursal'))
         this.elId = dataRuta.get('idSurcursal')
 
       })
-
   }
-
-
 
   getProductoSucursal(idSurcursal){
     this._productosService.ObtenerProductoSucursal(idSurcursal, this.token).subscribe(
       (response)=>{
-
         this.productosModelGet = response.Productos;
-
       },
       (error)=>{
-        console.log(<any>error);
       }
     )
   };
@@ -65,12 +56,9 @@ export class ProductosSucursalesComponent implements OnInit {
   getProductoStockMayorSucursal(idSurcursal){
     this._productosService.ObtenerProductoStokMayorSucursal(this.elId, this.token).subscribe(
       (response)=>{
-
         this.productosModelGet = response.Productos;
-
       },
       (error)=>{
-        console.log(<any>error);
       }
     )
 
@@ -80,12 +68,9 @@ export class ProductosSucursalesComponent implements OnInit {
   getProductoStockMenorSucursal(idSurcursal){
     this._productosService.ObtenerProductoStokMenorSucursal(this.elId, this.token).subscribe(
       (response)=>{
-
         this.productosModelGet = response.Productos;
-
       },
       (error)=>{
-        console.log(<any>error);
       }
     )
 
@@ -95,27 +80,19 @@ export class ProductosSucursalesComponent implements OnInit {
   getProductoMasVendidoSucursal(idSurcursal){
     this._productosService.ObtenerProductoMasVendidoSucursal(this.elId, this.token).subscribe(
       (response)=>{
-
         this.productosModelGet = response.Productos;
-
       },
       (error)=>{
-        console.log(<any>error);
       }
     )
-
-
   }
 
   getProductosSucursalesId(idProducto ){
     this._productosService.obtenerProductosSucursalesId(idProducto,this.token).subscribe(
       (response)=>{
         this.productosSucursalesModelGetId = response.Productos;
-        console.log(this.productosSucursalesModelGetId)
         this.productosSucursalesModelGetId.StockSurcursal = 0;
-
       },(error)=>{
-        console.log(<any>error);
       Swal.fire({
         icon: 'error',
         title: error.error.mensaje,
@@ -138,7 +115,6 @@ export class ProductosSucursalesComponent implements OnInit {
         })
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,

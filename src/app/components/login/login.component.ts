@@ -33,14 +33,10 @@ export class LoginComponent implements OnInit {
     return new Promise<any>((resolve, reject) => {
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
         (response)=>{
-
           localStorage.setItem("token", response.token)
           resolve(response);
         },
         (error)=>{
-          console.log(<any>error);
-
-
         }
       )
     })
@@ -49,14 +45,9 @@ export class LoginComponent implements OnInit {
   getToken(){
     this._usuarioService.login(this.usuarioModel, "true").subscribe(
       (response)=>{
-        console.log(response.token);
         localStorage.setItem("token", response.token)
-
       },
       (error)=>{
-        console.log(<any>error);
-
-
       }
     )
   }
@@ -64,16 +55,10 @@ export class LoginComponent implements OnInit {
   login(){
     this._usuarioService.login(this.usuarioModel).subscribe(
       (response)=>{
-
         this.getTokenPromesa().then(respuesta => {
-
-          console.log(response.usuario);
         localStorage.setItem('identidad', JSON.stringify(response.usuario))
-
         this._router.navigate([''])
-
         })
-
         Swal.fire({
           icon: 'success',
           title: 'Logeado correctamente',
@@ -82,7 +67,6 @@ export class LoginComponent implements OnInit {
         })
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,

@@ -43,7 +43,6 @@ export class ProductosComponent implements OnInit {
     this._productosService.IngresarProducto(this.productosModelPost, this.token).subscribe(
       (response)=> {
         this.getProductos();
-
         this.productosModelPost.idEmpresa = '';
         this.productosModelPost.NombreProducto = '';
         this.productosModelPost.NombreProveedor = '';
@@ -58,7 +57,6 @@ export class ProductosComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -75,7 +73,6 @@ export class ProductosComponent implements OnInit {
         this.productosModelGet = response.Productos;
       },
       (error)=>{
-        console.log(error);
       }
 
     )
@@ -87,7 +84,6 @@ export class ProductosComponent implements OnInit {
         this.productosModelGet = response.Productos;
       },
       (error)=>{
-        console.log(error);
       }
     )
   }
@@ -109,7 +105,6 @@ export class ProductosComponent implements OnInit {
         this.productosModelGetId = response.Productos;
       },
       (error)=> {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -126,7 +121,6 @@ export class ProductosComponent implements OnInit {
         this.getProductos()
       },
       (error)=>{
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -138,12 +132,31 @@ export class ProductosComponent implements OnInit {
   }
 
   eliminarProductos(id){
+
+    Swal
+    .fire({
+        title: "¿Estas Seguro de Eliminar?",
+        icon: 'warning',
+        iconColor: "#0D6EFD" ,
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        confirmButtonColor: "#0D6EFD",
+        cancelButtonText: "Cancelar",
+    }).then(resultado => {
+      if (resultado.value) {
+          // Hicieron click en "Sí"
     this._productosService.eliminarProductos(id, this.token).subscribe(
       (response)=>{
         this.getProductos()
+        Swal.fire({
+
+          icon: 'success',
+          title: 'eliminado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
-      (error)=>{
-        console.log(<any>error);
+      (error) => {
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,
@@ -152,7 +165,12 @@ export class ProductosComponent implements OnInit {
         })
       }
     )
+} else {
+    // Dijeron que no
 
+}
+});
   }
+
 
 }
