@@ -53,7 +53,6 @@ export class RegistrarComponent implements OnInit {
   postRegistarEmpresa(){
     this._usuarioService.RegistrarEmpresa(this.usuarioModelPost, this.token).subscribe(
       (response) => {
-        console.log(response);
 
         this.usuarioModelPost._id = '';
         this.usuarioModelPost.nombre = '';

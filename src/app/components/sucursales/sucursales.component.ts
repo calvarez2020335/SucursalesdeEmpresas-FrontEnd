@@ -187,7 +187,6 @@ export class SucursalesComponent implements OnInit {
   putSucursales() {
     this._sucursalesService.editarSucursales(this.sucursalesModelGetId, this.token).subscribe(
       (response) => {
-        console.log(response);
         this.getSucursales()
       }, (error) => {
         console.log(<any>error);
@@ -219,7 +218,7 @@ export class SucursalesComponent implements OnInit {
             (response) => {
               this.getSucursales()
               Swal.fire({
-      
+
                 icon: 'success',
                 title: 'eliminado exitosamente',
                 showConfirmButton: false,
@@ -242,14 +241,13 @@ export class SucursalesComponent implements OnInit {
       }
   });
 
-    
+
   }
 
   getEmpresasId(idEmpresa) {
     this._usuarioService.obtenerEmpresaId(idEmpresa, this.token).subscribe(
       (response) => {
         this.empresasModelGetId = response.Empresa;
-        console.log(this.empresasModelGetId);
       },
       (error) => {
         console.log(<any>error);
@@ -266,7 +264,6 @@ export class SucursalesComponent implements OnInit {
   putEmpresa() {
     this._usuarioService.editarEmpresa(this.empresasModelGetId, this.token).subscribe(
       (response) => {
-        console.log(response);
         this.getEmpresas()
       },
       (error) => {
@@ -286,7 +283,6 @@ export class SucursalesComponent implements OnInit {
     this._usuarioService.VerEmpresas(this.token).subscribe(
       (response) => {
         this.empresasModelGet = response.Empresas;
-        console.log(this.empresasModelGet)
       },
       (error) => {
         console.log(error);
