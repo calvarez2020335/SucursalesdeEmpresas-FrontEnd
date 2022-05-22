@@ -321,16 +321,16 @@ h6 {
   width: 80px;
   height: 80px;
   left: 5%;
-  animation-duration: 3s;
-  animation-delay: 3s;
+  animation-duration: 6s;
+
 }
 
 .burbuja:nth-child(2) {
   width: 80px;
   height: 80px;
   left: 10%;
-  animation-duration: 4s;
-  animation-delay: 4s;
+  animation-duration: 2s;
+
 }
 
 .burbuja:nth-child(3) {
@@ -338,7 +338,7 @@ h6 {
   height: 80px;
   left: 15%;
   animation-duration: 3s;
-  animation-delay: 5s;
+
 }
 
 .burbuja:nth-child(4) {
@@ -347,7 +347,7 @@ h6 {
   left: 20%;
 
   animation-duration: 4s;
-  animation-delay: 3s;
+
 }
 
 
@@ -356,8 +356,8 @@ h6 {
   height: 80px;
   left: 75%;
 
-  animation-duration: 2s;
-  animation-delay: 2s;
+  animation-duration: 5s;
+
 }
 
 .burbuja:nth-child(6) {
@@ -365,16 +365,16 @@ h6 {
   height: 80px;
   left: 80%;
 
-  animation-duration: 5s;
-  animation-delay: 4s;
+  animation-duration: 1s;
+
 }
 .burbuja:nth-child(7) {
   width: 80px;
   height: 80px;
   left: 85%;
 
-  animation-duration: 5s;
-  animation-delay: 5s;
+  animation-duration: 2s;
+
 }
 
 .burbuja:nth-child(8) {
@@ -383,7 +383,7 @@ h6 {
   left: 90%;
 
   animation-duration: 3s;
-  animation-delay: 4s;
+
 }
 
 .burbuja:nth-child(9) {
@@ -391,16 +391,16 @@ h6 {
   height: 150px;
   left: 40%;
 
-  animation-duration: 3s;
-  animation-delay: 4s;
+  animation-duration: 4s;
+
 }
 .burbuja:nth-child(10) {
   width: 200px;
   height: 200px;
   left: 60%;
 
-  animation-duration: 2s;
-  animation-delay: 5s;
+  animation-duration: 5s;
+
 }
 
 @keyframes burbujas {

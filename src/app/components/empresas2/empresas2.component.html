@@ -3,6 +3,7 @@
 <head>
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -56,7 +57,7 @@
 
 
           <div class="col-lg-3 col-md-4 d-flex ">
-            <button class="btn btn-primary w-100 align-self-center" routerLink="/registrar">Agregar Empresa</button>
+            <button class="btn btn-primary w-100 align-self-center bi bi-plus-square" routerLink="/registrar"> Agregar Empresa</button>
           </div>
 
 
@@ -83,23 +84,24 @@
 
               <div class="postcard__bar"></div>
               <div class="postcard__preview-txt">
-                Telefono:  {{em.telefono}} <br/>
-                Direccion: {{em.direccion}} <br/>
-                Tipo de Empresa: {{em.tipoEmpresa}}
+                <i class="bi bi-telephone-outbound-fill"> Telefono:  {{em.telefono}}</i> <br/>
+                <i class="bi bi-geo-alt"> Direccion: {{em.direccion}}</i> <br/>
+                <i class="bi bi-building"> Tipo de Empresa: {{em.tipoEmpresa}}</i>
+
               </div>
               <ul class="postcard__tagbox">
 
                 <li class="tag__item play green" (click)="eliminarEmpresas(em._id)">
-                  <i class="fas fa-clock mr-2"></i>Eliminar Empresa
+                  <i class="bi bi-trash3-fill mr-2"></i> Eliminar Empresa
                 </li>
                 <li class="tag__item play green" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
                 (click)="getEmpresasId(em._id)">
-                  <i class="fas fa-clock mr-2"></i>Editar Empresa
+                  <i class="bi bi-pencil-square mr-2"></i> Editar Empresa
                 </li>
                 <li class="tag__item play green" [routerLink]="['/admin/sucursales/', em._id]"
                 >
-                  <a><i class="fas fa-play mr-2"></i>Ver Sucursales</a>
+                  <a><i class="bi bi-eye-fill mr-2"></i> Ver Sucursales</a>
                 </li>
               </ul>
             </div>
