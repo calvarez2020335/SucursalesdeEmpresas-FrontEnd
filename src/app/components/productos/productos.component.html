@@ -1,40 +1,30 @@
-<app-navbar></app-navbar>
-
 <head>
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 </head>
 
 <body>
   <div class="d-flex" id="content-wrapper">
-
     <div class="w-100">
       <!-- Contenido de la pagina -->
-
       <div id="content" class="bg-grey w-100">
         <section class="bg-light py-3">
           <div class="container">
             <div class="row">
 
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
-                  _usuarioService.getIdentidad().nombre }} </h1>
-                <p class="lead text-muted">Vista Productos</p>
-              </div>
-
               <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                  data-bs-target="#ModalAgregarProductos">Agregar Productos</button>
+                <button class="btn btn-primary bi bi-arrow-return-left w-10 align-self-center"
+                  routerLink="/usuario/sucursales"></button>
               </div>
-
-              <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center"
-                routerLink="/usuario/sucursales">Regresar a Sucursales</button>
+              <div class="h1 text-center text-dark" id="pageHeaderTitle" *ngIf="_usuarioService.getIdentidad()">
+                {{ _usuarioService.getIdentidad().nombre }} administra tus productos
               </div>
 
             </div>
           </div>
         </section>
+
         <!--Agregar Produto-->
         <div class="modal fade " id="ModalAgregarProductos" data-bs-backdrop="static" data-bs-keyboard="false"
           tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -60,8 +50,8 @@
 
                   <div class="mg-3">
                     <label for="inputStock" class="form-label">Stock</label>
-                    <input type="number" min="1" max="999" id="inputStock" class="form-control" name="Stock" #direccion="ngModel"
-                      [(ngModel)]="productosModelPost.Stock">
+                    <input type="number" min="1" max="999" id="inputStock" class="form-control" name="Stock"
+                      #direccion="ngModel" [(ngModel)]="productosModelPost.Stock">
                   </div>
 
                 </form>
@@ -76,72 +66,60 @@
           </div>
         </div>
 
+
         <!--Busquedas producto-->
         <div class="container">
-          <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Nombre" aria-label="Search">
-          <input [(ngModel)]="buscarPro" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Proveedor" aria-label="Search">
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMayor()">
+          <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search"
+            placeholder="Buscar Por Nombre" aria-label="Search">
+          <input [(ngModel)]="buscarPro" class="px-2 search justify-content-center" type="search"
+            placeholder="Buscar Por Proveedor" aria-label="Search">
+          <button type="button" class="btn btn-success position-relative bi bi-arrow-up" (click)="getProductosStokMayor()">
             Ordenar por mayor stock
           </button>
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMenor()">
+          <button type="button" class="btn-danger position-relative bi bi-arrow-down" (click)="getProductosStokMenor()">
             Ordenar por menor stock
           </button>
         </div>
 
 
+
         <!-- Mostar Productos -->
-        <section class="bg-mix py-3">
+        <section class=" py-3">
           <div class="container">
-            <div class="card rounded-0">
-              <div class="card-body" *ngFor="let su of productosModelGet | buscarEmpresa:buscarProducto | buscarEmpresaProveedor:buscarPro">
-                <!-- Cifras-->
-                <section class="bg-mix py-3">
-                  <div class="container">
-                    <div class="card rounded-0">
-                      <div class="card-body">
-                        <div class="row">
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Nombre Producto</h6>
-                              <h3 class="font-weight-bold">{{su.NombreProducto}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Nombre Proveedor</h6>
-                              <h3 class="font-weight-bold">{{su.NombreProveedor}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Stock</h6>
-                              <h3 class="font-weight-bold">{{su.Stock}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center"
-                              (click)="eliminarProductos(su._id)">Eliminar Producto</button>
-                          </div>
-
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
-                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                              (click)="getProductosId(su._id)">
-                              Editar
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-              </div>
+            <div class="col-lg-3 col-md-4 d-flex">
+              <button class="btn btn-primary w-100 align-self-center bi bi-plus-square-fill" data-bs-toggle="modal"
+                data-bs-target="#ModalAgregarProductos"> Agregar Productos</button>
             </div>
+
+            <article class="postcard light green" style="width: 40rem;"
+              *ngFor="let su of productosModelGet | buscarEmpresa:buscarProducto | buscarEmpresaProveedor:buscarPro">
+              <a class="postcard__img_link">
+                <img class="postcard__img" src="https://picsum.photos/500/501" alt="Image Title" />
+              </a>
+              <div class="postcard__text t-dark">
+                <h1 class="postcard__title green">
+                  <a >{{su.NombreProducto}}</a>
+                </h1>
+                <div class="postcard__subtitle small">
+                </div>
+
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">
+                  Nombre Proveedor: {{su.NombreProveedor}} <br />
+                  Stock: {{su.Stock}} <br />
+
+                </div>
+                <ul class="postcard__tagbox">
+                  <li class="tag__item play green" (click)="eliminarProductos(su._id)">
+                    <i class="bi bi-trash3-fill mr-2"></i> Eliminar Producto
+                  </li>
+                  <li class="tag__item play green" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample" (click)="getProductosId(su._id)">
+                    <i class="bi bi-pencil-square mr-2"></i> Editar Producto
+                  </li>
+                </ul>
+              </div>
+            </article>
           </div>
           <!-- Fin Contenido de la pagina-->
         </section>
@@ -154,38 +132,34 @@
 
   </div>
 
-
-
-
 </body>
 
- <!-- OffCanvas Editar Producto -->
- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
- aria-labelledby="offcanvasExampleLabel">
- <div class="offcanvas-header">
-   <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
-   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
- </div>
- <div class="offcanvas-body">
-   <form>
+<!-- OffCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
 
-     <div class="mb-3">
-       <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
-       <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto" #NombreProducto="ngModel"
-         [(ngModel)]="productosModelGetId.NombreProducto">
-     </div>
-     <div class="mb-3">
-       <label for="inputNombreProveedor" class="form-label">Nombre Proveedor</label>
-       <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor" #NombreProveedor="ngModel"
-         [(ngModel)]="productosModelGetId.NombreProveedor">
-     </div>
-     <div class="mb-3">
-       <label for="inputStock" class="form-label">Stock</label>
-       <input type="number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
-         [(ngModel)]="productosModelGetId.Stock">
-     </div>
-     <button type="submit" class="btn btn-success" (click)="putProductos()" data-bs-dismiss="offcanvas">Editar
-       Producto</button>
-   </form>
- </div>
+      <div class="mb-3">
+        <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
+        <input type="text" class="form-control" id="inputNombreProducto" name="NombreProducto" #NombreProducto="ngModel"
+          [(ngModel)]="productosModelGetId.NombreProducto">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombreProveedor" class="form-label">Nombre Proveedor</label>
+        <input type="text" class="form-control" id="inputNombreProveedor" name="NombreProveedor"
+          #NombreProveedor="ngModel" [(ngModel)]="productosModelGetId.NombreProveedor">
+      </div>
+      <div class="mb-3">
+        <label for="inputStock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="inputStock" name="Stock" #Stock="ngModel"
+          [(ngModel)]="productosModelGetId.Stock">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="putProductos()" data-bs-dismiss="offcanvas">Editar
+        Producto</button>
+    </form>
+  </div>
 </div>

@@ -71,7 +71,6 @@ export class RegistrarComponent implements OnInit {
 
       },
       (error) => {
-        console.log(<any>error);
         Swal.fire({
           icon: 'error',
           title: error.error.mensaje,

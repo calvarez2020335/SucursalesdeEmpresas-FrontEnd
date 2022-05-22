@@ -9,106 +9,96 @@
     href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 </head>
 
 <body>
   <div class="d-flex" id="content-wrapper">
     <div class="w-100">
-      <!-- Contenido de la pagina-->
 
-      <!-- Mostar Sucursales Empresa
-        <section class="bg-mix py-3"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
-
-          <div class="container">
-            <div class="card rounded-0" *ngIf="load">
-              <div class="card-body" *ngFor="let su of sucursalesModelGet">
-                <!-- Cifras
-                <section class="bg-mix py-3">
-                  <div class="container">
-                    <div class="card rounded-0">
-                      <span class="btn position-absolute top-0 start-100 translate-middle badge bg-info text-dark" (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/productosSucursales', su._id]">
-                        Administrar productos sucursal
-                      </span>
-                      <div class="card-body">
-                        <div class="row">
-
-
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center"
-                              (click)="eliminarSucursales(su._id)">Eliminar Sucursal</button>
-                          </div>
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
-                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                              (click)="getSucursalesId(su._id)">
-                              Editar
-                            </button>
-                          </div>
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                            data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">Enviar Producto</button>
-                          </div>
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center" (click)="getSucursalesId(su._id)" [routerLink]="['/usuario/graficas', su._id]">Ver grafica</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-          <!-- Fin Contenido de la pagina
-        </section>
-
-
-  </div>-->
 
       <!-- Mostar Sucursales Admin-->
       <section
-        class="bg-mix py-3"
+        class="light"
         *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
       >
-        <div class="container">
-          <div class="card rounded-0">
-            <div class="card-body" *ngFor="let su of sucursalesModelGet">
-              <!-- Cifras-->
-              <section class="bg-mix py-3">
-                <div class="container">
-                  <div class="card rounded-0">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                          <div class="mx-auto">
-                            <h6 class="text-muted">Nombre</h6>
-                            <h3 class="font-weight-bold">{{ su.nombre }}</h3>
-                          </div>
-                        </div>
+        <div class="container py-2">
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"
+            *ngIf="_usuarioService.getIdentidad()"
+          >
+            Bienvenido {{ _usuarioService.getIdentidad().nombre }}
+          </div>
 
-                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                          <div class="mx-auto">
-                            <h6 class="text-muted">Telefono</h6>
-                            <h3 class="font-weight-bold">{{ su.telefono }}</h3>
-                          </div>
-                        </div>
+        </div>
+        <section
+        class="light"
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+      >
+        <div class="container py-2" >
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
+            Revisá tus Sucursales
+          </div>
 
-                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                          <div class="mx-auto">
-                            <h6 class="text-muted">Direccion</h6>
-                            <h3 class="font-weight-bold">{{ su.direccion }}</h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 d-flex">
+                <button
+                  class="btn btn-primary w-100 align-self-center"
+                  data-bs-toggle="modal"
+                  *ngIf="token &&_usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" data-bs-target="#ModalAgregarSucursales">
+                  Agregar Sucursales
+                </button>
+              </div>
             </div>
           </div>
+
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"
+            *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+          >
+            Comenzemos a vizualizar Sucursales!
+          </div>
+          <br />
+
+          <article class="postcard light green"></article>
+
+          <!--FOR AQUI-->
+          <article
+            class="postcard light green"
+            *ngFor="let su of sucursalesModelGet"
+          >
+            <a class="postcard__img_link">
+              <img
+                class="postcard__img"
+                src="https://picsum.photos/500/501"
+                alt="Image Title"
+              />
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title green">
+                <a >{{su.nombre}}</a>
+              </h1>
+              <div class="postcard__subtitle small">
+              </div>
+
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">
+                <i class="bi bi-telephone-forward"> Telefono:  {{su.telefono}}</i> <br/>
+                <i class="bi bi-geo-alt"> Direccion: {{su.direccion}}</i>
+              </div>
+
+            </div>
+          </article>
         </div>
-        <!-- Fin Contenido de la pagina-->
       </section>
+
+      </section>
+
 
       <!-- Mostar Informacion Usuario-->
       <section
@@ -125,7 +115,7 @@
           </div>
 
           <article class="postcard light blue">
-            <a class="postcard__img_link" href="#">
+            <a class="postcard__img_link" >
               <img
                 class="postcard__img"
                 src="https://picsum.photos/501/500"
@@ -134,26 +124,26 @@
             </a>
             <div class="postcard__text t-dark">
               <h1 class="postcard__title blue">
-                <a href="#"
-                  >Nombre Empresa:
+                <a
+                  >Empresa:
                   {{ _usuarioService.getIdentidad().nombre }}</a
                 >
               </h1>
               <div class="postcard__subtitle small">
                 <time datetime="2020-05-25 12:00:00">
-                  <i class="fas fa-calendar-alt mr-2"></i>
-                  {{ _usuarioService.getIdentidad().email }}
+                  <i class="bi bi-envelope mr-2"></i>
+                   {{ _usuarioService.getIdentidad().email }}
                 </time>
               </div>
               <div class="postcard__bar"></div>
               <div class="postcard__preview-txt">
-                Telefono: {{ _usuarioService.getIdentidad().telefono }}<br />
-                Direccion: {{ _usuarioService.getIdentidad().direccion }}<br />
-                Tipo Empresa: {{ _usuarioService.getIdentidad().tipoEmpresa }}
+                <i class="bi bi-telephone-forward"> Telefono: {{ _usuarioService.getIdentidad().telefono }}</i> <br />
+                <i class="bi bi-geo-alt"> Direccion: {{ _usuarioService.getIdentidad().direccion }}</i> <br />
+                <i class="bi bi-building"> Tipo Empresa: {{ _usuarioService.getIdentidad().tipoEmpresa }}</i>
               </div>
               <ul class="postcard__tagbox">
-                <li class="tag__item" routerLink="/usuario/productos">
-                  <i class="fas fa-tag mr-2"></i>Agregar Productos a mi Empresa
+                <li class="tag__item play ligth blue" routerLink="/usuario/productos">
+                  <i class="bi bi-bag-plus"></i> Agregar Productos A Mi Empresa
                 </li>
               </ul>
             </div>
@@ -164,23 +154,22 @@
       <!--Mostrar informacion sucursales-->
       <section
         class="light"
-        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'"
-      >
-        <div class="container py-2" *ngIf="load">
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
+        <div class="container py-2" >
           <div
             class="h1 text-center text-dark"
             id="pageHeaderTitle"*ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_EMPRESA'">
-            Revisa tus Sucursales
+            Revisá tus Sucursales
           </div>
 
           <div class="container">
             <div class="row">
               <div class="col-lg-3 col-md-4 d-flex">
                 <button
-                  class="btn btn-primary w-100 align-self-center"
+                  class="btn btn-primary w-100 align-self-center bi bi-plus-square-fill"
                   data-bs-toggle="modal"
                   *ngIf="token &&_usuarioService.getIdentidad().rol === 'ROL_EMPRESA'" data-bs-target="#ModalAgregarSucursales">
-                  Agregar Sucursales
+                   Agregar Sucursales
                 </button>
               </div>
             </div>
@@ -202,7 +191,7 @@
             class="postcard light green"
             *ngFor="let su of sucursalesModelGet"
           >
-            <a class="postcard__img_link" href="#">
+            <a class="postcard__img_link" >
               <img
                 class="postcard__img"
                 src="https://picsum.photos/500/501"
@@ -211,37 +200,37 @@
             </a>
             <div class="postcard__text t-dark">
               <h1 class="postcard__title green">
-                <a href="#">{{su.nombre}}</a>
+                <a >{{su.nombre}}</a>
               </h1>
               <div class="postcard__subtitle small">
               </div>
 
               <div class="postcard__bar"></div>
               <div class="postcard__preview-txt">
-                Telefono:  {{su.telefono}} <br/>
-                Direccion: {{su.direccion}}
+                <i class="bi bi-telephone-forward"> Telefono:  {{su.telefono}}</i> <br/>
+                <i class="bi bi-geo-alt"> {{su.direccion}}</i>
               </div>
               <ul class="postcard__tagbox">
                 <li class="tag__item play green" (click)="getSucursalesId(su._id)"
                 [routerLink]="['/usuario/productosSucursales', su._id]">
-                  <span class="fas fa-tag mr-2" ></span>Administrar productos sucursal
+                  <span class="bi bi-shop-window mr-2" ></span> Administrar productos sucursal
                 </li>
                 <li class="tag__item play green" (click)="eliminarSucursales(su._id)">
-                  <i class="fas fa-clock mr-2"></i>Eliminar Sucursal
+                  <i class="bi bi-trash3 mr-2"></i> Eliminar Sucursal
                 </li>
                 <li class="tag__item play green" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
                 (click)="getSucursalesId(su._id)">
-                  <i class="fas fa-clock mr-2"></i>Editar Sucursal
+                  <i class="bi bi-pencil-square mr-2"></i> Editar Sucursal
                 </li>
                 <li class="tag__item play green" data-bs-toggle="modal"
                 data-bs-target="#ModalEnviarProducto" (click)="getSucursalesId(su._id)">
-                  <a><i class="fas fa-play mr-2"></i>Enviar
+                  <a><i class="bi bi-truck mr-2"></i> Enviar
                     Producto</a>
                 </li>
                 <li class="tag__item play green" (click)="getSucursalesId(su._id)"
                 [routerLink]="['/usuario/graficas', su._id]">
-                  <a ><i class="fas fa-play mr-2"></i>Ver grafica</a>
+                  <a ><i class="bi bi-pie-chart-fill mr-2"></i> Ver grafica</a>
                 </li>
               </ul>
             </div>
@@ -336,7 +325,7 @@
             data-bs-dismiss="modal"
             aria-label="Close"
           >
-            X
+
           </button>
         </div>
         <div class="modal-body">
@@ -405,80 +394,44 @@
     </div>
   </div>
 
-  <!-- Enviar productos a Sucursales -->
-  <div
-    class="modal fade"
-    id="ModalEnviarProducto"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Enviar Producto</h5>
-          <button
-            type="button"
-            class="close btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          >
-            X
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mg-3">
-              <label for="inputNombreProductoSucursal" class="form-label"
-                >Nombre Producto</label
-              >
+  <!--Enviar productos a Sucursales-->
+  <div class="modal fade " id="ModalEnviarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Enviar Producto</h5>
+        <button type="button" class="close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
-              <select
-                class="form-select"
-                aria-label="multiple select example"
-                id="inputNombreProductoSucursal"
-                class="form-control"
-                name="NombreProductoSucursal"
-                #NombreProductoSucursal="ngModel"
-                [(ngModel)]="productoModelPost.NombreProductoSucursal"
-              >
-                <option
-                  *ngFor="let su of productosModelGet"
-                  [value]="su.NombreProducto"
-                >
-                  {{ su.NombreProducto }}
-                </option>
-              </select>
-            </div>
-            <div class="mg-3">
-              <label for="inputStockSurcursal" class="form-label">Stock</label>
-              <input
-                type="number"
-                id="inputStockSurcursal"
-                class="form-control"
-                name="StockSurcursal"
-                #StockSurcursal="ngModel"
-                [(ngModel)]="productoModelPost.StockSurcursal"
-              />
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="close" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-          <button
-            type="button"
-            class="btn offset"
-            data-bs-dismiss="modal"
-            (click)="putProductosSucursal()"
-          >
-            Enviar Productos
-          </button>
-        </div>
+        <form>
+          <div class="mg-3">
+            <label for="inputNombreProductoSucursal" class="form-label">Nombre Producto</label>
+
+            <select class="form-select" aria-label="multiple select example" id="inputNombreProductoSucursal"
+              class="form-control" name="NombreProductoSucursal" #NombreProductoSucursal="ngModel"
+              [(ngModel)]="productoModelPost.NombreProductoSucursal">
+
+              <option *ngFor="let su of productosModelGet" [value]="su.NombreProducto">{{su.NombreProducto}}</option>
+
+            </select>
+
+          </div>
+          <div class="mg-3">
+            <label for="inputStockSurcursal" class="form-label">Stock</label>
+            <input type="number" id="inputStockSurcursal" class="form-control" name="StockSurcursal"
+              #StockSurcursal="ngModel" [(ngModel)]="productoModelPost.StockSurcursal">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn offset" data-bs-dismiss="modal" (click)="putProductosSucursal()">Enviar
+          Productos</button>
       </div>
     </div>
   </div>
+</div>
 </body>
