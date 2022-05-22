@@ -31,13 +31,13 @@
         <!--Busquedas producto-->
         <div class="container">
           <input [(ngModel)]="buscarProducto" class="px-2 search justify-content-center" type="search" placeholder="Buscar Por Nombre" aria-label="Search">
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMayorSucursal('idSurcursal')">
+          <button type="button" class="btn btn-success position-relative bi bi-arrow-up" (click)="getProductoStockMayorSucursal('idSurcursal')">
             Ordenar por mayor stock
           </button>
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductoStockMenorSucursal('idSurcursal')">
+          <button type="button" class="btn btn-danger position-relative bi bi-arrow-down" (click)="getProductoStockMenorSucursal('idSurcursal')">
             Ordenar por menor stock
           </button>
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductoMasVendidoSucursal('idSurcursal')">
+          <button type="button" class="btn btn-primary position-relative bi bi-star-fill" (click)="getProductoMasVendidoSucursal('idSurcursal')">
             Producto mas vendido
           </button>
         </div>
@@ -66,7 +66,7 @@
                 <ul class="postcard__tagbox">
                   <li class="tag__item play green" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample" (click)="getProductosSucursalesId(su._id)">
-                    <i class="fas fa-clock mr-2"></i>Venta
+                    <i class="bi bi-basket2"></i> Venta
                   </li>
                 </ul>
               </div>

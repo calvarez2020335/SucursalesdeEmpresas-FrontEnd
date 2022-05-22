@@ -73,10 +73,10 @@
             placeholder="Buscar Por Nombre" aria-label="Search">
           <input [(ngModel)]="buscarPro" class="px-2 search justify-content-center" type="search"
             placeholder="Buscar Por Proveedor" aria-label="Search">
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMayor()">
+          <button type="button" class="btn btn-success position-relative bi bi-arrow-up" (click)="getProductosStokMayor()">
             Ordenar por mayor stock
           </button>
-          <button type="button" class="btn btn-primary position-relative" (click)="getProductosStokMenor()">
+          <button type="button" class="btn-danger position-relative bi bi-arrow-down" (click)="getProductosStokMenor()">
             Ordenar por menor stock
           </button>
         </div>
@@ -87,8 +87,8 @@
         <section class=" py-3">
           <div class="container">
             <div class="col-lg-3 col-md-4 d-flex">
-              <button class="btn btn-primary w-100 align-self-center" data-bs-toggle="modal"
-                data-bs-target="#ModalAgregarProductos">Agregar Productos</button>
+              <button class="btn btn-primary w-100 align-self-center bi bi-plus-square-fill" data-bs-toggle="modal"
+                data-bs-target="#ModalAgregarProductos"> Agregar Productos</button>
             </div>
 
             <article class="postcard light green" style="width: 40rem;"
@@ -111,11 +111,11 @@
                 </div>
                 <ul class="postcard__tagbox">
                   <li class="tag__item play green" (click)="eliminarProductos(su._id)">
-                    <i class="fas fa-clock mr-2"></i>Eliminar Producto
+                    <i class="bi bi-trash3-fill mr-2"></i> Eliminar Producto
                   </li>
                   <li class="tag__item play green" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample" (click)="getProductosId(su._id)">
-                    <i class="fas fa-clock mr-2"></i>Editar Producto
+                    <i class="bi bi-pencil-square mr-2"></i> Editar Producto
                   </li>
                 </ul>
               </div>
