@@ -16,16 +16,17 @@
           <div class="container">
             <div class="row">
 
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0" *ngIf="_usuarioService.getIdentidad()">Bienvenido {{
-                  _usuarioService.getIdentidad().nombre }} </h1>
-                <p class="lead text-muted">Revisa tu información detallada</p>
-              </div>
+              <div
+              class="h1 text-center text-dark"
+              id="pageHeaderTitle"
+              *ngIf="_usuarioService.getIdentidad()"
+            >
+              Bienvenido {{ _usuarioService.getIdentidad().nombre }}
+              <p class="lead text-muted">Administra las empresa</p>
+
+            </div>
 
 
-              <div class="col-lg-3 col-md-4 d-flex">
-                <button class="btn btn-primary w-100 align-self-center" routerLink="/registrar">Agregar Usuario</button>
-              </div>
 
 
             </div>
@@ -33,70 +34,78 @@
         </section>
 
         <!-- Mostar Sucursales -->
+
         <section class="bg-mix py-3">
-          <div class="container">
-            <div class="card rounded-0">
-              <div class="card-body" *ngFor="let em of empresasModelGet">
-                <!-- Cifras -->
-                <section class="bg-mix py-3">
-                  <div class="container">
-                    <div class="card rounded-0">
-                      <div class="card-body">
-                        <div class="row">
 
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Nombre</h6>
-                              <h3 class="font-weight-bold">{{em.nombre}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">telefono</h6>
-                              <h3 class="font-weight-bold">{{em.telefono}}</h3>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">direccion</h6>
-                              <h3 class="font-weight-bold">{{em.direccion}}</h3>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                            <div class="mx-auto">
-                              <h6 class="text-muted">Tipo de Empresa</h6>
-                              <h3 class="font-weight-bold">{{em.tipoEmpresa}}</h3>
-                            </div>
-                          </div>
-
-
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center"
-                              (click)="eliminarEmpresas(em._id)">Eliminar Empresa</button>
-                          </div>
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
-                              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-                              (click)="getEmpresasId(em._id)">Editar Empresa</button>
-                          </div>
-                          <div class="col-lg-3 col-md-4 d-flex">
-                            <button class="btn btn-primary w-100 align-self-center"
-                              [routerLink]="['/admin/sucursales/', em._id]">Ver Sucursales</button>
-                          </div>
-
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
           <!-- Fin Contenido de la pagina -->
         </section>
+        <section
+        class="light"
+        *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+      >
+        <div class="container py-2" >
+
+          <div
+            class="h1 text-center text-dark"
+            id="pageHeaderTitle"
+            *ngIf="token && _usuarioService.getIdentidad().rol === 'ROL_ADMIN'"
+          >
+            Estas son todas las empresas
+          </div>
+          <br />
+
+
+          <div class="col-lg-3 col-md-4 d-flex ">
+            <button class="btn btn-primary w-100 align-self-center" routerLink="/registrar">Agregar Empresa</button>
+          </div>
+
+
+          <article class="postcard light green"></article>
+
+          <!--FOR AQUI-->
+          <article
+            class="postcard light green"
+            *ngFor="let em of empresasModelGet"
+          >
+            <a class="postcard__img_link">
+              <img
+                class="postcard__img"
+                src="https://picsum.photos/500/501"
+                alt="Image Title"
+              />
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title green">
+                <a >{{em.nombre}}</a>
+              </h1>
+              <div class="postcard__subtitle small">
+              </div>
+
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">
+                Telefono:  {{em.telefono}} <br/>
+                Direccion: {{em.direccion}} <br/>
+                Tipo de Empresa: {{em.tipoEmpresa}}
+              </div>
+              <ul class="postcard__tagbox">
+
+                <li class="tag__item play green" (click)="eliminarEmpresas(em._id)">
+                  <i class="fas fa-clock mr-2"></i>Eliminar Empresa
+                </li>
+                <li class="tag__item play green" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                (click)="getEmpresasId(em._id)">
+                  <i class="fas fa-clock mr-2"></i>Editar Empresa
+                </li>
+                <li class="tag__item play green" [routerLink]="['/admin/sucursales/', em._id]"
+                >
+                  <a><i class="fas fa-play mr-2"></i>Ver Sucursales</a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
       </div>
     </div>
 
