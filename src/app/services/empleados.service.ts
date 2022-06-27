@@ -7,7 +7,7 @@ import { Empleados } from '../models/empleados.model';
   providedIn: 'root'
 })
 export class EmpleadosService {
-  public url: string = 'http://localhost:3000/api';
+  public url: string = 'https://sucursales-node-in6bv.herokuapp.com/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(public _http: HttpClient) { }

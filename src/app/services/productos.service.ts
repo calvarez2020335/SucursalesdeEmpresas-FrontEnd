@@ -7,7 +7,7 @@ import { ProductosEmpresa } from '../models/productos.empresas.model'
   providedIn: 'root'
 })
 export class ProductosService {
-  public url : String = 'http://localhost:3000/api';
+  public url : String = 'https://sucursales-node-in6bv.herokuapp.com/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
   public token;
   public identidad;

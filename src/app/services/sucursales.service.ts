@@ -7,7 +7,7 @@ import { Sucursales } from '../models/sucursales.model'
   providedIn: 'root'
 })
 export class SucursalesService {
-  public url : String = 'http://localhost:3000/api';
+  public url : String = 'https://sucursales-node-in6bv.herokuapp.com/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
 
   public token;

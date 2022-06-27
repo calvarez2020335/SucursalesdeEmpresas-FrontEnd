@@ -7,7 +7,7 @@ import {ProductosSucursal} from '../models/productos.sucursales.model'
   providedIn: 'root'
 })
 export class ProductoSucursalService {
-  public url : String = 'http://localhost:3000/api';
+  public url : String = 'https://sucursales-node-in6bv.herokuapp.com/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
   public token;
   public identidad;
@@ -48,7 +48,7 @@ export class ProductoSucursalService {
     let headersToken = this.headersVariable.set('Authorization', token )
     return this._http.get(this.url+'/stockMasBajo/'+ idSurcursal, { headers: headersToken})
   }
-  
+
   ObtenerProductoMasVendidoSucursal(idSurcursal, token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token )
     return this._http.get(this.url+'/ElProductoMasVendido/'+ idSurcursal, { headers: headersToken})
