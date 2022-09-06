@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
-import { environment, environment2 } from 'src/environments/environment';
+import { reutilizar } from 'src/environments/reutilizar';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -31,8 +31,8 @@ export class RegistrarComponent implements OnInit {
     this.token = this._usuarioService.getToken();
    }
 
-   tipoEmpresas = environment2.tipoEmpresas;
-   departamentos = environment.departamentos;
+   tipoEmpresas = reutilizar.tipoEmpresas;
+   departamentos = reutilizar.departamentos;
 
 
 

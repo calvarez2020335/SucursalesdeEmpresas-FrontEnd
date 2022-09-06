@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { environment, environment2 } from 'src/environments/environment';
+import { reutilizar } from 'src/environments/reutilizar';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +15,7 @@ export class Empresas2Component implements OnInit {
   public empresasModelGetId: Usuario;
   public token;
   nuevaOpcion:boolean = false;
-  tipoEmpresas = environment2.tipoEmpresas;
+  tipoEmpresas = reutilizar.tipoEmpresas;
 
   constructor(
     public _usuarioService: UsuarioService) {
@@ -24,7 +24,7 @@ export class Empresas2Component implements OnInit {
 
   }
 
-  departamentos = environment.departamentos;
+  departamentos = reutilizar.departamentos;
 
   ngOnInit(): void {
     this.getEmpresas();

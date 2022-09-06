@@ -9,7 +9,7 @@ import { ProductosEmpresa} from '../../models/productos.empresas.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2'
 import { ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { reutilizar } from 'src/environments/reutilizar';
 
 @Component({
   selector: 'app-sucursales',
@@ -52,7 +52,7 @@ export class SucursalesComponent implements OnInit {
     this.token = this._usuarioService.getToken()
   }
 
-  departamentos = environment.departamentos;
+  departamentos = reutilizar.departamentos;
 
   ngOnInit(): void {
 
